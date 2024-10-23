@@ -61,4 +61,30 @@ config KAS_INCLUDE_LAYER_META_RASPBERRYPI
 		if HAS_LAYER_META_RASPBERRYPI
 	default ""
 
+config HAS_LAYER_THIS
+	bool "this"
+	help
+	  OpenEmbedded meta layer with downstream recipes and changes
+	  for upstream.
+
+	  https://github.com/gportay/meta-downstream/
+
+if HAS_LAYER_THIS
+
+config HAS_LAYER_THIS_META_DOWNSTREAM
+	bool "meta-downstream"
+	help
+	  OpenEmbedded meta layer with downstream recipes and changes
+	  for upstream.
+
+	  https://github.com/gportay/meta-downstream/tree/master/meta-downstream
+
+config KAS_INCLUDE_LAYER_THIS_META_DOWNSTREAM
+	string
+	default "layers/this-meta-downstream.yaml" \
+		if HAS_LAYER_THIS_META_DOWNSTREAM
+	default ""
+
+endif # HAS_LAYER_THIS
+
 endmenu
