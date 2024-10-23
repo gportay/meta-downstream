@@ -11,7 +11,7 @@ using the [kas] setup tool.
 ## REQUIREMENTS
 
 Look at the Yocto Project Reference Manual [System Requirements] and the kas
-User Guide [Dependencies and installation] sections to install the all the bits
+User Guide [Dependencies and installation] sections to install all the bits
 required to use that repository.
 
 ## DOWNLOAD
