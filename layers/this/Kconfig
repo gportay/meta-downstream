@@ -19,6 +19,7 @@ if HAS_LAYER_THIS
 config HAS_LAYER_THIS_META_DOWNSTREAM
 	bool "meta-downstream"
 	depends on HAS_LAYER_POKY_META
+	default y if HAS_DISTRO_FEATURE_SYSTEMD
 	help
 	  OpenEmbedded meta layer with downstream recipes and changes
 	  for upstream.
