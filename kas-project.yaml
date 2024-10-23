@@ -5,6 +5,9 @@ header:
   version: 17
 distro: poky
 repos:
+  this:
+    layers:
+      meta-downstream:
   poky:
     url: "https://git.yoctoproject.org/poky"
     layers:
