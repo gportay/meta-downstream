@@ -4,4 +4,5 @@
 menu "Layers"
 source "layers/poky/Kconfig"
 source "layers/meta-raspberrypi/Kconfig"
+source "layers/this/Kconfig"
 endmenu
