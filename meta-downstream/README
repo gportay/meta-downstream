@@ -1,0 +1,38 @@
+This README file contains information on the contents of the meta-downstream
+layer.
+
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+  URI: https://git.yoctoproject.org/poky/meta
+  branch: [same one as checked out for this layer]
+
+Patches
+=======
+
+Please submit any patches against the meta-downstream layer via the repository
+pull requests (https://github.com/gportay/meta-downstream/pulls).
+
+Bugs
+====
+
+Please report any bugs against the meta-downstream layer via the repository
+issues (https://github.com/gportay/meta-downstream/issues).
+
+Table of Contents
+=================
+
+  I. Adding the meta-downstream layer to your build
+ II. Building the firmware
+
+I. Adding the meta-downstream layer to your build
+=================================================
+
+Run 'bitbake-layers add-layer meta-downstream'
+
+II. Building the firmware
+=========================
+
+Run 'bitbake core-image-minimal'
