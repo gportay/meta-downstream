@@ -5,7 +5,20 @@ config KAS_INCLUDE_MAIN
 	string
 	default "kas-project.yaml"
 
+menu "General"
 source "branches/Kconfig"
+source "layers/Kconfig"
+endmenu
+
+menu "Hardware"
+source "machines/Kconfig"
+endmenu
+
+menu "System"
 source "init-manager/Kconfig"
 source "distro-features/Kconfig"
+endmenu
+
+menu "Image"
 source "image-features/Kconfig"
+endmenu
