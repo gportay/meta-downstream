@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+choice
+        prompt "Init system"
+        default INIT_SYSTEMD
+
+config INIT_MDEV_BUSYBOX
+        bool "mdev-busybox"
+
+config INIT_SYSVINIT
+        bool "sysvinit"
+
+config INIT_SYSTEMD
+        bool "systemd"
+
+config INIT_NONE
+        bool "none"
+
+endchoice
+
+config KAS_INCLUDE_INIT
+        string
+        default "init-system/mdev-busybox.yaml" if INIT_MDEV_BUSYBOX
+        default "init-system/systemd.yaml" if INIT_SYSTEMD
+        default "init-system/sysvinit.yaml" if INIT_SYSVINIT
+        default "init-system/none"

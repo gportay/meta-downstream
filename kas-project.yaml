@@ -12,7 +12,3 @@ repos:
       meta:
       meta-poky:
       meta-yocto-bsp:
-local_conf_header:
-  distro: |
-    INIT_MANAGER = "systemd"
-    DISTRO_FEATURES:append = " systemd usrmerge"
