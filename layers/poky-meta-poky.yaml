@@ -3,4 +3,7 @@
 
 header:
   version: 17
-distro: poky
+repos:
+  poky:
+    layers:
+      meta-poky:

@@ -7,9 +7,11 @@ config KAS_INCLUDE_MAIN
 
 menu "Setup"
 source "branches/Kconfig"
+source "layers/Kconfig"
 endmenu
 
 menu "System"
+source "machines/Kconfig"
 source "init-manager/Kconfig"
 endmenu
 

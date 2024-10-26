@@ -1,0 +1,42 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+choice
+	prompt "Machine"
+	default IS_MACHINE_QEMUX64_64
+
+config IS_MACHINE_QEMUX64_64
+	bool "QEMU x86 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_POKY_META_YOCTO_BSP
+	help
+	  https://www.qemu.org/
+
+config IS_MACHINE_RASPBERRYPI4_64
+	bool "Raspberry Pi 4 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_RASPBERRYPI
+	help
+	  https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
+
+config IS_MACHINE_RASPBERRYPI5
+	bool "Raspberry Pi 5 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_RASPBERRYPI
+	help
+	  https://www.raspberrypi.com/products/raspberry-pi-5/
+
+endchoice
+
+config KAS_INCLUDE_MACHINE
+	string
+	default "machines/qemux86-64.yaml" if IS_MACHINE_QEMUX64_64
+	default "machines/raspberrypi4-64.yaml" if IS_MACHINE_RASPBERRYPI4_64
+	default "machines/raspberrypi5.yaml" if IS_MACHINE_RASPBERRYPI5
+	default ""

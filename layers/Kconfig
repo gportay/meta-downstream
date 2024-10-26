@@ -1,0 +1,64 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+menu "Layers"
+
+config HAS_LAYER_POKY
+	bool "poky"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	default y
+	help
+	  Poky Build Tool and Metadata.
+
+	  https://git.yoctoproject.org/poky
+
+if HAS_LAYER_POKY
+
+config HAS_LAYER_POKY_META
+	bool "meta"
+	help
+	  https://git.yoctoproject.org/poky/tree/meta
+
+config KAS_INCLUDE_LAYER_POKY_META
+	string
+	default "layers/poky-meta.yaml" if HAS_LAYER_POKY_META
+
+config HAS_LAYER_POKY_META_POKY
+	bool "meta-poky"
+	help
+	  https://git.yoctoproject.org/poky/tree/meta-poky
+
+config KAS_INCLUDE_LAYER_POKY_META_POKY
+	string
+	default "layers/poky-meta-poky.yaml" if HAS_LAYER_POKY_META_POKY
+
+config HAS_LAYER_POKY_META_YOCTO_BSP
+	bool "meta-yocto-bsp"
+	help
+	  https://git.yoctoproject.org/poky/tree/meta-yocto-bsp
+
+config KAS_INCLUDE_LAYER_POKY_META_YOCTO_BSP
+	string
+	default "layers/poky-meta-yocto-bsp.yaml" \
+		if HAS_LAYER_POKY_META_YOCTO_BSP
+
+endif # HAS_LAYER_POKY
+
+config KAS_INCLUDE_LAYER_POKY
+	string
+	default "layers/poky.yaml" if HAS_LAYER_POKY
+	default ""
+
+config HAS_LAYER_META_RASPBERRYPI
+	bool "meta-raspberrypi"
+	help
+	  Yocto/OE BSP layer for the Raspberry Pi boards.
+
+config KAS_INCLUDE_LAYER_META_RASPBERRYPI
+	string
+	default "layers/meta-raspberrypi.yaml" \
+		if HAS_LAYER_META_RASPBERRYPI
+	default ""
+
+endmenu
