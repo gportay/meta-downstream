@@ -1,0 +1,80 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+#
+# The help texts are stolen from the Raspberry Pi Products Website.
+#
+# https://www.raspberrypi.com/products/
+
+choice
+	prompt "Machine"
+	default IS_MACHINE_QEMUX86_64
+
+config IS_MACHINE_QEMUX86_64
+	bool "QEMU x86 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_POKY_META_YOCTO_BSP
+	help
+	  https://www.qemu.org/
+
+config IS_MACHINE_RASPBERRYPI3_64
+	bool "Raspberry Pi 3 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_RASPBERRYPI
+	help
+	  Raspberry Pi 3 Model B is the earliest model of the
+	  third-generation Raspberry Pi. It replaced Raspberry Pi 2
+	  Model B in February 2016.
+
+	  https://www.raspberrypi.com/products/raspberry-pi-3-model-b/
+
+config IS_MACHINE_RASPBERRYPI4_64
+	bool "Raspberry Pi 4 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_RASPBERRYPI
+	help
+	  Your tiny, dual-display, desktop computer... and robot brains,
+	  smart home hub, media centre, networked AI core, factory
+	  controller, and much more.
+
+	  The speed and performance of the new Raspberry Pi 4 is a step
+	  up from earlier models. For the first time, we've built a
+	  complete desktop experience. Whether you're editing documents,
+	  browsing the web with a bunch of tabs open, juggling
+	  spreadsheets or drafting a presentation, you'll find the
+	  experience smooth and very recognisable — but on a smaller,
+	  more energy-efficient and much more cost-effective machine.
+
+	  https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
+
+config IS_MACHINE_RASPBERRYPI5
+	bool "Raspberry Pi 5 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_RASPBERRYPI
+	help
+	  The everything computer. Optimised.
+
+	  With 2–3x the speed of the previous generation, and featuring
+	  silicon designed in‑house for the best possible performance,
+	  we’ve redefined the Raspberry Pi experience.
+
+	  https://www.raspberrypi.com/products/raspberry-pi-5/
+
+endchoice
+
+config KAS_INCLUDE_MACHINE
+	string
+	default "machines/qemux86-64.yaml" if IS_MACHINE_QEMUX86_64
+	default "machines/raspberrypi3-64.yaml" if IS_MACHINE_RASPBERRYPI3_64
+	default "machines/raspberrypi4-64.yaml" if IS_MACHINE_RASPBERRYPI4_64
+	default "machines/raspberrypi5.yaml" if IS_MACHINE_RASPBERRYPI5
+	default ""
+
+source "machines/raspberrypi/Kconfig"

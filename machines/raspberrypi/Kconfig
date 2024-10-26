@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config IS_RASPBERRYPI
+	bool
+	default y if IS_MACHINE_RASPBERRYPI3_64 || \
+		     IS_MACHINE_RASPBERRYPI4_64 || \
+		     IS_MACHINE_RASPBERRYPI5
+
+menu "Raspberry Pi"
+	depends on IS_RASPBERRYPI
+
+choice
+	prompt "Bootloader"
+	default IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+
+config IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	bool "Raspberry Pi Firmware"
+	help
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html
+
+config IS_RASPBERRYPI_BOOTLOADER_U_BOOT
+	bool "U-Boot"
+	depends on !IS_MACHINE_RASPBERRYPI5
+	help
+	  https://docs.u-boot.org/en/latest/
+
+endchoice
+
+config KAS_INCLUDE_IS_RASPBERRYPI_BOOTLOADER_U_BOOT
+	string
+	depends on IS_RASPBERRYPI_BOOTLOADER_U_BOOT
+	default "machines/raspberrypi/use-u-boot.yaml"
+
+config HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
+	bool "Enable UART"
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	help
+	  Requests that the kernel creates a serial console, accessible
+	  using GPIOs 14 and 15 (pins 8 and 10 on the 40-pin header).
+
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#enable_uart
+
+config KAS_INCLUDE_RASPBERRYPI_FIRMWARE_ENABLE_UART
+	string
+	depends on HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
+	default "machines/raspberrypi/enable-uart.yaml"
+
+endmenu

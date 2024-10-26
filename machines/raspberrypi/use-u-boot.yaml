@@ -3,4 +3,6 @@
 
 header:
   version: 17
-distro: poky
+local_conf_header:
+  machines-raspberrypi-bootloader-use-u-boot: |
+    RPI_USE_U_BOOT = "1"

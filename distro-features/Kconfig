@@ -7,6 +7,8 @@
 # https://docs.yoctoproject.org/dev/ref-manual/index.html
 # https://docs.yoctoproject.org/dev/ref-manual/features.html
 
+menu "Distro Features"
+
 config HAS_DISTRO_FEATURE_SYSTEMD
 	bool "Enable systemd"
 	default y
@@ -33,3 +35,5 @@ config KAS_INCLUDE_DISTRO_FEATURE_USRMERGE
 	string
 	depends on HAS_DISTRO_FEATURE_USRMERGE
 	default "distro-features/usrmerge.yaml"
+
+endmenu

@@ -5,7 +5,26 @@ config KAS_INCLUDE_MAIN
 	string
 	default "kas-project.yaml"
 
+config KAS_DISTRO_POKY
+	bool
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META_POKY
+	default y
+
+menu "General"
 source "branches/Kconfig"
+source "layers/Kconfig"
+endmenu
+
+menu "Hardware"
+source "machines/Kconfig"
+endmenu
+
+menu "System"
 source "init-manager/Kconfig"
 source "distro-features/Kconfig"
+endmenu
+
+menu "Image"
 source "image-features/Kconfig"
+endmenu

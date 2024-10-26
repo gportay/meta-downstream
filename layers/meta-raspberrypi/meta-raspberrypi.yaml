@@ -3,4 +3,6 @@
 
 header:
   version: 17
-distro: poky
+repos:
+  meta-raspberrypi:
+    url: "https://github.com/agherzan/meta-raspberrypi.git"
