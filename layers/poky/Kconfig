@@ -1,0 +1,51 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_POKY
+	bool "poky"
+	default y
+	help
+	  Poky Build Tool and Metadata.
+
+	  https://git.yoctoproject.org/poky
+
+config KAS_INCLUDE_LAYER_POKY
+	string
+	depends on HAS_LAYER_POKY
+	default "layers/poky/poky.yaml"
+
+if HAS_LAYER_POKY
+
+config HAS_LAYER_POKY_META
+	bool "meta"
+	default y
+	help
+	  https://git.yoctoproject.org/poky/tree/meta
+
+config KAS_INCLUDE_LAYER_POKY_META
+	string
+	depends on HAS_LAYER_POKY_META
+	default "layers/poky/meta.yaml"
+
+config HAS_LAYER_POKY_META_POKY
+	bool "meta-poky"
+	default y
+	help
+	  https://git.yoctoproject.org/poky/tree/meta-poky
+
+config KAS_INCLUDE_LAYER_POKY_META_POKY
+	string
+	depends on HAS_LAYER_POKY_META_POKY
+	default "layers/poky/meta-poky.yaml"
+
+config HAS_LAYER_POKY_META_YOCTO_BSP
+	bool "meta-yocto-bsp"
+	help
+	  https://git.yoctoproject.org/poky/tree/meta-yocto-bsp
+
+config KAS_INCLUDE_LAYER_POKY_META_YOCTO_BSP
+	string
+	depends on HAS_LAYER_POKY_META_YOCTO_BSP
+	default "layers/poky/meta-yocto-bsp.yaml"
+
+endif # HAS_LAYER_POKY

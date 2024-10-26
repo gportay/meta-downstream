@@ -6,6 +6,8 @@
 # https://docs.yoctoproject.org/dev/ref-manual/release-process.html
 # https://www.yoctoproject.org/development/releases/
 
+menu "Release"
+
 choice
 	prompt "Branch"
 	default IS_BRANCH_MASTER
@@ -40,3 +42,5 @@ config KAS_INCLUDE_BRANCH
 	default "branches/scarthgap.yaml" if IS_BRANCH_SCARTHGAP
 	default "branches/styhead.yaml" if IS_BRANCH_STYHEAD
 	default "branches/master.yaml"
+
+endmenu
