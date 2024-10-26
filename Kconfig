@@ -5,6 +5,10 @@ config KAS_INCLUDE_MAIN
 	string
 	default "kas-project.yaml"
 
+menu "Setup"
+source "branches/Kconfig"
+endmenu
+
 menu "Features"
 source "features/Kconfig"
 endmenu
