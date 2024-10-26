@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Reference Manual.
+#
+# https://docs.yoctoproject.org/dev/ref-manual/index.html
+# https://docs.yoctoproject.org/dev/ref-manual/features.html
+
+menu "Distro features"
+
+config HAS_DISTRO_FEATURE_SYSTEMD
+	bool
+	prompt "Enable systemd"
+	default y
+	help
+	  Include support for this init manager, which is a full
+	  replacement of for init with parallel starting of services,
+	  reduced shell overhead, and other features. This init manager
+	  is used by many distributions.
+
+config KAS_INCLUDE_DISTRO_FEATURE_SYSTEMD
+	string
+	depends on HAS_DISTRO_FEATURE_SYSTEMD
+	default "distro-features/systemd.yaml"
+
+config HAS_DISTRO_FEATURE_USRMERGE
+	bool
+	prompt "Enable usrmerge"
+	default y
+	help
+	  Merges the /bin, /sbin, /lib, and /lib64 directories into
+	  their respective counterparts in the /usr directory to provide
+	  better package and application compatibility.
+
+config KAS_INCLUDE_DISTRO_FEATURE_USRMERGE
+	string
+	depends on HAS_DISTRO_FEATURE_USRMERGE
+	default "distro-features/usrmerge.yaml"
+
+endmenu
