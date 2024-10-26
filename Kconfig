@@ -6,5 +6,6 @@ config KAS_INCLUDE_MAIN
         default "kas-project.yaml"
 
 source "branches/Kconfig"
+source "machines/Kconfig"
 source "init-system/Kconfig"
 source "image-features/Kconfig"

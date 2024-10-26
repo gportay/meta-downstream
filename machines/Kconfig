@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+choice
+        prompt "Machine"
+        default MACHINE_QEMUX64_64
+
+config MACHINE_QEMUX64_64
+        bool "QEMU x86 (64-bit)"
+
+config MACHINE_RASPBERRYPI4_64
+        bool "Raspberry Pi 4 (64-bit)"
+
+config MACHINE_RASPBERRYPI5
+        bool "Raspberry Pi 5 (64-bit)"
+
+endchoice
+
+config KAS_INCLUDE_MACHINE
+	string
+	default "machines/qemux86-64.yaml" if MACHINE_QEMUX64_64
+	default "machines/raspberrypi4-64.yaml" if MACHINE_RASPBERRYPI4_64
+	default "machines/raspberrypi5.yaml" if MACHINE_RASPBERRYPI5

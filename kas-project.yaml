@@ -3,7 +3,6 @@
 
 header:
   version: 17
-machine: qemux86-64
 distro: poky
 repos:
   poky:
