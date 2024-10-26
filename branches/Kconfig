@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+choice
+	prompt "Release branch"
+	default BRANCH_MASTER
+
+config BRANCH_KIRKSTONE
+        bool "Kirkstone (4.0, LTS)"
+
+config BRANCH_SCARTHGAP
+        bool "Scarthgap (5.0, LTS)"
+
+config BRANCH_STYHEAD
+        bool "Styhead (5.1)"
+
+config BRANCH_MASTER
+        bool "master"
+
+endchoice
+
+config KAS_INCLUDE_BRANCH
+        string
+        default "branches/kirkstone.yaml" if BRANCH_KIRKSTONE
+        default "branches/scarthgap.yaml" if BRANCH_SCARTHGAP
+        default "branches/styhead.yaml" if BRANCH_STYHEAD
+        default "branches/master.yaml"
+

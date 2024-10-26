@@ -4,6 +4,7 @@
 config DEBUG_TWEAKS
 	bool
 	prompt "debug-tweaks"
+	depends on BRANCH_KIRKSTONE || BRANCH_SCARTHGAP || BRANCH_STYHEAD
 	default y
 
 config KAS_INCLUDE_DEBUG_TWEAKS
