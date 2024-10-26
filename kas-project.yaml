@@ -19,5 +19,3 @@ local_conf_header:
   distro: |
     INIT_MANAGER = "systemd"
     DISTRO_FEATURES:append = " systemd usrmerge"
-  image: |
-    EXTRA_IMAGE_FEATURES:append = " debug-tweaks"
