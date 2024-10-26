@@ -1,0 +1,77 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Reference Manual.
+#
+# https://docs.yoctoproject.org/dev/ref-manual/index.html
+# https://docs.yoctoproject.org/dev/ref-manual/features.html
+
+config HAS_IMAGE_FEATURE_DEBUG_TWEAKS
+	bool "Enable debug-tweaks"
+	select HAS_IMAGE_FEATURE_ALLOW_EMPTY_PASSWORD
+	select HAS_IMAGE_FEATURE_EMPTY_ROOT_PASSWORD
+	select HAS_IMAGE_FEATURE_ALLOW_ROOT_LOGIN
+	select HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
+	default y
+	help
+	  Makes an image suitable for development (e.g. allows root
+	  logins, logins without passwords —including root ones, and
+	  enables post-installation logging). See the
+	  allow-empty-password, allow-root-login, empty-root-password,
+	  and post-install-logging features in this list for additional
+	  information.
+
+config HAS_IMAGE_FEATURE_ALLOW_EMPTY_PASSWORD
+	bool "Enable allow-empty-password"
+	default y
+	help
+	  Allows Dropbear and OpenSSH to accept logins from accounts
+	  having an empty password string.
+
+
+config KAS_INCLUDE_HAS_IMAGE_FEATURE_ALLOW_EMPTY_PASSWORD
+	string
+	depends on HAS_IMAGE_FEATURE_ALLOW_EMPTY_PASSWORD
+	default "image-features/allow-empty-password.yaml"
+
+config HAS_IMAGE_FEATURE_EMPTY_ROOT_PASSWORD
+	bool "Enable empty-root-password"
+	default y
+	help
+	  This feature or debug-tweaks is required if you want to allow
+	  root login with an empty password. If these features are not
+	  present in IMAGE_IMAGE_FEATURES, a non-empty password is forced in
+	  /etc/passwd and /etc/shadow if such files exist.
+
+	  Note: empty-root-password doesn’t set an empty root password
+	  by itself. You get an initial empty root password thanks to
+	  the base-passwd and shadow recipes, and the presence of
+	  empty-root-password or debug-tweaks just disables the
+	  mechanism which forces an non-empty password for the root
+	  user.
+
+config KAS_INCLUDE_HAS_IMAGE_FEATURE_EMPTY_ROOT_PASSWORD
+	string
+	depends on HAS_IMAGE_FEATURE_EMPTY_ROOT_PASSWORD
+	default "image-features/empty-root-password.yaml"
+
+config HAS_IMAGE_FEATURE_ALLOW_ROOT_LOGIN
+	bool "Enable allow-root-login"
+	default y
+	help
+	  Allows Dropbear and OpenSSH to accept root logins.
+
+config KAS_INCLUDE_HAS_IMAGE_FEATURE_ALLOW_ROOT_LOGIN
+	string
+	depends on HAS_IMAGE_FEATURE_ALLOW_ROOT_LOGIN
+	default "image-features/allow-root-login.yaml"
+
+config HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
+	bool "Enable post-install-logging"
+	default y
+
+config KAS_INCLUDE_HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
+	string
+	depends on HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
+	default "image-features/post-install-logging.yaml"

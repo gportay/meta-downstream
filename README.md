@@ -26,9 +26,13 @@ And enter the sources:
 
 ## BUILD
 
-Build the firmware:
+Configure the firmware:
 
-	kas build kas-project.yaml
+	kas menu
+
+And buid it:
+
+	kas build
 
 It takes a while to cook the world, grab yourself a coffee or count the zeros
 in `/dev/zero` in the meantime!
