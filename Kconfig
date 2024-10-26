@@ -5,4 +5,5 @@ config KAS_INCLUDE_MAIN
 	string
 	default "kas-project.yaml"
 
+source "branches/Kconfig"
 source "image-features/Kconfig"

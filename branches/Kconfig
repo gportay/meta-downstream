@@ -1,0 +1,42 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+#
+# See the Yocto Project Reference Manual.
+#
+# https://docs.yoctoproject.org/dev/ref-manual/release-process.html
+# https://www.yoctoproject.org/development/releases/
+
+choice
+	prompt "Branch"
+	default IS_BRANCH_MASTER
+	help
+	  https://wiki.yoctoproject.org/wiki/Releases
+
+config IS_BRANCH_KIRKSTONE
+	bool "Kirkstone (4.0, LTS)"
+	help
+	  https://downloads.yoctoproject.org/releases/yocto/yocto-4.0/RELEASENOTES
+
+config IS_BRANCH_SCARTHGAP
+	bool "Scarthgap (5.0, LTS)"
+	help
+	  https://downloads.yoctoproject.org/releases/yocto/yocto-5.0/RELEASENOTES
+
+config IS_BRANCH_STYHEAD
+	bool "Styhead (5.1)"
+	help
+	  https://downloads.yoctoproject.org/releases/yocto/yocto-5.1/RELEASENOTES
+
+config IS_BRANCH_MASTER
+	bool "master"
+	help
+	  https://docs.yoctoproject.org/dev/_images/releases.svg
+
+endchoice
+
+config KAS_INCLUDE_BRANCH
+	string
+	default "branches/kirkstone.yaml" if IS_BRANCH_KIRKSTONE
+	default "branches/scarthgap.yaml" if IS_BRANCH_SCARTHGAP
+	default "branches/styhead.yaml" if IS_BRANCH_STYHEAD
+	default "branches/master.yaml"
