@@ -1,0 +1,57 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Development Tasks Manual.
+#
+# https://docs.yoctoproject.org/next/dev-manual/index.html
+# https://docs.yoctoproject.org/dev/dev-manual/init-manager.html
+
+choice
+	prompt "Initialization Manager"
+	default IS_INIT_MANAGER_SYSTEMD
+
+config IS_INIT_MANAGER_MDEV_BUSYBOX
+	bool "mdev-busybox"
+	help
+	  BusyBox init with BusyBox mdev is the simplest and lightest
+	  solution for small root filesystems.
+
+	  https://git.yoctoproject.org/poky/tree/meta/conf/distro/include/init-manager-mdev-busybox.inc
+
+config IS_INIT_MANAGER_SYSVINIT
+	bool "sysvinit"
+	help
+	  SysVinit with the udev device manager.
+
+	  https://git.yoctoproject.org/poky/tree/meta/conf/distro/include/init-manager-sysvinit.inc
+
+config IS_INIT_MANAGER_SYSTEMD
+	bool "systemd"
+	help
+	  The last option is to use systemd together with the udev
+	  device manager. This is the most powerful and versatile
+	  solution, especially for more complex systems.
+
+	  This will enable systemd and remove sysvinit components from
+	  the image.
+
+	  See meta/conf/distro/include/init-manager-systemd.inc for
+	  exact details on what this does.
+
+	  https://git.yoctoproject.org/poky/tree/meta/conf/distro/include/init-manager-systemd.inc
+
+config IS_INIT_MANAGER_NONE
+	bool "none"
+	help
+	  https://git.yoctoproject.org/poky/tree/meta/conf/distro/include/init-manager-none.inc
+
+endchoice
+
+config KAS_INCLUDE_INIT_MANAGER
+	string
+	default "init-manager/mdev-busybox.yaml" if IS_INIT_MANAGER_MDEV_BUSYBOX
+	default "init-manager/sysvinit.yaml" if IS_INIT_MANAGER_SYSVINIT
+	default "init-manager/systemd.yaml" if IS_INIT_MANAGER_SYSTEMD
+	default "init-manager/none.yaml" if IS_INIT_MANAGER_NONE
+	default ""

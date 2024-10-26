@@ -9,6 +9,10 @@ menu "Setup"
 source "branches/Kconfig"
 endmenu
 
+menu "System"
+source "init-manager/Kconfig"
+endmenu
+
 menu "Features"
 source "features/Kconfig"
 endmenu
