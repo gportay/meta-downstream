@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config KAS_INCLUDE_MAIN
+        string
+        default "kas-project.yaml"
+
+source "image-features/Kconfig"

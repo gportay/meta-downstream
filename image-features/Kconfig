@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config DEBUG_TWEAKS
+	bool
+	prompt "debug-tweaks"
+	default y
+
+config KAS_INCLUDE_DEBUG_TWEAKS
+        string
+        default "image-features/debug-tweaks.yaml" if DEBUG_TWEAKS

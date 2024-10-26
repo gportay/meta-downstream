@@ -2,17 +2,31 @@
 # SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
 
 .PHONY: all
-all:
-	kas build kas-project.yaml
+all: | .config.yaml
+	kas build
+
+.PHONY: menu
+menu:
+	kas menu
+
+.SILENT: .config.yaml
+.config.yaml:
+	echo "Configuration file "$@" not found!" >&2
+	echo "Please run make menuconfig." >&2
+	false
 
 .PHONY: checkout build shell
-checkout build shell:
-	kas $@ kas-project.yaml
+checkout build shell: | .config.yaml
+	kas $@
 
 .PHONY: runqemu
-runqemu:
-	kas shell kas-project.yaml -c "runqemu nographic"
+runqemu: | .config.yaml
+	kas shell -c "runqemu nographic"
 
 .PHONY: clean
-clean:
+clean: mostlyclean
 	rm -Rf build/
+
+.PHONY: mostlyclean
+mostlyclean:
+	rm -f .config.yaml
