@@ -7,6 +7,8 @@
 # https://docs.yoctoproject.org/dev/ref-manual/index.html
 # https://docs.yoctoproject.org/dev/ref-manual/features.html
 
+menu "Image Features"
+
 config HAS_IMAGE_FEATURE_DEBUG_TWEAKS
 	bool "Enable debug-tweaks"
 	depends on IS_BRANCH_KIRKSTONE || \
@@ -78,3 +80,5 @@ config KAS_INCLUDE_HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
 	string
 	depends on HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
 	default "image-features/post-install-logging.yaml"
+
+endmenu

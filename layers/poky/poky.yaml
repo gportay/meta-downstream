@@ -3,4 +3,6 @@
 
 header:
   version: 17
-distro: poky
+repos:
+  poky:
+    url: "https://git.yoctoproject.org/poky"

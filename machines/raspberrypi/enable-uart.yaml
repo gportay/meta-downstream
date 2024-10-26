@@ -3,4 +3,6 @@
 
 header:
   version: 17
-distro: poky
+local_conf_header:
+  machines-raspberrypi-bootloader-raspberrypi-firmware-enable-uart: |
+    ENABLE_UART = "1"

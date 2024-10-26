@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_RASPBERRYPI
+	bool "meta-raspberrypi"
+	help
+	  Yocto/OE BSP layer for the Raspberry Pi boards.
+
+config KAS_INCLUDE_HAS_LAYER_META_RASPBERRYPI
+	string
+	depends on HAS_LAYER_META_RASPBERRYPI
+	default "layers/meta-raspberrypi/meta-raspberrypi.yaml"

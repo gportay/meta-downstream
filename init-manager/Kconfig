@@ -7,6 +7,8 @@
 # https://docs.yoctoproject.org/next/dev-manual/index.html
 # https://docs.yoctoproject.org/dev/dev-manual/init-manager.html
 
+menu "Initialization Manager"
+
 choice
 	prompt "Initialization Manager"
 	default IS_INIT_MANAGER_SYSTEMD
@@ -62,3 +64,5 @@ config KAS_INCLUDE_IS_INIT_MANAGER
 	default "init-manager/sysvinit.yaml" if IS_INIT_MANAGER_SYSVINIT
 	default "init-manager/systemd.yaml" if IS_INIT_MANAGER_SYSTEMD
 	default "init-manager/none.yaml"
+
+endmenu
