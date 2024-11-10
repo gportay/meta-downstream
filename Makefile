@@ -3,15 +3,15 @@
 
 .PHONY: all
 all:
-	kas build kas-project.yml
+	kas build kas-project.yaml
 
 .PHONY: checkout build shell
 checkout build shell:
-	kas $@ kas-project.yml
+	kas $@ kas-project.yaml
 
 .PHONY: runqemu
 runqemu:
-	kas shell kas-project.yml -c "runqemu nographic"
+	kas shell kas-project.yaml -c "runqemu nographic"
 
 .PHONY: clean
 clean:
