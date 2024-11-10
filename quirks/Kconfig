@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config UNPACKDIR
+	bool
+	prompt "UNPACKDIR"
+	depends on BRANCH_KIRKSTONE || BRANCH_SCARTHGAP
+	default y
+
+config KAS_INCLUDE_UNPACKDIR
+        string
+        default "quirks/unpackdir.yaml" if UNPACKDIR
