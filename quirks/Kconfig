@@ -3,7 +3,7 @@
 
 config UNPACKDIR
 	bool
-	prompt "UNPACKDIR"
+	prompt "UNPACKDIR (kirkstone, scarthgap)"
 	depends on BRANCH_KIRKSTONE || BRANCH_SCARTHGAP
 	default y
 
