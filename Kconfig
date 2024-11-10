@@ -20,3 +20,8 @@ source "init-manager/Kconfig"
 source "distro-features/Kconfig"
 source "image-features/Kconfig"
 endmenu
+
+menu "Quirks"
+	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+source "quirks/Kconfig"
+endmenu
