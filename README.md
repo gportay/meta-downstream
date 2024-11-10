@@ -28,7 +28,7 @@ And enter the sources:
 
 Build the firmware:
 
-	kas build kas-project.yml
+	kas build kas-project.yaml
 
 It takes a while to cook the world, grab yourself a coffee or count the zeros
 in `/dev/zero` in the meantime!
