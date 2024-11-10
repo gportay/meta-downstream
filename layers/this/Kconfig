@@ -31,4 +31,18 @@ config KAS_INCLUDE_HAS_LAYER_THIS_META_DOWNSTREAM
 	depends on HAS_LAYER_THIS_META_DOWNSTREAM
 	default "layers/this/meta-downstream.yaml"
 
+config HAS_LAYER_THIS_META_BLKPG_PART
+	bool "meta-blkpg-part"
+	depends on HAS_LAYER_POKY_META
+	help
+	  OpenEmbedded meta layer for partition table and disk geometry
+	  handling utility.
+
+	  https://github.com/gportay/meta-downstream/tree/master/meta-downstream
+
+config KAS_INCLUDE_HAS_LAYER_THIS_META_BLKPG_PART
+	string
+	depends on HAS_LAYER_THIS_META_BLKPG_PART
+	default "layers/this/meta-blkpg-part.yaml"
+
 endif # HAS_LAYER_THIS

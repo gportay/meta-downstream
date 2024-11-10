@@ -28,6 +28,7 @@ endmenu
 
 menu "Image"
 source "image-features/Kconfig"
+source "image-installs/Kconfig"
 endmenu
 
 menu "Quirks"
