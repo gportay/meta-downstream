@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config BLKPG_PART
+	bool "blkpg-part"
+	default n
+
+config KAS_INCLUDE_BLKPG_PART
+        string
+        default "downstream-features/blkpg-part.yaml" if BLKPG_PART
