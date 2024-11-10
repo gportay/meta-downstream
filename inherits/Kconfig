@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config RM_WORK
+	bool
+	prompt "rm_work"
+	default y
+
+config KAS_INCLUDE_RM_WORK
+        string
+        default "inherits/rm_work.yaml" if RM_WORK
