@@ -3,6 +3,8 @@
 
 menu "Layers"
 source "layers/poky/Kconfig"
+source "layers/meta-openembedded/Kconfig"
+source "layers/meta-security/Kconfig"
 source "layers/meta-rauc/Kconfig"
 source "layers/meta-rauc-community/Kconfig"
 source "layers/meta-raspberrypi/Kconfig"
