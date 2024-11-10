@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+menu "Image install"
+
+config HAS_IMAGE_INSTALL_BLKPG_PART
+	bool "Install blkpg-part"
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_BLKPG_PART
+	help
+	  Partition table and disk geometry handling utility.
+
+	  https://github.com/gportay/blkpg-part
+
+config KAS_INCLUDE_IMAGE_INSTALL_BLKPG_PART
+	string
+	depends on HAS_IMAGE_INSTALL_BLKPG_PART
+	default "image-installs/blkpg-part.yaml"
+
+endmenu
