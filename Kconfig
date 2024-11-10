@@ -8,6 +8,7 @@ config KAS_INCLUDE_MAIN
 menu "Setup"
 source "branches/Kconfig"
 source "layers/Kconfig"
+source "inherits/Kconfig"
 endmenu
 
 menu "BSP"
