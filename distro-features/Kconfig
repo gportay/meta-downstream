@@ -36,6 +36,14 @@ config KAS_INCLUDE_HAS_DISTRO_FEATURE_USRMERGE
 	depends on HAS_DISTRO_FEATURE_USRMERGE
 	default "distro-features/usrmerge.yaml"
 
+config HAS_DISTRO_FEATURE_PAM
+	bool "Enable PAM"
+
+config KAS_INCLUDE_HAS_DISTRO_FEATURE_PAM
+	string
+	depends on HAS_DISTRO_FEATURE_PAM
+	default "distro-features/pam.yaml"
+
 config HAS_DISTRO_FEATURE_RAUC
 	bool "Enable RAUC"
 	select HAS_IMAGE_INSTALL_RAUC
@@ -48,5 +56,13 @@ config KAS_INCLUDE_HAS_DISTRO_FEATURE_RAUC
 	string
 	depends on HAS_DISTRO_FEATURE_RAUC
 	default "distro-features/rauc.yaml"
+
+config HAS_DISTRO_FEATURE_SECURITY
+	bool "Enable security"
+
+config KAS_INCLUDE_HAS_DISTRO_FEATURE_SECURITY
+	string
+	depends on HAS_DISTRO_FEATURE_SECURITY
+	default "distro-features/security.yaml"
 
 endmenu
