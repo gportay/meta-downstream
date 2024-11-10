@@ -19,6 +19,7 @@ menu "System"
 source "init-manager/Kconfig"
 source "distro-features/Kconfig"
 source "image-features/Kconfig"
+source "image-installs/Kconfig"
 endmenu
 
 menu "Quirks"
