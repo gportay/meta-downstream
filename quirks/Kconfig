@@ -1,0 +1,33 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Release Information.
+#
+# https://docs.yoctoproject.org/dev/migration-guides/index.html
+# https://docs.yoctoproject.org/dev/migration-guides/migration-5.1.html#workdir-references-in-recipes
+
+config HAS_QUIRK_UNPACKDIR
+	bool "Set UNPACKDIR to ${WORKDIR}"
+	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	help
+	  Since Skyhead (5.1), WORKDIR references in other recipes need
+	  auditing. If they reference files from SRC_URI, they likely
+	  need changing to UNPACKDIR. These are commonly in do_compile
+	  and do_install for things like service or configuration files.
+	  One unusual case is ${WORKDIR}/${BP} which should probably be
+	  set to ${S}.
+
+	  References to ../ in LIC_FILES_CHKSUM or elsewhere may need
+	  changing to UNPACKDIR. References to WORKDIR in sed commands
+	  are usually left as they are.
+
+	  https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-UNPACKDIR
+	  https://docs.yoctoproject.org/dev/migration-guides/migration-5.1.html#workdir-references-in-recipes
+	  https://git.yoctoproject.org/poky/commit/?id=812dafbec1918fbbf89e8466988da602bf5edee0
+	  https://git.yoctoproject.org/poky/commit/?id=d24a7d0fb16457e10e7a216d4c9ae3fb265113d1
+
+config KAS_INCLUDE_HAS_QUIRK_UNPACKDIR
+	string
+	depends on HAS_QUIRK_UNPACKDIR
+	default "quirks/unpackdir.yaml"
