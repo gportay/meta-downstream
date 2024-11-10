@@ -1,0 +1,54 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_OPENEMBEDDED
+	bool "meta-openembedded"
+	help
+	  Collection of layers for the OE-core universe.
+
+	  https://github.com/openembedded/meta-openembedded
+
+config KAS_INCLUDE_LAYER_META_OPENEMBEDDED
+	string
+	depends on HAS_LAYER_META_OPENEMBEDDED
+	default "layers/meta-openembedded/meta-openembedded.yaml"
+
+if HAS_LAYER_META_OPENEMBEDDED
+
+config HAS_LAYER_META_OPENEMBEDDED_META_OE
+	bool "meta-oe"
+	select HAS_LAYER_POKY_META
+	help
+	  https://github.com/openembedded/meta-openembedded/tree/master/meta-oe
+
+config KAS_INCLUDE_LAYER_META_OPENEMBEDDED_META_OE
+	string
+	depends on HAS_LAYER_META_OPENEMBEDDED_META_OE
+	default "layers/meta-openembedded/meta-oe.yaml"
+
+config HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+	bool "meta-python"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	help
+	  https://github.com/openembedded/meta-openembedded/tree/master/meta-python
+
+config KAS_INCLUDE_LAYER_META_OPENEMBEDDED_META_PYTHON
+	string
+	depends on HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+	default "layers/meta-openembedded/meta-python.yaml"
+
+config HAS_LAYER_META_OPENEMBEDDED_META_NETWORKING
+	bool "meta-networking"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+	help
+	  https://github.com/openembedded/meta-openembedded/tree/master/meta-networking
+
+config KAS_INCLUDE_LAYER_META_OPENEMBEDDED_META_NETWORKING
+	string
+	depends on HAS_LAYER_META_OPENEMBEDDED_META_NETWORKING
+	default "layers/meta-openembedded/meta-networking.yaml"
+
+endif # HAS_LAYER_META_OPENEMBEDDED

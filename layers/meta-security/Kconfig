@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_SECURITY
+	bool "meta-security"
+	help
+	  Security tools for Internet connected devices
+
+	  https://git.yoctoproject.org/meta-security/
+
+config KAS_INCLUDE_LAYER_META_SECURITY
+	string
+	depends on HAS_LAYER_META_SECURITY
+	default "layers/meta-security/meta-security.yaml"

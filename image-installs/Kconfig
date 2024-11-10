@@ -63,6 +63,35 @@ config HAS_IMAGE_INSTALL_RAUC_QEMUX86
 
 endif # HAS_IMAGE_INSTALL_RAUC
 
+config HAS_IMAGE_INSTALL_SSSD
+	bool "Install SSSD"
+	select HAS_LAYER_META_OPENEMBEDDED
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	select HAS_LAYER_META_OPENEMBEDDED_META_NETWORKING
+	select HAS_LAYER_META_SECURITY
+	select HAS_DISTRO_FEATURE_PAM
+	select HAS_DISTRO_FEATURE_SECURITY
+	help
+	  A daemon to manage identity, authentication and authorization
+	  for centrally-managed systems.
+
+	  https://sssd.io/
+
+config KAS_INCLUDE_IMAGE_INSTALL_SSSD
+	string
+	depends on HAS_IMAGE_INSTALL_SSSD
+	default "image-installs/sssd.yaml"
+
+config HAS_IMAGE_INSTALL_SSSD_PYTHON3_BINDINGS
+	bool "python3-bindings"
+	depends on HAS_IMAGE_INSTALL_SSSD
+	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+
+config KAS_INCLUDE_IMAGE_INSTALL_SSSD_PYTHON3_BINDINGS
+	string
+	depends on HAS_IMAGE_INSTALL_SSSD_PYTHON3_BINDINGS
+	default "image-installs/sssd-python3-bindings.yaml"
+
 config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	bool "raspberrypi-firmware-systemd-generator"
 	depends on HAS_DISTRO_FEATURE_SYSTEMD
