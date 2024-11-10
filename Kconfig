@@ -14,6 +14,7 @@ config KAS_DISTRO_POKY
 menu "General"
 source "branches/Kconfig"
 source "layers/Kconfig"
+source "inherits/Kconfig"
 endmenu
 
 menu "Hardware"
