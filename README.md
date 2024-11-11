@@ -14,6 +14,13 @@ Look at the Yocto Project Reference Manual [System Requirements] and the kas
 User Guide [Dependencies and installation] sections to install all the bits
 required to use that repository.
 
+Also, consider installing the package `yq` if running commands from the handy
+`Makefile` providing 
+
+## KASBUILD
+
+kasbuild is an imitation of the [Kbuild] system used by the [Linux kernel].
+
 ## DOWNLOAD
 
 Clone the tree:
@@ -67,3 +74,4 @@ later version.
 [System Requirements]: https://docs.yoctoproject.org/dev/ref-manual/system-requirements.html
 [Yocto Project]: https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html
 [kas]: https://kas.readthedocs.io/en/latest/
+[kbuild]: https://www.kernel.org/doc/html/latest/kbuild/index.html
