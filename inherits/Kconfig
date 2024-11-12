@@ -9,6 +9,20 @@
 
 menu "Global classes"
 
+config HAS_INHERIT_CVE_CHECK
+	bool
+	prompt "Inherit cve-check"
+	help
+	  The cve-check class looks for known CVEs (Common
+	  Vulnerabilities and Exposures) while building with BitBake.
+
+	  https://docs.yoctoproject.org/ref-manual/classes.html#cve-check
+
+config KAS_INCLUDE_INHERIT_CVE_CHECK
+	string
+	depends on HAS_INHERIT_CVE_CHECK
+	default "inherits/cve-check.yaml"
+
 config HAS_INHERIT_RM_WORK
 	bool
 	prompt "Inherit rm_work"
