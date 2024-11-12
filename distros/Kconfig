@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+choice
+	prompt "Distro"
+	default IS_POKY
+
+config IS_POKY
+	bool "Poky (Yocto Project Reference Distro)"
+
+config IS_POKY_TINY
+	bool "Poky Tiny"
+
+config IS_POKY_BLEEDING
+	bool "Poky (bleeding)"
+
+endchoice
+
+config KAS_INCLUDE_MACHINE
+	string
+	default "distros/poky.yaml" if IS_POKY
+	default "distros/poky-tiny.yaml" if IS_POKY_TINY
+	default "distros/poky-bleending.yaml" if IS_POKY_BLEEDING
+	default ""
