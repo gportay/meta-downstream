@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+header:
+  version: 17
+local_conf_header:
+  raspberrypi-bootloader-raspberrypi-firmware-use-tryboot: |
+    DEPENDS:pn-rpi-bootfiles:append = " rpi-autoboot"
+    CMDLINE_ROOT_PARTITION = "/dev/mmcblk0p5"
+    WKS_FILE = "sdimage-autoboot+tryboot-raspberrypi.wks.in"
