@@ -38,4 +38,18 @@ config KAS_INCLUDE_DISTRO_FEATURE_USRMERGE
 	depends on HAS_DISTRO_FEATURE_USRMERGE
 	default "distro-features/usrmerge.yaml"
 
+config HAS_DISTRO_FEATURE_RAUC
+	bool
+	prompt "Enable RAUC"
+	select HAS_IMAGE_INSTALL_RAUC
+	help
+	  Safe and secure software updates for embedded Linux.
+
+	  https://rauc.io/
+
+config KAS_INCLUDE_DISTRO_FEATURE_RAUC
+	string
+	depends on HAS_DISTRO_FEATURE_RAUC
+	default "distro-features/rauc.yaml"
+
 endmenu
