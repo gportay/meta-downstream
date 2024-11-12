@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+header:
+  version: 17
+target:
+  - update-bundle
+local_conf_header:
+  image-installs-rauc-raspberrypi: |
+    IMAGE_FSTYPES:append = " ext4"
+    WKS_FILE = "sdimage-dual-raspberrypi.wks.in"

@@ -1,0 +1,46 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_RAUC_COMMUNITY
+	bool "meta-rauc-community"
+	default y if HAS_DISTRO_FEATURE_RAUC
+	help
+	  Yocto/OpenEmbedded meta layer with examples for integration of
+	  RAUC, the embedded Linux A/B update framework.
+
+	  https://github.com/rauc/meta-rauc-community
+
+config KAS_INCLUDE_HAS_LAYER_META_RAUC_COMMUNITY
+	string
+	depends on HAS_LAYER_META_RAUC_COMMUNITY
+	default "layers/meta-rauc-community/meta-rauc-community.yaml"
+
+if HAS_LAYER_META_RAUC_COMMUNITY
+
+config HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	bool "meta-rauc-raspberrypi"
+	depends on HAS_LAYER_META_RAUC
+	depends on HAS_LAYER_POKY_META
+	default y if IS_MACHINE_RASPBERRYPI
+	help
+	  https://github.com/rauc/meta-rauc-community/tree/master/meta-rauc-raspberrypi
+
+config KAS_INCLUDE_HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	string
+	depends on HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	default "layers/meta-rauc-community/meta-rauc-raspberrypi.yaml"
+
+config HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
+	bool "meta-rauc-qemux86"
+	depends on HAS_LAYER_META_RAUC
+	depends on HAS_LAYER_POKY_META
+	default y if IS_MACHINE_QEMUX86_64
+	help
+	  https://github.com/rauc/meta-rauc-community/tree/master/meta-rauc-qemux86
+
+config KAS_INCLUDE_HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
+	string
+	depends on HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
+	default "layers/meta-rauc-community/meta-rauc-qemux86.yaml"
+
+endif # HAS_LAYER_META_RAUC_COMMUNITY

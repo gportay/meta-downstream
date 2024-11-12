@@ -3,6 +3,6 @@
 
 header:
   version: 17
-target:
-  - core-image-minimal
-distro: poky
+local_conf_header:
+  distro-features-rauc: |
+    DISTRO_FEATURES:append = " rauc"
