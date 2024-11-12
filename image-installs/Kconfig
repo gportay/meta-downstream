@@ -17,4 +17,31 @@ config KAS_INCLUDE_IMAGE_INSTALL_BLKPG_PART
 	depends on HAS_IMAGE_INSTALL_BLKPG_PART
 	default "image-installs/blkpg-part.yaml"
 
+config HAS_IMAGE_INSTALL_RAUC
+	bool "Install RAUC"
+	select HAS_LAYER_META_RAUC
+	help
+	  Safe and secure software updates for embedded Linux.
+
+	  https://rauc.io/
+
+config KAS_INCLUDE_IMAGE_INSTALL_RAUC
+	string
+	depends on HAS_IMAGE_INSTALL_RAUC
+	default "image-installs/rauc.yaml"
+
+config HAS_IMAGE_INSTALL_RAUC_RASPBERRYPI
+	bool
+	depends on HAS_IMAGE_INSTALL_RAUC
+	default y if IS_RASPBERRYPI
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+
+config HAS_IMAGE_INSTALL_RAUC_QEMUX86
+	bool
+	depends on HAS_IMAGE_INSTALL_RAUC
+	default y if IS_MACHINE_QEMUX64_64
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
+
 endmenu
