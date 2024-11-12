@@ -3,6 +3,7 @@
 
 header:
   version: 17
-target:
-  - core-image-minimal
-distro: poky
+repos:
+  meta-rauc-community:
+    layers:
+      meta-rauc-raspberrypi:

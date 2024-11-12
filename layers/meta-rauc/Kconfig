@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_RAUC
+	bool "meta-rauc"
+	help
+	  Yocto/Open Embedded meta layer for RAUC, the embedded Linux
+	  update framework.
+
+config KAS_INCLUDE_HAS_LAYER_META_RAUC
+	string
+	depends on HAS_LAYER_META_RAUC
+	default "layers/meta-rauc/meta-rauc.yaml"

@@ -3,6 +3,6 @@
 
 header:
   version: 17
-target:
-  - core-image-minimal
-distro: poky
+repos:
+  meta-rauc-community:
+    url: "https://github.com/rauc/meta-rauc-community.git"

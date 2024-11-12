@@ -17,4 +17,50 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_BLKPG_PART
 	depends on HAS_IMAGE_INSTALL_BLKPG_PART
 	default "image-installs/blkpg-part.yaml"
 
+config HAS_IMAGE_INSTALL_RAUC
+	bool "Install RAUC"
+	select HAS_LAYER_META_RAUC
+	help
+	  Safe and secure software updates for embedded Linux.
+
+	  https://rauc.io/
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC
+	string
+	depends on HAS_IMAGE_INSTALL_RAUC
+	default "image-installs/rauc.yaml"
+
+if HAS_IMAGE_INSTALL_RAUC
+
+config HAS_IMAGE_INSTALL_RAUC_RASPBERRYPI
+	bool
+	depends on IS_MACHINE_RASPBERRYPI3_64 || \
+		   IS_MACHINE_RASPBERRYPI4_64
+	depends on IS_RASPBERRYPI_BOOTLOADER_U_BOOT
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	default y
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC_RASPBERRYPI
+	string
+	depends on HAS_IMAGE_INSTALL_RAUC_RASPBERRYPI
+	default "image-installs/rauc-raspberrypi.yaml"
+
+config HAS_IMAGE_INSTALL_RAUC_QEMUX86
+	bool
+	depends on IS_MACHINE_QEMUX86_64
+	depends on HAS_QEMUALL_USE_WIC
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_DOWNSTREAM
+	default y
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC_QEMUX86
+	string
+	depends on HAS_IMAGE_INSTALL_RAUC_QEMUX86
+	default "image-installs/rauc-qemux86.yaml"
+
+endif # HAS_IMAGE_INSTALL_RAUC
+
 endmenu

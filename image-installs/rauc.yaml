@@ -3,6 +3,6 @@
 
 header:
   version: 17
-target:
-  - core-image-minimal
-distro: poky
+local_conf_header:
+  image-installs-rauc: |
+    IMAGE_INSTALL:append = " rauc"
