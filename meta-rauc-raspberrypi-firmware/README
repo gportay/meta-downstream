@@ -1,0 +1,48 @@
+This README file contains information on the contents of the
+meta-rauc-raspberrypi-firmware layer.
+
+Please see the corresponding sections below for details.
+
+Dependencies
+============
+
+  URI: https://git.yoctoproject.org/poky
+  branch: [same one as checked out for this layer]
+
+  URI: https://github.com/rauc/meta-rauc
+  branch: [same one as checked out for this layer]
+
+  URI: https://git.yoctoproject.org/meta-raspberrypi
+  branch: [same one as checked out for this layer]
+
+  URI: https://github.com/rauc/meta-rauc-community
+  branch: [same one as checked out for this layer]
+
+Patches
+=======
+
+Please submit any patches against the meta-rauc-raspberrypi-firmware layer via
+the repository pull requests (https://github.com/gportay/meta-downstream/pulls).
+
+Bugs
+====
+
+Please report any bugs against the meta-downstream layer via the repository
+issues (https://github.com/gportay/meta-downstream/issues).
+
+Table of Contents
+=================
+
+  I. Adding the meta-rauc-raspberrypi-firmware layer to your build
+ II. Building the firmware
+III. Flash & Run The Demo System
+
+I. Adding the meta-rauc-raspberrypi-firmware layer to your build
+================================================================
+
+Run 'bitbake-layers add-layer meta-rauc-raspberrypi-firmware'
+
+II. Building the firmware
+=========================
+
+Run 'bitbake core-image-minimal'

@@ -3,6 +3,9 @@
 
 header:
   version: 17
-local_conf_header:
-  image-installs-rauc-raspberrypi: |
-    IMAGE_FSTYPES += "ext4"
+target:
+  - update-bundle
+repos:
+  this:
+    layers:
+      meta-rauc-raspberrypi-firmware:

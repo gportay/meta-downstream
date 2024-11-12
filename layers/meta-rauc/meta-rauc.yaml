@@ -3,8 +3,6 @@
 
 header:
   version: 17
-target:
-  - update-bundle
 repos:
   meta-rauc:
     url: "https://github.com/rauc/meta-rauc.git"

@@ -4,5 +4,5 @@
 header:
   version: 17
 local_conf_header:
-  image-installs-rauc-raspberrypi: |
-    IMAGE_FSTYPES += "ext4"
+  image-installs-raspberrypi-firmware-systemd-generator: |
+    IMAGE_INSTALL:append = " raspberrypi-firmware-systemd-generator vim-xxd"

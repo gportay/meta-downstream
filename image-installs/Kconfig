@@ -32,6 +32,26 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC
 
 if HAS_IMAGE_INSTALL_RAUC
 
+config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_RAUC_BOOTLOADER_BACKEND
+	bool "raspberrypi-firmware-rauc-bootloader-backend"
+	depends on IS_RASPBERRYPI
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	select HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
+	select HAS_IMAGE_INSTALL_RPI_AUTOBOOT
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	default y
+	help
+	  An implementation of a RAUC custom bootloader backend for the
+	  Raspberry Pi firmware.
+
+	  https://github.com/gportay/raspberrypi-firmware-rauc-bootloader-backend
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_RAUC_BOOTLOADER_BACKEND
+	string
+	depends on HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_RAUC_BOOTLOADER_BACKEND
+	default "image-installs/raspberrypi-firmware-rauc-bootloader-backend.yaml"
+
 config HAS_IMAGE_INSTALL_RAUC_RASPBERRYPI
 	bool
 	depends on IS_MACHINE_RASPBERRYPI3_64 || \
@@ -62,5 +82,48 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC_QEMUX86
 	default "image-installs/rauc-qemux86.yaml"
 
 endif # HAS_IMAGE_INSTALL_RAUC
+
+config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
+	bool "raspberrypi-firmware-systemd-generator"
+	depends on HAS_DISTRO_FEATURE_SYSTEMD
+	depends on IS_RASPBERRYPI
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	help
+	  A systemd-generator for mounting the bootloader partitions of
+	  the Raspberry Pi firmware.
+
+	  https://github.com/gportay/raspberrypi-firmware-systemd-generator
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
+	string
+	depends on HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
+	default "image-installs/raspberrypi-firmware-systemd-generator.yaml"
+
+config HAS_IMAGE_INSTALL_RPI_AUTOBOOT
+	bool "Append rpi-autoboot to rpi-bootfiles run-time dependency"
+	depends on IS_RASPBERRYPI
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	default y
+	help
+	  Generated autoboot.txt file for the Raspberry Pi. The
+	  Raspberry Pi autoboot.txt file is read by the GPU before the
+	  ARM core is initialised. It can be used to specify the
+	  boot_partition number. It can also be used in conjuncion with
+	  the tryboot feature to implement A/B booting for OS upgrades.
+
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#autoboot-txt
+
+config KAS_INCLUDE_IMAGE_INSTALL_RPI_AUTOBOOT
+	string
+	depends on HAS_IMAGE_INSTALL_RPI_AUTOBOOT
+	default "image-installs/rpi-autoboot.yaml"
 
 endmenu
