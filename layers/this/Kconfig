@@ -45,4 +45,18 @@ config KAS_INCLUDE_LAYER_THIS_META_BLKPG_PART
 	depends on HAS_LAYER_THIS_META_BLKPG_PART
 	default "layers/this/meta-blkpg-part.yaml"
 
+config HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	bool "meta-rauc-raspberrypi-firmware"
+	depends on HAS_LAYER_META_RAUC
+	depends on HAS_LAYER_META_RAUC_COMMUNITY
+	depends on HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
+	help
+	  OpenEmbedded meta layer with raspberrypi-firmware integration
+	  of RAUC, the embedded Linux A/B update framework.
+
+config KAS_INCLUDE_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	string
+	depends on HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	default "layers/this/meta-rauc-raspberrypi-firmware.yaml"
+
 endif # HAS_LAYER_THIS
