@@ -46,4 +46,46 @@ config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	depends on HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	default "machines/raspberrypi/enable-uart.yaml"
 
+config HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
+	bool "Use autoboot.txt"
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	select HAS_LAYER_META_RAUC
+	select HAS_LAYER_META_RAUC_COMMUNITY
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	help
+	  Generated autoboot.txt file for the Raspberry Pi. The
+	  Raspberry Pi autoboot.txt file is read by the GPU before the
+	  ARM core is initialised. It can be used to specify the
+	  boot_partition number. It can also be used in conjuncion with
+	  the tryboot feature to implement A/B booting for OS upgrades.
+
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#autoboot-txt
+
+	  autoboot.txt is an optional configuration file that can be
+	  used to specify the boot_partition number.
+
+	  This can also be used in conjunction with the tryboot feature
+	  to implement A/B booting for OS upgrades.
+
+	  autoboot.txt is limited to 512 bytes and supports the [all],
+	  [none] and [tryboot] conditional filters.
+
+	  https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#fail-safe-os-updates-tryboot
+
+	  The bootloader/firmware provide a one-shot flag which, if set,
+	  is cleared but causes tryboot.txt to be loaded instead of
+	  config.txt. This alternate config would specify the pending OS
+	  update firmware, cmdline, kernel and os_prefix parameters.
+	  Since the flag is cleared before starting the firmware, a
+	  crash or reset will cause the original config.txt file to be
+	  loaded on the next reboot.
+
+	  https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#fail-safe-os-updates-tryboot
+
+config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
+	string
+	depends on HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
+	default "machines/raspberrypi/use-autoboot-txt.yaml"
+
 endmenu

@@ -4,7 +4,7 @@
 header:
   version: 17
 local_conf_header:
-  image-installs-rpi-autoboot: |
+  machine-raspberrypi-use-autoboot-txt: |
     DEPENDS:pn-rpi-bootfiles:append = " rpi-autoboot"
     CMDLINE_ROOT_PARTITION = "/dev/mmcblk0p5"
     WKS_FILE = "sdimage-autoboot+tryboot-raspberrypi.wks.in"
