@@ -39,6 +39,19 @@ config KAS_INCLUDE_IMAGE_FEATURE_READ_ONLY_ROOTFS_DELAYED_POSTINSTS
 	depends on HAS_IMAGE_FEATURE_READ_ONLY_ROOTFS_DELAYED_POSTINSTS
 	default "image-features/read-only-rootfs-delayed-postinsts.yaml"
 
+config HAS_IMAGE_FEATURE_OVERLAYFS_ETC
+	bool
+	prompt "Enable overlayfs-etc"
+	help
+	  Configures the /etc directory to be in overlayfs. This allows
+	  to store device specific information elsewhere, especially if
+	  the root filesystem is configured to be read-only.
+
+config KAS_INCLUDE_IMAGE_FEATURE_OVERLAYFS_ETC
+	string
+	depends on HAS_IMAGE_FEATURE_OVERLAYFS_ETC
+	default "image-features/overlayfs-etc"
+
 config HAS_IMAGE_FEATURE_DEBUG_TWEAKS
 	bool
 	prompt "Enable debug-tweaks"
