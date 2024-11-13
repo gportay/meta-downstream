@@ -15,8 +15,8 @@ menu:
 	echo "Please run make menuconfig." >&2
 	false
 
-.PHONY: checkout build shell
-checkout build shell: | .config.yaml
+.PHONY: checkout dump build shell
+checkout dump build shell: | .config.yaml
 	kas $@
 
 .PHONY: runqemu

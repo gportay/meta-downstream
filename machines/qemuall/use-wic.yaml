@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+header:
+  version: 17
+local_conf_header:
+  machines-qemux86-64-use-wic: |
+    IMAGE_FSTYPES += "wic"
+    QB_DEFAULT_FSTYPE = "wic"
