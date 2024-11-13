@@ -77,4 +77,5 @@ config KAS_INCLUDE_IS_MACHINE
 	default "machines/raspberrypi5.yaml" if IS_MACHINE_RASPBERRYPI5
 	default ""
 
+source "machines/qemuall/Kconfig"
 source "machines/raspberrypi/Kconfig"
