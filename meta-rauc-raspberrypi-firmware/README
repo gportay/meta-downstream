@@ -46,3 +46,33 @@ II. Building the firmware
 =========================
 
 Run 'bitbake core-image-minimal'
+
+III. Flash & Run The Demo System
+================================
+
+You can either flash using bmaptool (recommended)::
+
+  $ bmaptool copy /path/to/core-image-minimal-raspberrypi3.wic.bz2 /dev/sdX
+
+or bzcat::
+
+  $ bzcat /path/to/core-image-minimal-raspberrypi3.wic.bz2 | dd of=/dev/sdb
+
+Then power-on the board and log in.
+To see that RAUC is configured correctly and can interact with the bootloader,
+run::
+
+  # rauc status
+
+IV. Build and Install The Demo Bundle
+=====================================
+
+To build the bundle, run::
+
+  $ bitbake update-bundle
+
+Copy the generated bundle to the target system via nc, scp or an attached USB stick.
+
+On the target, you can then install the bundle::
+
+  # rauc install /path/to/bundle.raucb
