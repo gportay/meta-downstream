@@ -103,27 +103,4 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	depends on HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	default "image-installs/raspberrypi-firmware-systemd-generator.yaml"
 
-config HAS_IMAGE_INSTALL_RPI_AUTOBOOT
-	bool "Append rpi-autoboot to rpi-bootfiles run-time dependency"
-	depends on IS_RASPBERRYPI
-	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
-	select HAS_LAYER_META_RAUC_COMMUNITY
-	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
-	select HAS_LAYER_THIS
-	select HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
-	default y
-	help
-	  Generated autoboot.txt file for the Raspberry Pi. The
-	  Raspberry Pi autoboot.txt file is read by the GPU before the
-	  ARM core is initialised. It can be used to specify the
-	  boot_partition number. It can also be used in conjuncion with
-	  the tryboot feature to implement A/B booting for OS upgrades.
-
-	  https://www.raspberrypi.com/documentation/computers/config_txt.html#autoboot-txt
-
-config KAS_INCLUDE_IMAGE_INSTALL_RPI_AUTOBOOT
-	string
-	depends on HAS_IMAGE_INSTALL_RPI_AUTOBOOT
-	default "image-installs/rpi-autoboot.yaml"
-
 endmenu
