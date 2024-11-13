@@ -9,6 +9,63 @@
 
 menu "Image Features"
 
+choice
+	prompt "Enable ssh-server"
+	default IS_IMAGE_FEATURE_SSH_SERVER_NONE
+
+config IS_IMAGE_FEATURE_SSH_SERVER_NONE
+	bool "none"
+
+config IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
+	bool "Dropbear"
+	help
+	  Installs the Dropbear minimal SSH server.
+
+	  https://matt.ucc.asn.au/dropbear/dropbear.html
+
+config IS_IMAGE_FEATURE_SSH_SERVER_OPENSSH
+	bool "OpenSSH"
+	help
+	  Installs the OpenSSH SSH server, which is more full-featured
+	  than Dropbear. Note that if both the OpenSSH SSH server and
+	  the Dropbear minimal SSH server are present in IMAGE_FEATURES,
+	  then OpenSSH will take precedence and Dropbear will not be
+	  installed.
+
+	  https://www.openssh.com/
+
+endchoice
+
+config KAS_INCLUDE_IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
+	string
+	depends on IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
+	default "image-features/ssh-server-dropbear.yaml"
+
+config HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
+	bool "Install openssh-sftp-server"
+	depends on IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
+	default y
+	help
+	  As of the 4.1 release, the ssh-server-dropbear feature also
+	  recommends the openssh-sftp-server package, which by default
+	  will be pulled into the image. This is because recent versions
+	  of the OpenSSH scp client now use the SFTP protocol, and thus
+	  require an SFTP server to be present to connect to.
+
+config KAS_INCLUDE_HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
+	string
+	depends on HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
+	default "image-features/ssh-server-dropbear+openssh-sftp-server.yaml" \
+		if IS_BRANCH_KIRKSTONE && HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
+	default "image-features/ssh-server-dropbear-openssh-sftp-server.yaml" \
+		if !IS_BRANCH_KIRKSTONE && !HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
+	default ""
+
+config KAS_INCLUDE_IS_IMAGE_FEATURE_SSH_SERVER_OPENSSH
+	string
+	depends on IS_IMAGE_FEATURE_SSH_SERVER_OPENSSH
+	default "image-features/ssh-server-openssh.yaml"
+
 config HAS_IMAGE_FEATURE_DEBUG_TWEAKS
 	bool "Enable debug-tweaks"
 	depends on IS_BRANCH_KIRKSTONE || \

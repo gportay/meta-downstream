@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+header:
+  version: 17
+local_conf_header:
+  image-features-ssh-server-dropbear-openssh-sftp-server: |
+    BAD_RECOMMENDATIONS += "openssh-sftp-server"
