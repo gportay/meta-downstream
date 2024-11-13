@@ -46,4 +46,25 @@ config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	depends on HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	default "machines/raspberrypi/enable-uart.yaml"
 
+config HAS_RASPBERRYPI_FIRMWARE_ENABLE_TRYBOOT
+	bool "Enable tryboot"
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
+	help
+	  The bootloader/firmware provide a one-shot flag which, if set,
+	  is cleared but causes tryboot.txt to be loaded instead of
+	  config.txt. This alternate config would specify the pending OS
+	  update firmware, cmdline, kernel and os_prefix parameters.
+	  Since the flag is cleared before starting the firmware, a
+	  crash or reset will cause the original config.txt file to be
+	  loaded on the next reboot.
+
+	  https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#fail-safe-os-updates-tryboot
+
+config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_ENABLE_TRYBOOT
+	string
+	depends on HAS_RASPBERRYPI_FIRMWARE_ENABLE_TRYBOOT
+	default "machines/raspberrypi/enable-tryboot.yaml"
+
 endmenu
