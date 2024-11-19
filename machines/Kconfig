@@ -27,6 +27,24 @@ config IS_MACHINE_QEMUX86_64
 	help
 	  https://www.qemu.org/
 
+config IS_MACHINE_AWS_EC2_ARM64
+	bool "AWS EC2 ARM (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_AWS
+	help
+	  https://aws.amazon.com/ec2/
+
+config IS_MACHINE_AWS_EC2_X86_64
+	bool "AWS EC2 x86 (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_AWS
+	help
+	  https://aws.amazon.com/ec2/
+
 config IS_MACHINE_RASPBERRYPI3_64
 	bool "Raspberry Pi 3 (64-bit)"
 	select HAS_LAYER_POKY
@@ -82,6 +100,8 @@ config KAS_INCLUDE_MACHINE
 	string
 	default "machines/qemuarm64.yaml" if IS_MACHINE_QEMUARM64
 	default "machines/qemux86-64.yaml" if IS_MACHINE_QEMUX86_64
+	default "machines/aws-ec2-x86-64.yaml" if IS_MACHINE_AWS_EC2_X86_64
+	default "machines/aws-ec2-arm64.yaml" if IS_MACHINE_AWS_EC2_ARM64
 	default "machines/raspberrypi3-64.yaml" if IS_MACHINE_RASPBERRYPI3_64
 	default "machines/raspberrypi4-64.yaml" if IS_MACHINE_RASPBERRYPI4_64
 	default "machines/raspberrypi5.yaml" if IS_MACHINE_RASPBERRYPI5

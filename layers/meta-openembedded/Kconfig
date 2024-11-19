@@ -51,4 +51,17 @@ config KAS_INCLUDE_LAYER_META_OPENEMBEDDED_META_NETWORKING
 	depends on HAS_LAYER_META_OPENEMBEDDED_META_NETWORKING
 	default "layers/meta-openembedded/meta-networking.yaml"
 
+config HAS_LAYER_META_OPENEMBEDDED_META_MULTIMEDIA
+	bool "meta-multimedia"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+	help
+	  https://github.com/openembedded/meta-openembedded/tree/master/meta-networking
+
+config KAS_INCLUDE_LAYER_META_OPENEMBEDDED_META_MULTIMEDIA
+	string
+	depends on HAS_LAYER_META_OPENEMBEDDED_META_MULTIMEDIA
+	default "layers/meta-openembedded/meta-multimedia.yaml"
+
 endif # HAS_LAYER_META_OPENEMBEDDED
