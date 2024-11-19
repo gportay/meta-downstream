@@ -4,10 +4,13 @@ OpenEmbedded meta layer with downstream recipes and changes for upstream.
 
 ## TL;DR;
 
-This repository builds firmwares using the [Yocto Project] for Intel Core 2 or
-ARM Cortex-A57 microprocessors, or Raspberry Pi single-board computers
-(64-bit). It sets up the OpenEmbedded layers and runs bitbake using the [kas]
-setup tool.
+This repository builds firmwares using the [Yocto Project] for the serveral
+machines listed below. It sets up the OpenEmbedded layers and runs bitbake
+using the [kas] setup tool.
+
+ - QEMU Intel Core 2 and ARM Cortex-A57 microprocessors (64-bit)
+ - Raspberry Pi single-board computers (64-bit)
+ - AWS-EC2 Intel x86 or ARM (64-bit)
 
 ## REQUIREMENTS
 
