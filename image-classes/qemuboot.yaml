@@ -4,5 +4,5 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
+  image-classes-qemuboot: |
+    IMAGE_CLASSES:append = " qemuboot"

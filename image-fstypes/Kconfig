@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Development Tasks Manual.
+#
+# https://docs.yoctoproject.org/dev/dev-manual/index.html
+# https://docs.yoctoproject.org/dev/dev-manual/wic.html
+
+menu "Image FileSystem Types"
+
+config HAS_IMAGE_FSTYPES_EXT4
+	bool "ext4"
+	help
+	  Ext4 is an advanced level of the ext3 filesystem which
+	  incorporates scalability and reliability enhancements for
+	  supporting large filesystems (64 bit) in keeping with
+	  increasing disk capacities and state-of-the-art feature
+	  requirements.
+
+	  https://docs.kernel.org/admin-guide/ext4.html
+	  https://www.kernel.org/doc/html/latest/filesystems/ext4/index.html
+	  https://www.nongnu.org/ext2-doc/ext2.html
+
+config KAS_INCLUDE_HAS_IMAGE_FSTYPES_EXT4
+	string
+	depends on HAS_IMAGE_FSTYPES_EXT4
+	default "image-fstypes/ext4.yaml"
+
+config HAS_IMAGE_FSTYPES_WIC
+	bool "Wic"
+	help
+	  Generate an Image using an Existing Kickstart File.
+
+	  https://docs.yoctoproject.org/dev/dev-manual/wic.html
+	  https://docs.yoctoproject.org/dev/ref-manual/kickstart.html#openembedded-kickstart-wks-reference
+
+config KAS_INCLUDE_HAS_IMAGE_FSTYPES_WIC
+	string
+	depends on HAS_IMAGE_FSTYPES_WIC
+	default "image-fstypes/wic.yaml"
+
+endmenu

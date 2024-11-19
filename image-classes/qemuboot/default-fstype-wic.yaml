@@ -4,6 +4,5 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemux86-64: |
-    IMAGE_FSTYPES += "wic"
+  image-classes-qemuboot-qc-default-fstype-wic: |
     QB_DEFAULT_FSTYPE = "wic"

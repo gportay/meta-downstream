@@ -42,6 +42,7 @@ config KAS_INCLUDE_HAS_QEMUALL_USE_UEFI_AND_QEMUX86_64
 
 config HAS_QEMUALL_USE_WIC
 	bool "Use Wic"
+	select HAS_IMAGE_FSTYPES_WIC
 	help
 	  Generate an Image using an Existing Kickstart File.
 
@@ -53,8 +54,6 @@ config KAS_INCLUDE_HAS_QEMUALL_USE_WIC
 	depends on HAS_QEMUALL_USE_WIC
 	default "machines/qemuall/use-wic-qemuarm64.yaml" \
 		if IS_MACHINE_QEMUARM64
-	default "machines/qemuall/use-wic-qemux86-64.yaml" \
-		if IS_MACHINE_QEMUX86_64
 	default ""
 
 config HAS_QEMUALL_USE_UEFI_AND_WIC

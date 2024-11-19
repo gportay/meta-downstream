@@ -1,0 +1,53 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Development Tasks Manual.
+#
+# https://docs.yoctoproject.org/dev/dev-manual/index.html
+# https://docs.yoctoproject.org/dev/dev-manual/wic.html
+# https://docs.yoctoproject.org/dev/dev-manual/qemu.html
+
+config IS_AWS_EC2
+	bool
+	default y if IS_MACHINE_AWS_EC2_ARM64 || \
+		     IS_MACHINE_AWS_EC2_X86_64
+
+menu "AWS EC2"
+	depends on IS_AWS_EC2
+	depends on IS_MACHINE_AWS_EC2_X86_64
+
+config HAS_AWS_EC2_USE_WIC
+	bool "Use Wic"
+	select HAS_IMAGE_FSTYPES_WIC
+	help
+	  Generate an Image using an Existing Kickstart File.
+
+	  https://docs.yoctoproject.org/dev/dev-manual/wic.html
+	  https://docs.yoctoproject.org/dev/ref-manual/kickstart.html#openembedded-kickstart-wks-reference
+
+config HAS_AWS_EC2_USE_RUNQEMU
+	bool "Use runqemu"
+	select HAS_IMAGE_CLASSES_QEMUBOOT
+	help
+	  Within the context of the Yocto Project, QEMU is an emulator
+	  and virtualization machine that allows you to run a complete
+	  image you have built using the Yocto Project as just another
+	  task on your build system. QEMU is useful for running and
+	  testing images and applications on supported Yocto Project
+	  architectures without having actual hardware.
+
+	  https://docs.yoctoproject.org/dev-manual/qemu.html
+
+	  For official information and documentation on QEMU in general,
+	  see the following references:
+
+	  https://wiki.qemu.org/Main_Page
+	  https://wiki.qemu.org/Documentation
+
+config KAS_INCLUDE_HAS_AWS_EC2_USE_RUNQEMU
+	string
+	depends on HAS_AWS_EC2_USE_RUNQEMU
+	default "machines/aws-ec2/use-runqemu.yaml"
+
+endmenu

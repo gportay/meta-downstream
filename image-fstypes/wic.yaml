@@ -4,5 +4,5 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
+  image-fstypes-wic: |
+    IMAGE_FSTYPES:append = " wic"
