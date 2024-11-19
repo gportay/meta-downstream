@@ -28,6 +28,8 @@ endmenu
 
 menu "Image"
 source "image-features/Kconfig"
+source "image-classes/Kconfig"
+source "image-fstypes/Kconfig"
 source "image-installs/Kconfig"
 endmenu
 

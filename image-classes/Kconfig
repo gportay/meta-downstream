@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Sources.
+#
+# https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
+
+config HAS_IMAGE_CLASSES_QEMUBOOT
+	bool
+	help
+	  Help runqemu boot target board.
+
+	  https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
+
+config KAS_INCLUDE_IMAGE_CLASSES_QEMUBOOT
+	string
+	depends on HAS_IMAGE_CLASSES_QEMUBOOT
+	default "image-classes/qemuboot.yaml"
