@@ -100,6 +100,15 @@ config IS_MACHINE_RASPBERRYPI5
 
 	  https://www.raspberrypi.com/products/raspberry-pi-5/
 
+config IS_MACHINE_VISIONFIVE2
+	bool "VisionFive 2"
+	select HAS_LAYER_META_RISCV
+	help
+	  VisionFive 2 is the world's first RISC-V SBC equipped with 3D
+	  GPU for mass production.
+
+	  https://www.starfivetech.com/en/site/boards
+
 endchoice
 
 config KAS_INCLUDE_IS_MACHINE
@@ -112,6 +121,7 @@ config KAS_INCLUDE_IS_MACHINE
 	default "machines/raspberrypi3-64.yaml" if IS_MACHINE_RASPBERRYPI3_64
 	default "machines/raspberrypi4-64.yaml" if IS_MACHINE_RASPBERRYPI4_64
 	default "machines/raspberrypi5.yaml" if IS_MACHINE_RASPBERRYPI5
+	default "machines/visionfive2.yaml" if IS_MACHINE_VISIONFIVE2
 	default ""
 
 source "machines/qemuall/Kconfig"

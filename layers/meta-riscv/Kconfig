@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_RISCV
+	bool "meta-riscv"
+	help
+	  OpenEmbedded/Yocto layer for RISC-V Architecture.
+
+config KAS_INCLUDE_HAS_LAYER_META_RISCV
+	string
+	depends on HAS_LAYER_META_RISCV
+	default "layers/meta-riscv/meta-riscv.yaml"
