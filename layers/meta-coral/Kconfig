@@ -1,0 +1,15 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_CORAL
+	bool "meta-coral"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_FREESCALE
+	select HAS_LAYER_META_CLANG
+	help
+	  Yocto/OE-core BSP Layer for Coral Dev Board.
+
+config KAS_INCLUDE_LAYER_META_CORAL
+	string
+	depends on HAS_LAYER_META_CORAL
+	default "layers/meta-coral/meta-coral.yaml"

@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_FREESCALE
+	bool "meta-freescale"
+	select HAS_LAYER_POKY_META
+	help
+	  Layer containing NXP hardware support metadata.
+
+config KAS_INCLUDE_LAYER_META_FREESCALE
+	string
+	depends on HAS_LAYER_META_FREESCALE
+	default "layers/meta-freescale/meta-freescale.yaml"
