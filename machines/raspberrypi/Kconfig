@@ -80,7 +80,7 @@ config HAS_RASPBERRYPI_USE_RUNQEMU
 
 config HAS_RASPBERRYPI_USE_RUNQEMU
 	bool "Use runqemu"
-	depends on IS_MACHINE_RASPBERRYPI4_64
+	depends on IS_MACHINE_RASPBERRYPI3_64 || IS_MACHINE_RASPBERRYPI4_64
 	select HAS_IMAGE_CLASSES_QEMUBOOT
 	select HAS_IMAGE_FSTYPES_WIC
 	help
@@ -102,6 +102,9 @@ config HAS_RASPBERRYPI_USE_RUNQEMU
 config KAS_INCLUDE_RASPBERRYPI_USE_RUNQEMU
 	string
 	depends on HAS_RASPBERRYPI_USE_RUNQEMU
-	default "machines/raspberrypi/use-runqemu-raspi4b.yaml"
+	default "machines/raspberrypi/use-runqemu-raspi3b.yaml" \
+		if IS_MACHINE_RASPBERRYPI3_64
+	default "machines/raspberrypi/use-runqemu-raspi4b.yaml" \
+		if IS_MACHINE_RASPBERRYPI4_64
 
 endmenu
