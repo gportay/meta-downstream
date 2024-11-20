@@ -6,4 +6,8 @@ header:
 local_conf_header:
   machines-raspberrypi4-64-runqemu-raspi4b: |
     QB_SYSTEM_NAME = "qemu-system-aarch64"
-    QB_CPU = "-cpu cortex-a53 -machine raspi4b"
+    QB_CPU = "-cpu cortex-a72 -machine raspi4b"
+    QB_MEM = "-m 2G"
+    QB_DRIVE_TYPE = "/dev/mmcblk"
+    QB_NET = "none"
+    QB_RNG = ""
