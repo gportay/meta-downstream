@@ -7,8 +7,10 @@
 # https://docs.yoctoproject.org/dev/dev-manual/index.html
 # https://docs.yoctoproject.org/dev/dev-manual/wic.html
 
+menu "Image FileSystem Types"
+
 config HAS_IMAGE_FSTYPES_WIC
-	bool
+	bool "Wic"
 	help
 	  Generate an Image using an Existing Kickstart File.
 
@@ -19,3 +21,5 @@ config KAS_INCLUDE_IMAGE_FSTYPES_WIC
 	string
 	depends on HAS_IMAGE_FSTYPES_WIC
 	default "image-fstypes/wic.yaml"
+
+endmenu

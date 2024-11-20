@@ -4,5 +4,5 @@
 header:
   version: 17
 local_conf_header:
-  machines-aws-ec2-x86-64-wic: |
+  image-classes-qemuboot-default-fstype-wic: |
     QB_DEFAULT_FSTYPE = "wic"

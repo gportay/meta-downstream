@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Sources.
+#
+# https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
+
+menu "QEMU Boot"
+	depends on IS_QEMU || HAS_IMAGE_CLASSES_QEMUBOOT
+
+choice
+	prompt "Default FileSystem Type"
+	default IS_IMAGE_CLASSES_QB_DEFAULT_FSTYPE_WIC if HAS_IMAGE_FSTYPES_WIC
+	default IS_IMAGE_CLASSES_QB_DEFAULT_FSTYPE_EXT4
+	help
+	  QB_DEFAULT_FSTYPE: default FSTYPE to boot, e.g., "ext4"
+
+config IS_IMAGE_CLASSES_QB_DEFAULT_FSTYPE_EXT4
+	bool "ext4"
+
+config IS_IMAGE_CLASSES_QB_DEFAULT_FSTYPE_WIC
+	bool "wic"
+
+endchoice
+
+config KAS_INCLUDE_IS_IMAGE_CLASSES_QEMUBOOT_QB_DEFAULT_FSTYPE_EXT4
+	string
+	depends on IS_IMAGE_CLASSES_QB_DEFAULT_FSTYPE_EXT4
+	default "image-classes/qemuboot/default-fstype-ext4.yaml"
+
+config KAS_INCLUDE_IS_IMAGE_CLASSES_QEMUBOOT_QB_DEFAULT_FSTYPE_WIC
+	string
+	depends on IS_IMAGE_CLASSES_QB_DEFAULT_FSTYPE_WIC
+	default "image-classes/qemuboot/default-fstype-wic.yaml"
+
+endmenu

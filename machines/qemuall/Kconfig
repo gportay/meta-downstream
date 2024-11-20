@@ -17,15 +17,11 @@ menu "QEMU"
 
 config HAS_QEMUALL_USE_WIC
 	bool "Use Wic"
+	select HAS_IMAGE_FSTYPES_WIC
 	help
 	  Generate an Image using an Existing Kickstart File.
 
 	  https://docs.yoctoproject.org/dev/dev-manual/wic.html
 	  https://docs.yoctoproject.org/dev/ref-manual/kickstart.html#openembedded-kickstart-wks-reference
-
-config KAS_INCLUDE_HAS_QEMUALL_USE_WIC
-	string
-	depends on HAS_QEMUALL_USE_WIC
-	default "machines/qemuall/use-wic.yaml"
 
 endmenu

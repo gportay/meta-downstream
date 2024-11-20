@@ -26,13 +26,9 @@ config HAS_AWS_EC2_USE_WIC
 	  https://docs.yoctoproject.org/dev/dev-manual/wic.html
 	  https://docs.yoctoproject.org/dev/ref-manual/kickstart.html#openembedded-kickstart-wks-reference
 
-config KAS_INCLUDE_HAS_AWS_EC2_USE_WIC
-	string
-	depends on HAS_AWS_EC2_USE_WIC
-	default "machines/aws-ec2/use-wic.yaml"
-
 config HAS_AWS_EC2_USE_RUNQEMU
 	bool "Use runqemu"
+	select HAS_IMAGE_CLASSES_QEMUBOOT
 	select HAS_AWS_EC2_USE_WIC
 	help
 	  Within the context of the Yocto Project, QEMU is an emulator

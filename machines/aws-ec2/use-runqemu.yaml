@@ -5,5 +5,4 @@ header:
   version: 17
 local_conf_header:
   machines-aws-ec2-x86-64-runqemu: |
-    IMAGE_CLASSES:append = " qemuboot"
-    QB_DEFAULT_FSTYPE = "wic"
+    QB_SYSTEM_NAME = "qemu-system-x86_64"

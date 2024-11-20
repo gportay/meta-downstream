@@ -6,6 +6,8 @@
 #
 # https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
 
+menu "Image Classes"
+
 config HAS_IMAGE_CLASSES_QEMUBOOT
 	bool
 	help
@@ -17,3 +19,7 @@ config KAS_INCLUDE_IMAGE_CLASSES_QEMUBOOT
 	string
 	depends on HAS_IMAGE_CLASSES_QEMUBOOT
 	default "image-classes/qemuboot.yaml"
+
+source "image-classes/qemuboot/Kconfig"
+
+endmenu
