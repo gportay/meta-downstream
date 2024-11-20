@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+config HAS_LAYER_META_ARM
+	bool "meta-arm"
+	help
+	  Layer containing support for Arm products
+
+	  https://git.yoctoproject.org/meta-arm/
+
+config KAS_INCLUDE_HAS_LAYER_META_ARM
+	string
+	depends on HAS_LAYER_META_ARM
+	default "layers/meta-arm/meta-arm.yaml"
+
+if HAS_LAYER_META_ARM
+
+config HAS_LAYER_META_ARM_META_ARM
+	bool "meta-arm"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_ARM_META_ARM_TOOLCHAIN
+	help
+	  https://git.yoctoproject.org/meta-arm/tree/meta-arm
+
+config KAS_INCLUDE_HAS_LAYER_META_ARM_META_ARM
+	string
+	depends on HAS_LAYER_META_ARM_META_ARM
+	default "layers/meta-arm/meta-arm-meta-arm.yaml"
+
+config HAS_LAYER_META_ARM_META_ARM_TOOLCHAIN
+	bool "meta-arm-toolchain"
+	select HAS_LAYER_POKY_META
+	help
+	  https://git.yoctoproject.org/meta-arm/tree/meta-arm-toolchain
+
+config KAS_INCLUDE_HAS_LAYER_META_ARM_META_ARM_TOOLCHAIN
+	string
+	depends on HAS_LAYER_META_ARM_META_ARM_TOOLCHAIN
+	default "layers/meta-arm/meta-arm-meta-arm-toolchain.yaml"
+
+endif # HAS_LAYER_META_ARM
