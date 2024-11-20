@@ -9,6 +9,15 @@ choice
 	prompt "Machine"
 	default IS_MACHINE_QEMUX86_64
 
+config IS_MACHINE_QEMUARM64
+	bool "QEMU ARM (64-bit)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_POKY_META_YOCTO_BSP
+	help
+	  https://www.qemu.org/
+
 config IS_MACHINE_QEMUX86_64
 	bool "QEMU x86 (64-bit)"
 	select HAS_LAYER_POKY
@@ -71,6 +80,7 @@ endchoice
 
 config KAS_INCLUDE_MACHINE
 	string
+	default "machines/qemuarm64.yaml" if IS_MACHINE_QEMUARM64
 	default "machines/qemux86-64.yaml" if IS_MACHINE_QEMUX86_64
 	default "machines/raspberrypi3-64.yaml" if IS_MACHINE_RASPBERRYPI3_64
 	default "machines/raspberrypi4-64.yaml" if IS_MACHINE_RASPBERRYPI4_64

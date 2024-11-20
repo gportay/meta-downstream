@@ -9,7 +9,8 @@
 
 config IS_QEMU
 	bool
-	default y if IS_MACHINE_QEMUX86_64
+	default y if IS_MACHINE_QEMUARM64 || \
+		     IS_MACHINE_QEMUX86_64
 
 menu "QEMU"
 	depends on IS_QEMU
