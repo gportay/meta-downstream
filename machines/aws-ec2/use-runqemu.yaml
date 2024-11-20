@@ -6,3 +6,12 @@ header:
 local_conf_header:
   machines-aws-ec2-x86-64-runqemu: |
     QB_SYSTEM_NAME = "qemu-system-x86_64"
+    QB_SMP = "-smp 4"
+    QB_CPU = "-cpu IvyBridge -machine q35,i8042=off"
+    QB_CPU_KVM = "-cpu IvyBridge -machine q35,i8042=off"
+    QB_AUDIO_DRV = "alsa"
+    QB_AUDIO_OPT = "-device AC97"
+    QB_KERNEL_CMDLINE_APPEND = "oprofile.timer=1 tsc=reliable no_timer_check rcupdate.rcu_expedited=1"
+    QB_OPT_APPEND = "-usb -device usb-tablet -usb -device usb-kbd"
+    WKS_FILE = "qemux86-directdisk.wks"
+    SERIAL_CONSOLES = "115200;ttyS0 115200;ttyS1"
