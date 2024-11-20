@@ -27,6 +27,12 @@ config IS_MACHINE_AWS_EC2_X86_64
 	help
 	  https://aws.amazon.com/ec2/
 
+config IS_MACHINE_CORAL_DEV
+	bool "Coral Dev Board"
+	select HAS_LAYER_META_CORAL
+	help
+	  https://coral.ai/products/dev-board/
+
 config IS_MACHINE_QEMUARM64
 	bool "QEMU ARM (64-bit)"
 	select HAS_LAYER_POKY
@@ -100,6 +106,7 @@ config KAS_INCLUDE_IS_MACHINE
 	string
 	default "machines/aws-ec2-x86-64.yaml" if IS_MACHINE_AWS_EC2_X86_64
 	default "machines/aws-ec2-arm64.yaml" if IS_MACHINE_AWS_EC2_ARM64
+	default "machines/coral-dev.yaml" if IS_MACHINE_CORAL_DEV
 	default "machines/qemuarm64.yaml" if IS_MACHINE_QEMUARM64
 	default "machines/qemux86-64.yaml" if IS_MACHINE_QEMUX86_64
 	default "machines/raspberrypi3-64.yaml" if IS_MACHINE_RASPBERRYPI3_64

@@ -35,6 +35,7 @@ source "image-installs/Kconfig"
 endmenu
 
 menu "Quirks"
-	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	depends on (IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP) || \
+		   (IS_BRANCH_MASTER && HAS_LAYER_META_CORAL)
 source "quirks/Kconfig"
 endmenu

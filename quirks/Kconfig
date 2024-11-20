@@ -32,3 +32,28 @@ config KAS_INCLUDE_HAS_QUIRK_UNPACKDIR
 	string
 	depends on HAS_QUIRK_UNPACKDIR
 	default "quirks/unpackdir.yaml"
+
+config HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
+	bool "Remove linux-coral QA Errors"
+	depends on IS_BRANCH_MASTER
+	default y if HAS_LAYER_META_CORAL
+	help
+	  The Upstream-Status value is missing in the specified patch
+	  file’s header. This value is intended to track whether or not
+	  the patch has been sent upstream, whether or not it has been
+	  merged, etc.
+
+	  There are two options for this same check - patch-status-core
+	  (for recipes in OE-Core) and patch-status-noncore (for recipes
+	  in any other layer).
+
+	  For more information, see the “Patch Upstream Status” section
+	  in the Yocto Project and OpenEmbedded Contributor Guide.
+
+	  https://docs.yoctoproject.org/dev/ref-manual/qa-checks.html
+	  https://docs.yoctoproject.org/dev/contributor-guide/recipe-style-guide.html#patch-upstream-status
+
+config KAS_INCLUDE_HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
+	string
+	depends on HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
+	default "quirks/remove-linux-coral-qa-errors.yaml"
