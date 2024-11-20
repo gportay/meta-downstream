@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+header:
+  version: 17
+local_conf_header:
+  machines-raspberrypi4-64-runqemu-raspi4b: |
+    QB_SYSTEM_NAME = "qemu-system-aarch64"
+    QB_CPU = "-cpu cortex-a53 -machine raspi4b"
