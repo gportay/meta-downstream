@@ -15,7 +15,6 @@ config IS_AWS_EC2
 
 menu "AWS EC2"
 	depends on IS_AWS_EC2
-	depends on IS_MACHINE_AWS_EC2_X86_64
 
 config HAS_AWS_EC2_USE_WIC
 	bool "Use Wic"
@@ -48,6 +47,9 @@ config HAS_AWS_EC2_USE_RUNQEMU
 config KAS_INCLUDE_AWS_EC2_USE_RUNQEMU
 	string
 	depends on HAS_AWS_EC2_USE_RUNQEMU
-	default "machines/aws-ec2/use-runqemu.yaml"
+	default "machines/aws-ec2/use-runqemu-arm64.yaml" \
+		if IS_MACHINE_AWS_EC2_ARM64
+	default "machines/aws-ec2/use-runqemu.yaml" \
+		if IS_MACHINE_AWS_EC2_X86_64
 
 endmenu
