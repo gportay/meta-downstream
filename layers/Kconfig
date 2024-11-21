@@ -9,6 +9,7 @@ source "layers/meta-rauc/Kconfig"
 source "layers/meta-rauc-community/Kconfig"
 source "layers/meta-arm/Kconfig"
 source "layers/meta-aws/Kconfig"
+source "layers/meta-arm/Kconfig"
 source "layers/meta-raspberrypi/Kconfig"
 source "layers/this/Kconfig"
 endmenu

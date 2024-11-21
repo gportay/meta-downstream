@@ -15,7 +15,6 @@ config IS_AWS_EC2
 
 menu "AWS EC2"
 	depends on IS_AWS_EC2
-	depends on IS_MACHINE_AWS_EC2_X86_64
 
 config HAS_AWS_EC2_USE_WIC
 	bool "Use Wic"
@@ -25,6 +24,12 @@ config HAS_AWS_EC2_USE_WIC
 
 	  https://docs.yoctoproject.org/dev/dev-manual/wic.html
 	  https://docs.yoctoproject.org/dev/ref-manual/kickstart.html#openembedded-kickstart-wks-reference
+
+config HAS_AWS_EC2_USE_WIC_AND_ARM64
+	bool
+	default y if IS_MACHINE_AWS_EC2_ARM64
+	depends on HAS_AWS_EC2_USE_WIC
+	select HAS_IMAGE_DEPEND_EDK2_FIRMWARE
 
 config HAS_AWS_EC2_USE_RUNQEMU
 	bool "Use runqemu"
@@ -48,6 +53,9 @@ config HAS_AWS_EC2_USE_RUNQEMU
 config KAS_INCLUDE_HAS_AWS_EC2_USE_RUNQEMU
 	string
 	depends on HAS_AWS_EC2_USE_RUNQEMU
-	default "machines/aws-ec2/use-runqemu.yaml"
+	default "machines/aws-ec2/use-runqemu-arm64.yaml" \
+		if IS_MACHINE_AWS_EC2_ARM64
+	default "machines/aws-ec2/use-runqemu-x86-64.yaml" \
+		if IS_MACHINE_AWS_EC2_X86_64
 
 endmenu

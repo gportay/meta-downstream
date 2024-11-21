@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+header:
+  version: 17
+local_conf_header:
+  machines-aws-ec2-arm64-use-runqemu: |
+    QB_SYSTEM_NAME = "qemu-system-aarch64"
+    QB_MACHINE = "-machine virt"
+    QB_CPU = "-cpu neoverse-v1"
+    QB_SMP = "-smp 4"
+    QB_CPU_KVM = "-cpu host -machine gic-version=3"
+    ## For graphics to work we need to define the VGA device as well as the necessary USB devices
+    QB_GRAPHICS = "-device virtio-gpu-pci"
+    QB_OPT_APPEND = "-device qemu-xhci -device usb-tablet -device usb-kbd"
+    # Virtio Networking support
+    QB_TAP_OPT = "-netdev tap,id=net0,ifname=@TAP@,script=no,downscript=no"
+    QB_NETWORK_DEVICE = "-device virtio-net-pci,netdev=net0,mac=@MAC@"
+    # Virtio block device
+    QB_ROOTFS_OPT = "-drive id=disk0,file=@ROOTFS@,if=none,format=raw -device virtio-blk-pci,drive=disk0"
+    # Virtio serial console
+    QB_SERIAL_OPT = "-device virtio-serial-pci -chardev null,id=virtcon -device virtconsole,chardev=virtcon"
+    QB_TCPSERIAL_OPT = "-device virtio-serial-pci -chardev socket,id=virtcon,port=@PORT@,host=127.0.0.1,nodelay=on -device virtconsole,chardev=virtcon"
+    COMPATIBLE_MACHINE:pn-edk2-firmware:aws-ec2-arm64 = "aws-ec2-arm64"
+    EDK2_PLATFORM:pn-edk2-firmware:aws-ec2-arm64 = "ArmVirtQemu-AARCH64"
+    EDK2_PLATFORM_DSC:pn-edk2-firmware:aws-ec2-arm64 = "ArmVirtPkg/ArmVirtQemu.dsc"
+    EDK2_BIN_NAME:pn-edk2-firmware:aws-ec2-arm64 = "QEMU_EFI.fd"
+    QB_DEFAULT_BIOS:aws-ec2-arm64 = "uefi.bin"
+    QB_DRIVE_TYPE = "/dev/hd"
