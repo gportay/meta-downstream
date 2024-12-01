@@ -5,4 +5,4 @@ header:
   version: 17
 local_conf_header:
   image-installs-raspberrypi-firmware-systemd-generator: |
-    IMAGE_INSTALL:append = " raspberrypi-firmware-systemd-generator vim-xxd"
+    IMAGE_INSTALL:append = " raspberrypi-firmware-systemd-generator"
