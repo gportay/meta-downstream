@@ -26,5 +26,5 @@ do_install() {
 	install -D ${S}/raspberrypi-firmware-generator ${D}${libdir}/systemd/system-generators/raspberrypi-firmware-generator
 }
 
-RDEPENDS:${PN} += "bash"
+RDEPENDS:${PN} += "bash vim-xxd"
 FILES:${PN} += "${libdir}/systemd/system-generators/raspberrypi-firmware-generator"
