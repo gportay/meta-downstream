@@ -3,8 +3,6 @@
 
 header:
   version: 17
-target:
-  - update-bundle
 local_conf_header:
   image-installs-rauc-raspberrypi: |
     IMAGE_FSTYPES:append = " ext4"
