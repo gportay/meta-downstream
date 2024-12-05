@@ -15,6 +15,31 @@ config IS_QEMU
 menu "QEMU"
 	depends on IS_QEMU
 
+config HAS_QEMUALL_USE_UEFI
+	bool "Use UEFI"
+
+config HAS_QEMUALL_USE_UEFI_AND_QEMUARM64
+	bool
+	default y if IS_MACHINE_QEMUARM64
+	depends on HAS_QEMUALL_USE_UEFI
+	select HAS_IMAGE_DEPEND_EDK2_FIRMWARE
+
+config KAS_INCLUDE_HAS_QEMUALL_USE_UEFI_AND_QEMUARM64
+	string
+	depends on HAS_QEMUALL_USE_UEFI_AND_QEMUARM64
+	default "machines/qemuall/use-uefi-qemuarm64.yaml"
+
+config HAS_QEMUALL_USE_UEFI_AND_QEMUX86_64
+	bool
+	default y if IS_MACHINE_QEMUX86_64
+	depends on HAS_QEMUALL_USE_UEFI
+	select HAS_IMAGE_DEPEND_OVMF
+
+config KAS_INCLUDE_HAS_QEMUALL_USE_UEFI_AND_QEMUX86_64
+	string
+	depends on HAS_QEMUALL_USE_UEFI_AND_QEMUX86_64
+	default "machines/qemuall/use-uefi-qemux86-64.yaml"
+
 config HAS_QEMUALL_USE_WIC
 	bool "Use Wic"
 	help
@@ -32,12 +57,16 @@ config KAS_INCLUDE_HAS_QEMUALL_USE_WIC
 		if IS_MACHINE_QEMUX86_64
 	default ""
 
+config HAS_QEMUALL_USE_UEFI_AND_WIC
+	bool
+	default y if HAS_QEMUALL_USE_UEFI && \
+		     HAS_QEMUALL_USE_WIC
+	select HAS_IMAGE_INSTALL_GRUB_EFI
+
 config HAS_QEMUALL_USE_WIC_AND_QEMUARM64
 	bool
 	default y if HAS_QEMUALL_USE_WIC && \
 		     IS_MACHINE_QEMUARM64
-	select HAS_LAYER_META_ARM
-	select HAS_LAYER_META_ARM_META_ARM
-	select HAS_IMAGE_DEPEND_EDK2_FIRMWARE
+	select HAS_QEMUALL_USE_UEFI
 
 endmenu

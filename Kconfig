@@ -27,6 +27,7 @@ source "distro-features/Kconfig"
 endmenu
 
 menu "Image"
+source "image-depends/Kconfig"
 source "image-features/Kconfig"
 source "image-installs/Kconfig"
 endmenu

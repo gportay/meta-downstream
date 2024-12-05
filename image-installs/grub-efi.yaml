@@ -4,7 +4,5 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
-    IMAGE_FSTYPES += "wic"
-    QB_DEFAULT_FSTYPE = "wic"
+  image-install-grub-efi: |
+    IMAGE_INSTALL:append = " grub-efi"

@@ -4,7 +4,6 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
-    IMAGE_FSTYPES += "wic"
-    QB_DEFAULT_FSTYPE = "wic"
+  image-depends-ovmf: |
+    EXTRA_IMAGEDEPENDS += "ovmf"
+    QB_DEFAULT_BIOS = "ovmf.qcow2"

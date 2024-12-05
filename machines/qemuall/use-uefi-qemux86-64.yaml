@@ -4,7 +4,7 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
-    IMAGE_FSTYPES += "wic"
-    QB_DEFAULT_FSTYPE = "wic"
+  machines-qemuall-use-uefi-qemux86-64: |
+    MACHINE_FEATURES += "efi"
+    EFI_PROVIDER = "grub-efi"
+    WKS_FILE = "genericx86.wks.in"

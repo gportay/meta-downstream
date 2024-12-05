@@ -17,6 +17,28 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_BLKPG_PART
 	depends on HAS_IMAGE_INSTALL_BLKPG_PART
 	default "image-installs/blkpg-part.yaml"
 
+config HAS_IMAGE_INSTALL_GRUB_EFI
+	bool "Install GNU GRUB (EFI)"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	help
+	  GNU GRUB is a Multiboot boot loader. It was derived from GRUB,
+	  the GRand Unified Bootloader, which was originally designed
+	  and implemented by Erich Stefan Boleyn.
+
+	  Briefly, a boot loader is the first software program that runs
+	  when a computer starts. It is responsible for loading and
+	  transferring control to the operating system kernel software
+	  (such as the Hurd or Linux). The kernel, in turn, initializes
+	  the rest of the operating system (e.g. GNU).
+
+	  https://www.gnu.org/software/grub/
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_GRUB_EFI
+	string
+	depends on HAS_IMAGE_INSTALL_GRUB_EFI
+	default "image-installs/grub-efi.yaml"
+
 config HAS_IMAGE_INSTALL_RAUC
 	bool "Install RAUC"
 	select HAS_LAYER_META_RAUC
@@ -74,6 +96,7 @@ config HAS_IMAGE_INSTALL_RAUC_QEMUX86
 	select HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
 	select HAS_LAYER_THIS
 	select HAS_LAYER_THIS_META_DOWNSTREAM
+	select HAS_IMAGE_DEPEND_OVMF
 	default y
 
 config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC_QEMUX86

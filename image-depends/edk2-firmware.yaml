@@ -4,7 +4,6 @@
 header:
   version: 17
 local_conf_header:
-  machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
-    IMAGE_FSTYPES += "wic"
-    QB_DEFAULT_FSTYPE = "wic"
+  image-depends-edk2-firmware: |
+    EXTRA_IMAGEDEPENDS += "edk2-firmware"
+    QB_DEFAULT_BIOS = "QEMU_EFI.fd"

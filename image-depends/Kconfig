@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+
+menu "Image Depends"
+
+config HAS_IMAGE_DEPEND_EDK2_FIRMWARE
+	bool "Depend EDK II"
+	select HAS_LAYER_META_ARM
+	select HAS_LAYER_META_ARM_META_ARM
+	help
+	  EDK II is a modern, feature-rich, cross-platform firmware
+	  development environment for the UEFI and PI specifications.
+	  EDK II is open source, using a BSD+Patent.
+
+	  https://github.com/tianocore/tianocore.github.io/wiki/edk-ii
+
+config KAS_INCLUDE_HAS_IMAGE_DEPEND_EDK2_FIRMWARE
+	string
+	depends on HAS_IMAGE_DEPEND_EDK2_FIRMWARE
+	default "image-depends/edk2-firmware.yaml"
+
+config HAS_IMAGE_DEPEND_OVMF
+	bool "Depend OVMF"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	help
+	  OVMF is an EDK II based project to enable UEFI support for
+	  Virtual Machines. OVMF contains sample UEFI firmware for QEMU
+	  and KVM.
+
+	  https://github.com/tianocore/tianocore.github.io/wiki/OVMF
+
+config KAS_INCLUDE_HAS_IMAGE_DEPEND_OVMF
+	string
+	depends on HAS_IMAGE_DEPEND_OVMF
+	default "image-depends/ovmf.yaml"
+
+endmenu
