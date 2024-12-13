@@ -1,5 +1,10 @@
-# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
 # SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Reference Manual.
+#
+# https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-BB_NO_NETWORK
 
 config KAS_INCLUDE_MAIN
 	string
@@ -15,6 +20,23 @@ menu "General"
 source "branches/Kconfig"
 source "layers/Kconfig"
 source "inherits/Kconfig"
+
+config HAS_BB_NO_NETWORK
+	bool "No network"
+	help
+	  Disables network access in the BitBake fetcher modules. With
+	  this access disabled, any command that attempts to access the
+	  network becomes an error.
+
+	  Disabling network access is useful for testing source mirrors,
+	  running builds when not connected to the Internet, and when
+	  operating in certain kinds of firewall environments.
+
+config KAS_INCLUDE_HAS_BB_NO_NETWORK
+	string
+	depends on HAS_BB_NO_NETWORK
+	default "bb-no-network.yaml"
+
 endmenu
 
 menu "Hardware"
