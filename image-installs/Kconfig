@@ -67,7 +67,7 @@ config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_RAUC_BOOTLOADER_BACKEND
 	  An implementation of a RAUC custom bootloader backend for the
 	  Raspberry Pi firmware.
 
-	  https://github.com/gportay/raspberrypi-firmware-rauc-bootloader-backend
+	  https://github.com/Rtone/raspberrypi-firmware-rauc-bootloader-backend
 
 config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_RAUC_BOOTLOADER_BACKEND
 	string
