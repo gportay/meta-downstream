@@ -148,7 +148,7 @@ config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	  A systemd-generator for mounting the bootloader partitions of
 	  the Raspberry Pi firmware.
 
-	  https://github.com/gportay/raspberrypi-firmware-systemd-generator
+	  https://github.com/Rtone/raspberrypi-firmware-systemd-generator
 
 config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	string
