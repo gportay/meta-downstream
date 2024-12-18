@@ -34,7 +34,7 @@ Configure the firmware:
 
 	kas menu
 
-And buid it:
+And build it:
 
 	kas build
 
