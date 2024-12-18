@@ -50,6 +50,10 @@ Run the firmware:
 Login as **root**, run commands and poweroff the system or **Ctrl-a x** to exit
 the emulator, have fun!
 
+## PATCHES
+
+Sumbit patches at *https://github.com/gportay/meta-downstream/pulls*
+
 ## BUGS
 
 Report bugs at *https://github.com/gportay/meta-downstream/issues*
