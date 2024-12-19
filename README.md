@@ -39,7 +39,7 @@ And build it:
 	kas build
 
 It takes a while to cook the world, grab yourself a coffee or count the zeros
-in `/dev/zero` in the meantime!
+in `/dev/zero` until it finishes!
 
 ## TEST
 
