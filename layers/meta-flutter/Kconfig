@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+
+config HAS_LAYER_META_FLUTTER
+	bool "meta-flutter"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_OPENEMBEDDED
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	select HAS_LAYER_META_CLANG
+	help
+	  Yocto Layer for Google Flutter related projects.
+
+config KAS_INCLUDE_HAS_LAYER_META_FLUTTER
+	string
+	depends on HAS_LAYER_META_FLUTTER
+	default "layers/meta-flutter/meta-flutter.yaml"

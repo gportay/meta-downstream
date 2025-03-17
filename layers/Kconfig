@@ -16,5 +16,6 @@ source "layers/meta-freescale/Kconfig"
 source "layers/meta-riscv/Kconfig"
 source "layers/meta-coral/Kconfig"
 source "layers/meta-raspberrypi/Kconfig"
+source "layers/meta-flutter/Kconfig"
 source "layers/this/Kconfig"
 endmenu

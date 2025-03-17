@@ -3,6 +3,20 @@
 
 menu "Image Installs"
 
+config HAS_IMAGE_INSTALL_PACKAGEGROUP_FLUTTER_SDK_DEPS
+	bool "Install packagegroup Flutter SDK"
+	select HAS_LAYER_META_FLUTTER
+	help
+	  Flutter makes it easy and fast to build beautiful apps for
+	  mobile and beyond.
+
+	  https://github.com/flutter/flutter
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_PACKAGEGROUP_FLUTTER_SDK_DEPS
+	string
+	depends on HAS_IMAGE_INSTALL_PACKAGEGROUP_FLUTTER_SDK_DEPS
+	default "image-installs/packagegroup-flutter-sdk-deps.yaml"
+
 config HAS_IMAGE_INSTALL_BLKPG_PART
 	bool "Install blkpg-part"
 	select HAS_LAYER_THIS
