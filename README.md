@@ -52,7 +52,7 @@ the emulator, have fun!
 
 ## PATCHES
 
-Sumbit patches at *https://github.com/gportay/meta-downstream/pulls*
+Submit patches at *https://github.com/gportay/meta-downstream/pulls*
 
 ## BUGS
 
