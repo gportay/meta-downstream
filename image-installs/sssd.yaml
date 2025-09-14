@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  image-install-sssd: |
+  image-installs-sssd: |
     IMAGE_INSTALL:append = " sssd"
