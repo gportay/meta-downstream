@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 header:
-  version: 9
+  version: 14
 defaults:
   repos:
-    refspec: kirkstone
+    branch: kirkstone
