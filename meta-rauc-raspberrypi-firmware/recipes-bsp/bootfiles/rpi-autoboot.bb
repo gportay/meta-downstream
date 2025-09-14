@@ -17,7 +17,6 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 inherit deploy nopackages
 
-S = "${WORKDIR}/sources"
 UNPACKDIR = "${S}"
 
 do_deploy() {
