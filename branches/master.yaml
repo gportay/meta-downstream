@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 header:
-  version: 14
+  version: 9
 defaults:
   repos:
-    branch: master
+    refspec: master
