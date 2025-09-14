@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
 
 header:
-  version: 17
+  version: 14
 defaults:
   repos:
     branch: walnascar

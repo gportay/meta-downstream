@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
 
 header:
-  version: 17
+  version: 14
 repos:
   meta-lts-mixins:
     url: "https://git.yoctoproject.org/meta-lts-mixins.git"

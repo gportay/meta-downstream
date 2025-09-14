@@ -2,5 +2,5 @@
 # SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
 
 header:
-  version: 17
+  version: 2
 machine: raspberrypi2

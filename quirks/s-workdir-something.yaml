@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
 
 header:
-  version: 17
+  version: 2
 local_conf_header:
   quirks-s-workdir-something.yaml: |
     S:pn-rpi-autoboot = "${UNPACKDIR}/sources"
