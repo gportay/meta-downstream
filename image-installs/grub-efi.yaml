@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  image-install-grub-efi: |
+  image-installs-grub-efi: |
     IMAGE_INSTALL:append = " grub-efi"
