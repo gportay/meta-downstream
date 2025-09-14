@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 header:
-  version: 17
+  version: 4
 target:
   - core-image-minimal
 distro: poky
