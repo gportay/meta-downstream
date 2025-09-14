@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 #
 # See the Yocto Project Reference Manual.
 #
@@ -29,6 +29,11 @@ config IS_BRANCH_STYHEAD
 	help
 	  https://downloads.yoctoproject.org/releases/yocto/yocto-5.1/RELEASENOTES
 
+config IS_BRANCH_WALNASCAR
+	bool "Walnascar (5.2)"
+	help
+	  https://downloads.yoctoproject.org/releases/yocto/yocto-5.2/RELEASENOTES
+
 config IS_BRANCH_MASTER
 	bool "master"
 	help
@@ -41,6 +46,7 @@ config KAS_INCLUDE_IS_BRANCH
 	default "branches/kirkstone.yaml" if IS_BRANCH_KIRKSTONE
 	default "branches/scarthgap.yaml" if IS_BRANCH_SCARTHGAP
 	default "branches/styhead.yaml" if IS_BRANCH_STYHEAD
+	default "branches/walnascar.yaml" if IS_BRANCH_WALNASCAR
 	default "branches/master.yaml"
 
 endmenu
