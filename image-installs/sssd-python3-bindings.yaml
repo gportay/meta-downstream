@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  image-install-sssd-python3-bindings: |
+  image-installs-sssd-python3-bindings: |
     PACKAGECONFIG:append:pn-sssd = " python3"

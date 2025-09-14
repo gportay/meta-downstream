@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  distro-feature-security: |
+  distro-features-security: |
     DISTRO_FEATURES:append = " security"
