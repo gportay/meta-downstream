@@ -5,4 +5,4 @@ header:
   version: 2
 local_conf_header:
   quirks-unpackdir: |
-    UNPACKDIR ??= "${WORKDIR}"
+    UNPACKDIR ?= "${WORKDIR}"

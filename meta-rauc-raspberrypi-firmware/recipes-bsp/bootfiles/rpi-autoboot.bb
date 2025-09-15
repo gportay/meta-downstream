@@ -17,6 +17,9 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 inherit deploy nopackages
 
+S = "${WORKDIR}/sources"
+UNPACKDIR ??= "${S}"
+
 do_deploy() {
     install -d ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}
     cp ${UNPACKDIR}/autoboot.txt ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}/autoboot.txt
