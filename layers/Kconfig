@@ -1,11 +1,12 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 menu "Layers"
 source "layers/poky/Kconfig"
 source "layers/meta-openembedded/Kconfig"
 source "layers/meta-security/Kconfig"
 source "layers/meta-clang/Kconfig"
+source "layers/meta-lts-mixins/Kconfig"
 source "layers/meta-rauc/Kconfig"
 source "layers/meta-rauc-community/Kconfig"
 source "layers/meta-arm/Kconfig"
