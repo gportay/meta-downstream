@@ -23,5 +23,5 @@ do_install() {
 	install -D -m755 ${S}/bootloader-custom-backend ${D}${libdir}/raspberrypi-firmware-rauc-bootloader-backend/bootloader-custom-backend
 }
 
-RDEPENDS:${PN} += "bash userland dtc"
+RDEPENDS:${PN} += "bash raspi-utils dtc"
 RRECOMMENDS:${PN} += "rauc"
