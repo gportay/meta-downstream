@@ -4,7 +4,6 @@
 config HAS_LAYER_META_LTS_MIXINS
 	bool "meta-lts-mixins (scarthgap/u-boot)"
 	depends on IS_BRANCH_SCARTHGAP
-	default y if HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
 	help
 	  "Mixin" layer for adding latest Docker versions into the Yocto
 	  Project LTS.
