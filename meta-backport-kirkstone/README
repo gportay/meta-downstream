@@ -9,6 +9,9 @@ Dependencies
   URI: https://git.yoctoproject.org/poky/meta
   branch: kirkstone
 
+  URI: https://github.com/rauc/meta-rauc
+  branch: kirkstone
+
 Patches
 =======
 
