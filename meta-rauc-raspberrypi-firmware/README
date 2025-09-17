@@ -18,6 +18,11 @@ Dependencies
   URI: https://github.com/rauc/meta-rauc-community
   branch: [same one as checked out for this layer]
 
+Important: if branch is scarthgap:
+
+  URI: https://git.yoctoproject.org/meta-lts-mixins.git
+  branch: scarthgap/u-boot
+
 Patches
 =======
 
