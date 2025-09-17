@@ -12,6 +12,16 @@ Dependencies
   URI: https://github.com/rauc/meta-rauc
   branch: kirkstone
 
+  URI: https://git.yoctoproject.org/meta-raspberrypi
+  branch: kirkstone
+
+  URI: https://github.com/rauc/meta-rauc-community
+  branch: kirkstone
+
+  URI: https://github.com/gportay/meta-downstream
+  path: meta-rauc-raspberrypi-firmware
+  branch: kirkstone
+
 Patches
 =======
 
