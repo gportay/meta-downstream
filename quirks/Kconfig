@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Release Information.
@@ -10,7 +10,8 @@
 config HAS_QUIRK_UNPACKDIR
 	bool "Set UNPACKDIR to ${WORKDIR}"
 	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
-	default y if HAS_LAYER_THIS_META_BLKPG_PART
+	default y if HAS_LAYER_THIS_META_BLKPG_PART || \
+		     HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
 	help
 	  Since Skyhead (5.1), WORKDIR references in other recipes need
 	  auditing. If they reference files from SRC_URI, they likely
