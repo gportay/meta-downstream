@@ -10,8 +10,6 @@ SRC_URI = "git://github.com/Rtone/raspberrypi-firmware-systemd-generator.git;pro
 SRC_URI[sha256sum] = "53f0fb3fc281ec04fe61a13143efa72a8846185785d7cebd10ab055e60291e18"
 SRCREV = "3139d6263259b3a4acec3b37b42fbdcf4de38052"
 
-S = "${WORKDIR}/git"
-
 inherit systemd
 
 do_configure() {

@@ -10,8 +10,6 @@ SRC_URI = "git://github.com/Rtone/raspberrypi-firmware-rauc-bootloader-backend.g
 SRC_URI[sha256sum] = "422896ee160ddd896f47d4aa11cff9440d592b90cbf077de03bc009fa2a4d4ef"
 SRCREV = "e30b1e9772d02c9ef1640c7d5fb3f9c1f7eb9217"
 
-S = "${WORKDIR}/git"
-
 do_configure() {
 	:
 }
