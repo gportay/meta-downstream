@@ -9,7 +9,7 @@ machines listed below. It sets up the OpenEmbedded layers and runs bitbake
 using the [kas] setup tool.
 
  - QEMU Intel Core 2 and ARM Cortex-A57 microprocessors (64-bit)
- - Raspberry Pi single-board computers (64-bit)
+ - Raspberry Pi single-board computers (32-bit, 64-bit)
  - AWS-EC2 Intel x86 or ARM (64-bit)
 
 ## REQUIREMENTS
@@ -64,7 +64,7 @@ Written by Gaël PORTAY *gael.portay@rtone.fr*
 
 ## COPYRIGHT
 
-Copyright 2024 Gaël PORTAY
+Copyright 2024-2025 Gaël PORTAY
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
