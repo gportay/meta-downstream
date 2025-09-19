@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 #
 # The help texts are stolen from the Raspberry Pi Products Website.
 #
@@ -50,6 +50,31 @@ config IS_MACHINE_QEMUX86_64
 	select HAS_LAYER_POKY_META_YOCTO_BSP
 	help
 	  https://www.qemu.org/
+
+config IS_MACHINE_RASPBERRYPI2
+	bool "Raspberry Pi 2"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_POKY_META_POKY
+	select HAS_LAYER_META_RASPBERRYPI
+	help
+	  Compared to the Raspberry Pi 1 it has:
+
+	    A 900MHz quad-core ARM Cortex-A7 CPU
+	    1GB RAM
+
+	  Like the (Pi 1) Model B+, it also has:
+	    100 Base Ethernet
+	    4 USB ports
+	    40 GPIO pins
+	    Full HDMI® port
+	    Combined 3.5mm audio jack and composite video
+	    Camera interface (CSI)
+	    Display interface (DSI)
+	    Micro SD card slot
+	    VideoCore IV 3D graphics core
+
+	  https://www.raspberrypi.com/products/raspberry-pi-2-model-b/
 
 config IS_MACHINE_RASPBERRYPI3_64
 	bool "Raspberry Pi 3 (64-bit)"
@@ -118,6 +143,7 @@ config KAS_INCLUDE_IS_MACHINE
 	default "machines/coral-dev.yaml" if IS_MACHINE_CORAL_DEV
 	default "machines/qemuarm64.yaml" if IS_MACHINE_QEMUARM64
 	default "machines/qemux86-64.yaml" if IS_MACHINE_QEMUX86_64
+	default "machines/raspberrypi2.yaml" if IS_MACHINE_RASPBERRYPI2
 	default "machines/raspberrypi3-64.yaml" if IS_MACHINE_RASPBERRYPI3_64
 	default "machines/raspberrypi4-64.yaml" if IS_MACHINE_RASPBERRYPI4_64
 	default "machines/raspberrypi5.yaml" if IS_MACHINE_RASPBERRYPI5
