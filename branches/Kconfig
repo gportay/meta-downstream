@@ -29,6 +29,11 @@ config IS_BRANCH_WALNASCAR
 	help
 	  https://downloads.yoctoproject.org/releases/yocto/yocto-5.2/RELEASENOTES
 
+config IS_BRANCH_WHINLATTER
+	bool "Whinlatter (5.3)"
+	help
+	  https://downloads.yoctoproject.org/releases/yocto/yocto-5.3/RELEASENOTES
+
 config IS_BRANCH_MASTER
 	bool "master"
 	help
