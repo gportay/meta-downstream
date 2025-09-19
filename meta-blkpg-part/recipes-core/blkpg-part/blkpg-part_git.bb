@@ -11,8 +11,6 @@ SRC_URI = "git://git@github.com/gportay/blkpg-part.git;protocol=ssh;branch=maste
            "
 SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}/git"
-
 do_install() {
 	install -d ${D}${sbindir}/
 	install -m 755 ${B}/blkpg-part ${D}${sbindir}/

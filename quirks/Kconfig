@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Release Information.
@@ -10,7 +10,6 @@
 config HAS_QUIRK_UNPACKDIR
 	bool "Set UNPACKDIR to ${WORKDIR}"
 	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
-	default y if HAS_LAYER_THIS_META_BLKPG_PART
 	help
 	  Since Skyhead (5.1), WORKDIR references in other recipes need
 	  auditing. If they reference files from SRC_URI, they likely
@@ -32,6 +31,70 @@ config KAS_INCLUDE_HAS_QUIRK_UNPACKDIR
 	string
 	depends on HAS_QUIRK_UNPACKDIR
 	default "quirks/unpackdir.yaml"
+
+config HAS_QUIRK_S_WORKDIR_SOMETHING
+	bool "Set S to ${WORKING}/something"
+	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	help
+	  S = ${WORKDIR}/something no longer supported
+
+	  Since Whinlatter (5.3), if a recipe has S set to be
+	  ${WORKDIR}/something, this is no longer supported, and an
+	  error will be issued. The recipe should be changed to:
+	  S = "${UNPACKDIR}/something"
+
+	  https://docs.yoctoproject.org/dev/migration-guides/migration-5.3.html#s-workdir-something-no-longer-supported
+	  https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-WORKDIR
+
+config KAS_INCLUDE_HAS_QUIRK_S_WORKDIR_SOMETHING
+	string
+	depends on HAS_QUIRK_S_WORKDIR_SOMETHING
+	default "quirks/s-workdir-something.yaml"
+
+config HAS_QUIRK_S_UNPACKDIR_GIT
+	bool "Set S to ${UNPACKDIR}/git"
+	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	select HAS_QUIRK_UNPACKDIR
+	help
+	  S = ${WORKDIR}/something no longer supported
+
+	  Since Whinlatter (5.3), if a recipe has S set to be
+	  ${WORKDIR}/something, this is no longer supported, and an
+	  error will be issued. The recipe should be changed to:
+	  S = "${UNPACKDIR}/something"
+
+	  S = ${WORKDIR}/git and S = ${UNPACKDIR}/git should be removed
+
+	  Since Whinlatter (5.3), the Git fetcher now unpacks into the
+	  BB_GIT_DEFAULT_DESTSUFFIX directory rather than the git/
+	  directory under UNPACKDIR. BB_GIT_DEFAULT_DESTSUFFIX is set
+	  in OpenEmbedded-Core (OE-Core)’s bitbake.conf to BP.
+
+	  This location matches the default value of S set by
+	  bitbake.conf, so S setting in recipes can and should be
+	  removed.
+
+	  Note that when S is set to a subdirectory of the git checkout
+	  then it should be instead adjusted according to the previous
+	  point:
+
+	    S = "${UNPACKDIR}/${BP}/something"
+
+	  Note that “git” as the source checkout location can be
+	  hardcoded in other places in recipes; when it’s in SRC_URI,
+	  replace with BB_GIT_DEFAULT_DESTSUFFIX, otherwise replace
+	  with BP.
+
+	  https://docs.yoctoproject.org/dev/migration-guides/migration-5.3.html#s-workdir-git-and-s-unpackdir-git-should-be-removed
+	  https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-BB_GIT_DEFAULT_DESTSUFFIX
+	  https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-UNPACKDIR
+	  https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-BP
+	  https://git.openembedded.org/openembedded-core/tree/meta/conf/bitbake.conf#n411
+
+config KAS_INCLUDE_HAS_QUIRK_S_UNPACKDIR_GIT
+	string
+	depends on HAS_QUIRK_S_UNPACKDIR_GIT
+	default "quirks/s-unpackdir-git.yaml"
 
 config HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
 	bool "Remove linux-coral QA Errors"

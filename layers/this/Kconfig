@@ -49,6 +49,7 @@ config KAS_INCLUDE_HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE
 config HAS_LAYER_THIS_META_BLKPG_PART
 	bool "meta-blkpg-part"
 	depends on HAS_LAYER_POKY_META
+	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
 	help
 	  OpenEmbedded meta layer for partition table and disk geometry
 	  handling utility.
@@ -66,6 +67,8 @@ config HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
 	depends on HAS_LAYER_META_RAUC_COMMUNITY
 	depends on HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
 	select HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE if IS_BRANCH_KIRKSTONE
+	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	select HAS_QUIRK_S_WORKDIR_SOMETHING if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
 	help
 	  OpenEmbedded meta layer with raspberrypi-firmware integration
 	  of RAUC, the embedded Linux A/B update framework.
