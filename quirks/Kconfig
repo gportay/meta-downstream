@@ -99,7 +99,6 @@ config KAS_INCLUDE_HAS_QUIRK_S_UNPACKDIR_GIT
 config HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
 	bool "Remove linux-coral QA Errors"
 	depends on IS_BRANCH_MASTER
-	default y if HAS_LAYER_META_CORAL
 	help
 	  The Upstream-Status value is missing in the specified patch
 	  file’s header. This value is intended to track whether or not

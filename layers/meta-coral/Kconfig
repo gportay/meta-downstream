@@ -6,6 +6,7 @@ config HAS_LAYER_META_CORAL
 	select HAS_LAYER_POKY_META
 	select HAS_LAYER_META_FREESCALE
 	select HAS_LAYER_META_CLANG
+	select HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
 	help
 	  Yocto/OE-core BSP Layer for Coral Dev Board.
 
