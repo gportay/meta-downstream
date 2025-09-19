@@ -4,6 +4,7 @@
 config IS_RASPBERRYPI
 	bool
 	default y if IS_MACHINE_RASPBERRYPI2 || \
+	             IS_MACHINE_RASPBERRYPI2_64 || \
 	             IS_MACHINE_RASPBERRYPI3_64 || \
 		     IS_MACHINE_RASPBERRYPI4_64 || \
 		     IS_MACHINE_RASPBERRYPI5
