@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+
+header:
+  version: 2
+local_conf_header:
+  quirks-s-unpackdir-git.yaml: |
+    S:pn-blkpg-part = "${WORKDIR}/git"
+    S:pn-raspberrypi-firmware-rauc-bootloader-backend = "${WORKDIR}/git"
+    S:pn-raspberrypi-firmware-systemd-generator = "${WORKDIR}/git"
