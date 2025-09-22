@@ -6,3 +6,6 @@ header:
 local_conf_header:
   image-installs-gstreamer1.0-meta-base: |
     IMAGE_INSTALL:append = " gstreamer1.0-meta-base"
+    IMAGE_INSTALL:append = " gstreamer1.0-plugins-good-meta"
+    IMAGE_INSTALL:append = " gstreamer1.0-plugins-bad-meta"
+    IMAGE_INSTALL:append = " gstreamer1.0-plugins-ugly-meta"

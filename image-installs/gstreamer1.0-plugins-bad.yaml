@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  image-installs-gstreamer1.0-plugins-bad: |
-    IMAGE_INSTALL:append = " gstreamer1.0-plugins-bad"
+  image-installs-gstreamer1.0-plugins-bad-meta: |
+    IMAGE_INSTALL:append = " gstreamer1.0-plugins-bad-meta"
