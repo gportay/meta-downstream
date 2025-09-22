@@ -198,4 +198,21 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_WESTON
 	depends on HAS_IMAGE_INSTALL_WESTON
 	default "image-installs/weston.yaml"
 
+config HAS_IMAGE_INSTALL_X11
+	bool "Install X11"
+	select HAS_DISTRO_FEATURE_X11
+	help
+	  The X.Org project provides an open source implementation of
+	  the X Window System.
+
+	  X.Org and X11 protocol, server, driver, library, and
+	  application development.
+
+	  https://gitlab.freedesktop.org/groups/xorg
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_X11
+	string
+	depends on HAS_IMAGE_INSTALL_X11
+	default "image-installs/x11.yaml"
+
 endmenu
