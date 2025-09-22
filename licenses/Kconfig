@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Development Tasks Manual.
+#
+# https://docs.yoctoproject.org/dev-manual/licenses.html#explanation-of-syntax
+
+menu "Licensing"
+
+config HAS_LICENSE_COMMERCIAL
+	bool "Enable commercial licenses"
+	help
+	  Enabling Commercially Licensed Recipes
+
+	  By default, the OpenEmbedded build system disables components
+	  that have commercial or other special licensing requirements.
+
+config KAS_INCLUDE_HAS_LICENSE_COMMERCIAL
+	string
+	default "licenses/commercial.yaml" if HAS_LICENSE_COMMERCIAL
+
+endmenu

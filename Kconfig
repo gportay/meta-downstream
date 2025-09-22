@@ -20,6 +20,7 @@ menu "General"
 source "branches/Kconfig"
 source "layers/Kconfig"
 source "inherits/Kconfig"
+source "licenses/Kconfig"
 
 config HAS_BB_NO_NETWORK
 	bool "No network"
