@@ -157,6 +157,23 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	depends on HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	default "image-installs/raspberrypi-firmware-systemd-generator.yaml"
 
+config HAS_IMAGE_INSTALL_LIBCAMERA
+	bool "libcamera"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_OPENEMBEDDED
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+	select HAS_LAYER_META_OPENEMBEDDED_META_MULTIMEDIA
+	help
+	  A complex camera support library for Linux, Android, and ChromeOS.
+
+	  https://git.libcamera.org/libcamera/libcamera.git
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_LIBCAMERA
+	string
+	depends on HAS_IMAGE_INSTALL_LIBCAMERA
+	default "image-installs/libcamera.yaml"
+
 config HAS_IMAGE_INSTALL_GSTREAMER1_0_META_BASE
 	bool "Install gstreamer1.0-meta-base"
 	select HAS_LAYER_POKY_META
