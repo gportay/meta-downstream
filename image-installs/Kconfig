@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 menu "Image Installs"
 
@@ -156,5 +156,77 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	string
 	depends on HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	default "image-installs/raspberrypi-firmware-systemd-generator.yaml"
+
+config HAS_IMAGE_INSTALL_GSTREAMER1_0_META_BASE
+	bool "Install gstreamer1.0-meta-base"
+	select HAS_LAYER_POKY_META
+	select HAS_LAYER_META_OPENEMBEDDED
+	select HAS_LAYER_META_OPENEMBEDDED_META_OE
+	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
+	select HAS_LAYER_META_OPENEMBEDDED_META_MULTIMEDIA
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_GSTREAMER1_0_META_BASE
+	string
+	depends on HAS_IMAGE_INSTALL_GSTREAMER1_0_META_BASE
+	default "image-installs/gstreamer1.0-meta-base.yaml"
+
+config HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_BAD
+	bool "streamer1.0-plugins-bad"
+	depends on HAS_IMAGE_INSTALL_GSTREAMER1_0_META_BASE
+	help
+	  THE BAD
+	  --- "That an accusation?"
+
+	  No perfectly groomed moustache or any amount of fine clothing
+	  is going to cover up the truth - these plug-ins are Bad with
+	  a capital B. They look fine on the outside, and might even
+	  appear to get the job done, but at the end of the day they're
+	  a black sheep. Without a golden-haired angel to watch over
+	  them, they'll probably land in an unmarked grave at the final
+	  showdown.
+
+	  Don't bug us about their quality - exercise your Free
+	  Software rights, patch up the offender and send us the patch
+	  on the fastest steed you can steal from the Confederates.
+	  Because you see, in this world, there's two kinds of people,
+	  my friend: those with loaded guns and those who dig. You dig.
+
+	  https://gitlab.freedesktop.org/gstreamer/gstreamer/-/tree/main/subprojects/gst-plugins-bad
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_BAD
+	string
+	depends on HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_BAD
+	default "image-installs/gstreamer1.0-plugins-bad.yaml"
+
+config HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_UGLY
+	bool "streamer1.0-plugins-ugly"
+	depends on HAS_IMAGE_INSTALL_GSTREAMER1_0_META_BASE
+	help
+	  THE UGLY
+
+	  --- "When you have to shoot, shoot. Don't talk."
+
+	  There are times when the world needs a color between black
+	  and white. Quality code to match the good's, but two-timing,
+	  backstabbing and ready to sell your freedom down the river.
+	  These plug-ins might have a patent noose around their neck,
+	  or a lock-up license, or any other problem that makes you
+	  think twice about shipping them.
+
+	  We don't call them ugly because we like them less. Does a
+	  mother love her son less because he's not as pretty as the
+	  other ones ? No - she commends him on his great personality.
+	  These plug-ins are the life of the party. And we'll still
+	  step in and set them straight if you report any unacceptable
+	  behaviour - because there are two kinds of people in the
+	  world, my friend: those with a rope around their neck and the
+	  people who do the cutting.
+
+	  https://gitlab.freedesktop.org/gstreamer/gstreamer/-/tree/main/subprojects/gst-plugins-ugly
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_UGLY
+	string
+	depends on HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_UGLY
+	default "image-installs/gstreamer1.0-plugins-ugly.yaml"
 
 endmenu
