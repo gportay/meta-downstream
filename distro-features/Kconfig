@@ -78,4 +78,14 @@ config KAS_INCLUDE_HAS_DISTRO_FEATURE_WAYLAND
 	depends on HAS_DISTRO_FEATURE_WAYLAND
 	default "distro-features/wayland.yaml"
 
+config HAS_DISTRO_FEATURE_X11
+	bool "Enable X11"
+	help
+	  Include the X server and libraries.
+
+config KAS_INCLUDE_HAS_DISTRO_FEATURE_X11
+	string
+	depends on HAS_DISTRO_FEATURE_X11
+	default "distro-features/x11.yaml"
+
 endmenu
