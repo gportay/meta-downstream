@@ -258,4 +258,18 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_WAYLAND
 	depends on HAS_IMAGE_INSTALL_WAYLAND
 	default "image-installs/wayland.yaml"
 
+config HAS_IMAGE_INSTALL_WESTON
+	bool "weston"
+	select HAS_IMAGE_INSTALL_WAYLAND
+	select HAS_DISTRO_FEATURE_PAM
+	help
+	  A lightweight and functional Wayland compositor.
+
+	  https://wayland.pages.freedesktop.org/weston/
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_WESTON
+	string
+	depends on HAS_IMAGE_INSTALL_WESTON
+	default "image-installs/weston.yaml"
+
 endmenu
