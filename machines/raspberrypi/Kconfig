@@ -71,6 +71,13 @@ config HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
 	  variable to enable support for the video camera.
 
 	  https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html#video-camera-support-with-v4l2-drivers
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#camera_auto_detect
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#camera-settings
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#disable_camera_led
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#awb_auto_is_greyworld
+	  https://www.raspberrypi.com/documentation/computers/legacy_config_txt.html#start_x-start_debug
+	  https://www.raspberrypi.com/documentation/accessories/camera.html#content
+	  https://www.raspberrypi.com/documentation/computers/compute-module.html#attach-a-camera-module
 
 config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
 	string

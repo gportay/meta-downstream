@@ -4,5 +4,6 @@
 header:
   version: 2
 local_conf_header:
-  image-installs-gstreamer1.0-plugins-ugly-meta: |
-    IMAGE_INSTALL:append = " gstreamer1.0-plugins-ugly-meta"
+  image-installs-gstreamer1.0-plugins-ugly: |
+    IMAGE_INSTALL:append = " gstreamer1.0-plugins-ugly"
+    #LICENSE_FLAGS_ACCEPTED:append = " commercial_gst-plugins-ugly"

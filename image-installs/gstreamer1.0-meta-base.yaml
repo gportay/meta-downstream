@@ -9,3 +9,4 @@ local_conf_header:
     IMAGE_INSTALL:append = " gstreamer1.0-plugins-good-meta"
     IMAGE_INSTALL:append = " gstreamer1.0-plugins-bad-meta"
     IMAGE_INSTALL:append = " gstreamer1.0-plugins-ugly-meta"
+    IMAGE_INSTALL:append = " media-ctl v4l-utils"
