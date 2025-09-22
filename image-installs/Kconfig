@@ -153,4 +153,17 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	depends on HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
 	default "image-installs/raspberrypi-firmware-systemd-generator.yaml"
 
+config HAS_IMAGE_INSTALL_WAYLAND
+	bool "Install Wayland"
+	select HAS_DISTRO_FEATURE_WAYLAND
+	help
+	  Core Wayland window system code and protocol.
+
+	  https://gitlab.freedesktop.org/wayland/wayland
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_WAYLAND
+	string
+	depends on HAS_IMAGE_INSTALL_WAYLAND
+	default "image-installs/wayland.yaml"
+
 endmenu
