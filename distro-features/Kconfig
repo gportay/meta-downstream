@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
@@ -64,5 +64,17 @@ config KAS_INCLUDE_HAS_DISTRO_FEATURE_SECURITY
 	string
 	depends on HAS_DISTRO_FEATURE_SECURITY
 	default "distro-features/security.yaml"
+
+config HAS_DISTRO_FEATURE_WAYLAND
+	bool "Enable wayland"
+	select HAS_IMAGE_INSTALL_WAYLAND
+	help
+	  Include the Wayland display server protocol and the library
+	  that supports it.
+
+config KAS_INCLUDE_HAS_DISTRO_FEATURE_WAYLAND
+	string
+	depends on HAS_DISTRO_FEATURE_WAYLAND
+	default "distro-features/wayland.yaml"
 
 endmenu

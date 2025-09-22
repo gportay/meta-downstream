@@ -246,4 +246,16 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_UGLY
 	depends on HAS_IMAGE_INSTALL_GSTREAMER1_0_PLUGINS_UGLY
 	default "image-installs/gstreamer1.0-plugins-ugly.yaml"
 
+config HAS_IMAGE_INSTALL_WAYLAND
+	bool "wayland"
+	help
+	  Core Wayland window system code and protocol.
+
+	  https://gitlab.freedesktop.org/wayland/wayland
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_WAYLAND
+	string
+	depends on HAS_IMAGE_INSTALL_WAYLAND
+	default "image-installs/wayland.yaml"
+
 endmenu
