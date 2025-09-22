@@ -1,11 +1,14 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-4.0
 # SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 # SPDX-FileCopyrightText: Copyright 2012-2025 Raspberry Pi Ltd
+# SPDX-FileCopyrightText: The meta-raspberrypi Contributors
 #
-# The help texts are stolen from the Raspberry Pi documentation.
+# The help texts are stolen from the Raspberry Pi and meta-raspberrypi's
+# documentations.
 #
 # https://www.raspberrypi.com/documentation/computers/config_txt.html
 # https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
+# https://meta-raspberrypi.readthedocs.io/en/latest/
 
 config IS_RASPBERRYPI
 	bool
@@ -53,6 +56,56 @@ config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	string
 	depends on HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	default "machines/raspberrypi/enable-uart.yaml"
+
+config HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
+	bool "Enable Video Camera"
+	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
+	help
+	  Raspberry Pi does not have the unicam device (Raspberry Pi
+	  Camera) enabled by default.
+
+	  Because this unicam device (bcm2835-unicam) as of now is used
+	  by libcamera opensource.
+
+	  So we have to explicitly enable it in local.conf. Set this
+	  variable to enable support for the video camera.
+
+	  https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html#video-camera-support-with-v4l2-drivers
+
+config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
+	string
+	depends on HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
+	default "machines/raspberrypi/video-camera.yaml"
+
+config HAS_RASPBERRYPI_FIRMWARE_RASPBERRYPI_CAMERA_V2
+	bool "Enable Raspberry Pi Camera Module V2"
+	depends on HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
+	help
+	  This will add the device tree overlay imx219 (Raspberry Pi
+	  Camera Module V2 sensor driver) to config.txt. Also, this
+	  will enable adding Contiguous Memory Allocation value in the
+	  cmdline.txt.
+
+	  https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html#enable-raspberry-pi-camera-module
+
+config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_RASPBERRYPI_CAMERA_V2
+	string
+	depends on HAS_RASPBERRYPI_FIRMWARE_RASPBERRYPI_CAMERA_V2
+	default "machines/raspberrypi/raspberrypi-camera-v2.yaml"
+
+config HAS_RASPBERRYPI_FIRMWARE_RASPBERRYPI_CAMERA_V3
+	bool "Enable Raspberry Pi Camera Module V3"
+	depends on HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
+	help
+	  This will add the device tree overlay imx708 (Raspberry Pi
+	  Camera Module V3 sensor driver) to config.txt.
+
+	  https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html#enable-raspberry-pi-camera-module
+
+config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_RASPBERRYPI_CAMERA_V3
+	string
+	depends on HAS_RASPBERRYPI_FIRMWARE_RASPBERRYPI_CAMERA_V3
+	default "machines/raspberrypi/raspberrypi-camera-v3.yaml"
 
 config HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
 	bool "Use autoboot.txt"
