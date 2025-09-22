@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  machines-raspberrypi-bootloader-raspberrypi-firmware-enable-uart: |
+  machines-raspberrypi-firmware-enable-uart: |
     ENABLE_UART = "1"
