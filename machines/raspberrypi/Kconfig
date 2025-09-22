@@ -56,6 +56,96 @@ config KAS_INCLUDE_HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	depends on HAS_RASPBERRYPI_FIRMWARE_ENABLE_UART
 	default "machines/raspberrypi/enable-uart.yaml"
 
+choice
+	prompt "GPU Memory"
+	help
+	  Specifies how much memory, in megabytes, to reserve for the
+	  exclusive use of the GPU: the remaining memory is allocated
+	  to the Arm CPU for use by the OS. For Raspberry Pis with less
+	  than 1GB of memory, the default is 64; for Raspberry Pis with
+	  1GB or more of memory the default is 76.
+
+	  To ensure the best performance of Linux, you should set
+	  gpu_mem to the lowest possible value. If a particular
+	  graphics feature is not working correctly, try increasing the
+	  value of gpu_mem, being mindful of the recommended maximums
+	  shown below.
+
+	  On Raspberry Pi 4 the 3D component of the GPU has its own
+	  memory management unit (MMU), and does not use memory from
+	  the gpu_mem allocation. Instead memory is allocated
+	  dynamically within Linux. This allows a smaller value to be
+	  specified for gpu_mem on the Raspberry Pi 4, compared to
+	  previous models.
+
+	  On legacy kernels, the memory allocated to the GPU is used
+	  for display, 3D, codec and camera purposes as well as some
+	  basic firmware housekeeping. The maximums specified below
+	  assume you are using all these features. If you are not, then
+	  smaller values of gpu_mem should be used.
+
+	  The recommended maximum values are as follows:
+
+	  | total RAM      | gpu_mem recommended maximum   |
+	  | 256MB          | 128                           |
+	  | 512MB          | 384                           |
+	  | 1GB or greater | 512, 76 on the Raspberry Pi 4 |
+
+	  Important
+
+	  The camera stack (libcamera) on Raspberry Pi OS uses Linux
+	  CMA memory to allocate buffers instead of GPU memory, so
+	  there is no benefit in increasing the GPU memory size. 
+
+	  It is possible to set gpu_mem to larger values, however this
+	  should be avoided since it can cause problems, such as
+	  preventing Linux from booting. The minimum value is 16,
+	  however this disables certain GPU features.
+
+	  https://www.raspberrypi.com/documentation/computers/config_txt.html#memory-options
+	  https://www.raspberrypi.com/documentation/computers/legacy_config_txt.html#gpu_mem
+
+	  GPU memory
+
+	  GPU_MEM: GPU memory in megabyte. Sets the memory split
+	  between the ARM and GPU. ARM gets the remaining memory.
+	  Min 16. Default 64.
+
+	  GPU_MEM_256: GPU memory in megabyte for the 256MB Raspberry
+	  Pi. Ignored by the 512MB RP. Overrides gpu_mem. Max 192.
+	  Default not set.
+
+	  GPU_MEM_512: GPU memory in megabyte for the 512MB Raspberry
+	  Pi. Ignored by the 256MB RP. Overrides gpu_mem. Max 448.
+	  Default not set.
+
+	  GPU_MEM_1024: GPU memory in megabyte for the 1024MB Raspberry
+	  Pi. Ignored by the 256MB/512MB RP. Overrides gpu_mem. Max
+	  944. Default not set.
+
+	  https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html#gpu-memory
+
+config IS_RASPBERRY_FIRMWARE_GPU_MEM_16M
+	bool "16M"
+
+config IS_RASPBERRY_FIRMWARE_GPU_MEM_64M
+	bool "64M"
+
+config IS_RASPBERRY_FIRMWARE_GPU_MEM_128M
+	bool "128M"
+
+config IS_RASPBERRY_FIRMWARE_GPU_MEM_384M
+	bool "384M"
+
+endchoice
+
+config KAS_INCLUDE_IS_BRANCH
+	string
+	default "machines/raspberrypi/gpu_mem_16.yaml" if IS_RASPBERRY_FIRMWARE_GPU_MEM_16M
+	default "machines/raspberrypi/gpu_mem_64.yaml" if IS_RASPBERRY_FIRMWARE_GPU_MEM_64M
+	default "machines/raspberrypi/gpu_mem_128.yaml" if IS_RASPBERRY_FIRMWARE_GPU_MEM_128M
+	default "machines/raspberrypi/gpu_mem_384.yaml" if IS_RASPBERRY_FIRMWARE_GPU_MEM_384M
+
 config HAS_RASPBERRYPI_FIRMWARE_VIDEO_CAMERA
 	bool "Enable Video Camera"
 	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
