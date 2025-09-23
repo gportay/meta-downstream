@@ -64,7 +64,7 @@ Written by Gaël PORTAY *gael.portay@rtone.fr*
 
 ## COPYRIGHT
 
-Copyright 2024 Gaël PORTAY
+Copyright 2024-2025 Gaël PORTAY
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
