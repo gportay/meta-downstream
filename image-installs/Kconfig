@@ -55,7 +55,7 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_RAUC
 if HAS_IMAGE_INSTALL_RAUC
 
 config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_RAUC_BOOTLOADER_BACKEND
-	bool "raspberrypi-firmware-rauc-bootloader-backend"
+	bool "Install raspberrypi-firmware-rauc-bootloader-backend"
 	depends on IS_RASPBERRYPI
 	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
 	select HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
@@ -137,7 +137,7 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_SSSD_PYTHON3_BINDINGS
 	default "image-installs/sssd-python3-bindings.yaml"
 
 config HAS_IMAGE_INSTALL_RASPBERRYPI_FIRMWARE_SYSTEMD_GENERATOR
-	bool "raspberrypi-firmware-systemd-generator"
+	bool "Install raspberrypi-firmware-systemd-generator"
 	depends on HAS_DISTRO_FEATURE_SYSTEMD
 	depends on IS_RASPBERRYPI
 	depends on IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
