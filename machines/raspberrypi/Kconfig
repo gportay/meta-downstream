@@ -32,7 +32,6 @@ config IS_RASPBERRYPI_BOOTLOADER_RASPBERRYPI_FIRMWARE
 
 config IS_RASPBERRYPI_BOOTLOADER_U_BOOT
 	bool "U-Boot"
-	depends on !IS_MACHINE_RASPBERRYPI5
 	help
 	  https://docs.u-boot.org/en/latest/
 
