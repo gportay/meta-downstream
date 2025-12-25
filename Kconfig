@@ -16,12 +16,6 @@ config KAS_LAYER_OPENEMBEDDED_CORE
 	select HAS_LAYER_POKY_META
 	default y
 
-config KAS_DISTRO_POKY
-	bool
-	select HAS_LAYER_POKY
-	select HAS_LAYER_POKY_META_POKY
-	default y
-
 menu "General"
 source "branches/Kconfig"
 source "layers/Kconfig"
@@ -50,6 +44,7 @@ source "machines/Kconfig"
 endmenu
 
 menu "System"
+source "distros/Kconfig"
 source "init-manager/Kconfig"
 source "distro-features/Kconfig"
 endmenu
