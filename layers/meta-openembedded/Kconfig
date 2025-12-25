@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 config HAS_LAYER_META_OPENEMBEDDED
 	bool "meta-openembedded"
@@ -17,7 +17,6 @@ if HAS_LAYER_META_OPENEMBEDDED
 
 config HAS_LAYER_META_OPENEMBEDDED_META_OE
 	bool "meta-oe"
-	select HAS_LAYER_POKY_META
 	help
 	  https://github.com/openembedded/meta-openembedded/tree/master/meta-oe
 
@@ -28,7 +27,6 @@ config KAS_INCLUDE_HAS_LAYER_META_OPENEMBEDDED_META_OE
 
 config HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
 	bool "meta-python"
-	select HAS_LAYER_POKY_META
 	select HAS_LAYER_META_OPENEMBEDDED_META_OE
 	help
 	  https://github.com/openembedded/meta-openembedded/tree/master/meta-python
@@ -40,7 +38,6 @@ config KAS_INCLUDE_HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
 
 config HAS_LAYER_META_OPENEMBEDDED_META_NETWORKING
 	bool "meta-networking"
-	select HAS_LAYER_POKY_META
 	select HAS_LAYER_META_OPENEMBEDDED_META_OE
 	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
 	help
@@ -53,7 +50,6 @@ config KAS_INCLUDE_HAS_LAYER_META_OPENEMBEDDED_META_NETWORKING
 
 config HAS_LAYER_META_OPENEMBEDDED_META_MULTIMEDIA
 	bool "meta-multimedia"
-	select HAS_LAYER_POKY_META
 	select HAS_LAYER_META_OPENEMBEDDED_META_OE
 	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON
 	help

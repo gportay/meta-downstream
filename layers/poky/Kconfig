@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 config HAS_LAYER_POKY
 	bool "poky"
@@ -28,7 +28,6 @@ config KAS_INCLUDE_HAS_LAYER_POKY_META
 
 config HAS_LAYER_POKY_META_POKY
 	bool "meta-poky"
-	select HAS_LAYER_POKY_META
 	default y
 	help
 	  https://git.yoctoproject.org/poky/tree/meta-poky

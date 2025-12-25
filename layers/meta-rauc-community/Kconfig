@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 config HAS_LAYER_META_RAUC_COMMUNITY
 	bool "meta-rauc-community"
@@ -20,7 +20,6 @@ if HAS_LAYER_META_RAUC_COMMUNITY
 config HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
 	bool "meta-rauc-raspberrypi"
 	depends on HAS_LAYER_META_RAUC
-	depends on HAS_LAYER_POKY_META
 	default y if IS_MACHINE_RASPBERRYPI
 	select HAS_LAYER_META_LTS_MIXINS if IS_BRANCH_SCARTHGAP
 	help
@@ -34,7 +33,6 @@ config KAS_INCLUDE_HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
 config HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_QEMUX86
 	bool "meta-rauc-qemux86"
 	depends on HAS_LAYER_META_RAUC
-	depends on HAS_LAYER_POKY_META
 	default y if IS_MACHINE_QEMUX86_64
 	help
 	  https://github.com/rauc/meta-rauc-community/tree/master/meta-rauc-qemux86

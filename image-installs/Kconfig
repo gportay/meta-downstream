@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 menu "Image Installs"
 
@@ -19,8 +19,6 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_BLKPG_PART
 
 config HAS_IMAGE_INSTALL_GRUB_EFI
 	bool "Install GNU GRUB (EFI)"
-	select HAS_LAYER_POKY
-	select HAS_LAYER_POKY_META
 	help
 	  GNU GRUB is a Multiboot boot loader. It was derived from GRUB,
 	  the GRand Unified Bootloader, which was originally designed
