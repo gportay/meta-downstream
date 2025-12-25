@@ -2,7 +2,34 @@
 # SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 menu "Layers"
+
+choice
+	prompt "OpenEmbedded-Core"
+	default IS_OPENEMBEDDED_CORE_POKY if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	default IS_OPENEMBEDDED_CORE_OPENEMBEDDED_CORE
+
+config IS_OPENEMBEDDED_CORE_OPENEMBEDDED_CORE
+	bool "openembedded-core"
+	select HAS_LAYER_BITBAKE
+	select HAS_LAYER_OPENEMBEDDED_CORE
+	select HAS_LAYER_OPENEMBEDDED_CORE_META
+	help
+	  https://git.openembedded.org/openembedded-core/
+
+config IS_OPENEMBEDDED_CORE_POKY
+	bool "poky"
+	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META
+	help
+	  https://git.yoctoproject.org/poky
+
+endchoice
+
 source "layers/poky/Kconfig"
+source "layers/bitbake/Kconfig"
+source "layers/openembedded-core/Kconfig"
+source "layers/meta-yocto/Kconfig"
 source "layers/meta-openembedded/Kconfig"
 source "layers/meta-security/Kconfig"
 source "layers/meta-clang/Kconfig"

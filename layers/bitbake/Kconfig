@@ -1,0 +1,86 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+
+config HAS_LAYER_BITBAKE
+	bool "bitbake"
+	help
+	  BitBake is a generic task execution engine that allows shell
+	  and Python tasks to be run efficiently and in parallel while
+	  working within complex inter-task dependency constraints. 
+
+	  https://git.openembedded.org/bitbake/
+
+config KAS_INCLUDE_HAS_LAYER_BITBAKE
+	string
+	depends on HAS_LAYER_BITBAKE
+	default "layers/bitbake/bitbake.yaml"
+
+if HAS_LAYER_BITBAKE
+
+choice
+	prompt "bitbake"
+	default IS_BITBAKE_2_0 if IS_BRANCH_KIRKSTONE
+	default IS_BITBAKE_2_8 if IS_BRANCH_SCARTHGAP
+	default IS_BITBAKE_2_16 if IS_BRANCH_WHINLATTER
+	default IS_BITBAKE_2_18 if IS_BRANCH_MASTER
+	default IS_BITBAKE_MASTER
+	help
+	  BitBake is a generic task execution engine that allows shell
+	  and Python tasks to be run efficiently and in parallel while
+	  working within complex inter-task dependency constraints. 
+
+	  https://git.openembedded.org/bitbake/
+	  https://wiki.yoctoproject.org/wiki/Releases
+
+config IS_BITBAKE_2_0
+	bool "2.0"
+
+config IS_BITBAKE_2_2
+	bool "2.2"
+
+config IS_BITBAKE_2_4
+	bool "2.4"
+
+config IS_BITBAKE_2_6
+	bool "2.6"
+
+config IS_BITBAKE_2_8
+	bool "2.8"
+
+config IS_BITBAKE_2_10
+	bool "2.10"
+
+config IS_BITBAKE_2_12
+	bool "2.12"
+
+config IS_BITBAKE_2_14
+	bool "2.14"
+
+config IS_BITBAKE_2_16
+	bool "2.16"
+
+config IS_BITBAKE_2_18
+	bool "2.18"
+
+config IS_BITBAKE_MASTER
+	bool "master"
+
+endchoice
+
+config KAS_INCLUDE_HAS_LAYER_BITBAKE_BRANCH
+	string
+	depends on IS_OPENEMBEDDED_CORE_OPENEMBEDDED_CORE
+	default "layers/bitbake/bitbake-2.0.yaml" if IS_BITBAKE_2_0
+	default "layers/bitbake/bitbake-2.2.yaml" if IS_BITBAKE_2_2
+	default "layers/bitbake/bitbake-2.4.yaml" if IS_BITBAKE_2_4
+	default "layers/bitbake/bitbake-2.6.yaml" if IS_BITBAKE_2_6
+	default "layers/bitbake/bitbake-2.8.yaml" if IS_BITBAKE_2_8
+	default "layers/bitbake/bitbake-2.10.yaml" if IS_BITBAKE_2_10
+	default "layers/bitbake/bitbake-2.12.yaml" if IS_BITBAKE_2_12
+	default "layers/bitbake/bitbake-2.14.yaml" if IS_BITBAKE_2_14
+	default "layers/bitbake/bitbake-2.16.yaml" if IS_BITBAKE_2_16
+	default "layers/bitbake/bitbake-2.18.yaml" if IS_BITBAKE_2_18
+	default "layers/bitbake/bitbake-master.yaml" if IS_BITBAKE_MASTER
+	default ""
+
+endif # HAS_LAYER_BITBAKE

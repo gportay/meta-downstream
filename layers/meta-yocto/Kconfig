@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+
+config HAS_LAYER_META_YOCTO
+	bool "meta-yocto"
+	help
+	  Yocto Project integration layers (Poky distro configuration, reference hardware BSPs)
+
+	  https://git.yoctoproject.org/meta-yocto
+
+config KAS_INCLUDE_HAS_LAYER_META_YOCTO
+	string
+	depends on HAS_LAYER_META_YOCTO
+	default "layers/meta-yocto/meta-yocto.yaml"
+
+if HAS_LAYER_META_YOCTO
+
+config HAS_LAYER_META_YOCTO_META_POKY
+	bool "meta-poky"
+	help
+	  https://git.yoctoproject.org/meta-yocto/tree/meta-poky
+
+config KAS_INCLUDE_HAS_LAYER_META_YOCTO_META_POKY
+	string
+	depends on HAS_LAYER_META_YOCTO_META_POKY
+	default "layers/meta-yocto/meta-poky.yaml"
+
+config HAS_LAYER_META_YOCTO_META_YOCTO_BSP
+	bool "meta-yocto-bsp"
+	help
+	  https://git.yoctoproject.org/meta-yocto/tree/meta-yocto-bsp
+
+config KAS_INCLUDE_HAS_LAYER_META_YOCTO_META_YOCTO_BSP
+	string
+	depends on HAS_LAYER_META_YOCTO_META_YOCTO_BSP
+	default "layers/meta-yocto/meta-yocto-bsp.yaml"
+
+endif # HAS_LAYER_META_YOCTO
