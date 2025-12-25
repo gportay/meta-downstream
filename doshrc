@@ -1,0 +1,9 @@
+DOSHELL=/bin/bash
+if [[ "${DL_DIR:-}" ]]
+then
+	DOSH_DOCKER_RUN_EXTRA_OPTS+=(--env DL_DIR --volume "$DL_DIR:$DL_DIR")
+fi
+if [[ "${SSTATE_DIR:-}" ]]
+then
+	DOSH_DOCKER_RUN_EXTRA_OPTS+=(--env SSTATE_DIR --volume "$SSTATE_DIR:$SSTATE_DIR")
+fi
