@@ -1,9 +1,8 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 config HAS_LAYER_META_AWS
 	bool "meta-aws"
-	select HAS_LAYER_POKY_META
 	select HAS_LAYER_META_OPENEMBEDDED
 	select HAS_LAYER_META_OPENEMBEDDED_META_OE
 	select HAS_LAYER_META_OPENEMBEDDED_META_PYTHON

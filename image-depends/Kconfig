@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
 
 menu "Image Depends"
 
@@ -21,8 +21,6 @@ config KAS_INCLUDE_HAS_IMAGE_DEPEND_EDK2_FIRMWARE
 
 config HAS_IMAGE_DEPEND_OVMF
 	bool "Depend OVMF"
-	select HAS_LAYER_POKY
-	select HAS_LAYER_POKY_META
 	help
 	  OVMF is an EDK II based project to enable UEFI support for
 	  Virtual Machines. OVMF contains sample UEFI firmware for QEMU

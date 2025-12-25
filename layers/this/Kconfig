@@ -18,7 +18,6 @@ if HAS_LAYER_THIS
 
 config HAS_LAYER_THIS_META_DOWNSTREAM
 	bool "meta-downstream"
-	depends on HAS_LAYER_POKY_META
 	default y if HAS_DISTRO_FEATURE_SYSTEMD
 	help
 	  OpenEmbedded meta layer with downstream recipes and changes
@@ -33,7 +32,6 @@ config KAS_INCLUDE_HAS_LAYER_THIS_META_DOWNSTREAM
 
 config HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE
 	bool "meta-backport-kirkstone"
-	depends on HAS_LAYER_POKY_META
 	default y if IS_BRANCH_KIRKSTONE
 	help
 	  OpenEmbedded meta layer with backport-kirkstone recipes and
@@ -48,7 +46,6 @@ config KAS_INCLUDE_HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE
 
 config HAS_LAYER_THIS_META_BLKPG_PART
 	bool "meta-blkpg-part"
-	depends on HAS_LAYER_POKY_META
 	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
 	help
 	  OpenEmbedded meta layer for partition table and disk geometry
