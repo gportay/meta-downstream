@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025-2026 Gaël PORTAY
+
+config HAS_LAYER_OPENEMBEDDED_CORE
+	bool "openembedded-core"
+	help
+	  OpenEmbedded Core layer.
+
+	  https://git.openembedded.org/openembedded-core/
+
+config KAS_INCLUDE_HAS_LAYER_OPENEMBEDDED_CORE
+	string
+	depends on HAS_LAYER_OPENEMBEDDED_CORE
+	default "layers/openembedded-core/openembedded-core.yaml"
+
+if HAS_LAYER_OPENEMBEDDED_CORE
+
+config HAS_LAYER_OPENEMBEDDED_CORE_META
+	bool "meta"
+	help
+	  https://git.openembedded.org/openembedded-core/tree/meta
+
+config KAS_INCLUDE_HAS_LAYER_OPENEMBEDDED_CORE_META
+	string
+	depends on HAS_LAYER_OPENEMBEDDED_CORE_META
+	default "layers/openembedded-core/meta.yaml"
+
+endif # HAS_LAYER_OPENEMBEDDED_CORE

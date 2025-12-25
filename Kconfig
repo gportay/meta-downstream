@@ -10,12 +10,6 @@ config KAS_INCLUDE_MAIN
 	string
 	default "kas-project.yaml"
 
-config KAS_LAYER_OPENEMBEDDED_CORE
-	bool
-	select HAS_LAYER_POKY
-	select HAS_LAYER_POKY_META
-	default y
-
 menu "General"
 source "branches/Kconfig"
 source "layers/Kconfig"
