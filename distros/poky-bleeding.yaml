@@ -1,0 +1,6 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+
+header:
+  version: 2
+distro: poky-bleeding

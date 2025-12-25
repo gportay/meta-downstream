@@ -28,7 +28,6 @@ config KAS_INCLUDE_HAS_LAYER_POKY_META
 
 config HAS_LAYER_POKY_META_POKY
 	bool "meta-poky"
-	default y
 	help
 	  https://git.yoctoproject.org/poky/tree/meta-poky
 

@@ -1,0 +1,50 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2025 Gaël PORTAY
+
+choice
+	prompt "Distro"
+	default IS_DISTRO_POKY
+
+config IS_DISTRO_NODISTRO
+	bool "nodistro"
+	help
+	  https://git.openembedded.org/openembedded-core/
+
+config IS_DISTRO_POKY
+	bool "poky"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META_POKY
+	help
+	  https://git.yoctoproject.org/poky
+
+config IS_DISTRO_POKY_ALTCFG
+	bool "poky-altcfg"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META_POKY
+	help
+	  https://git.yoctoproject.org/poky
+
+config IS_DISTRO_POKY_BLEEDING
+	bool "poky-bleeding"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META_POKY
+	help
+	  https://git.yoctoproject.org/poky
+
+config IS_DISTRO_POKY_TINY
+	bool "poky-tiny"
+	select HAS_LAYER_POKY
+	select HAS_LAYER_POKY_META_POKY
+	help
+	  https://git.yoctoproject.org/poky
+
+endchoice
+
+config KAS_INCLUDE_IS_DISTRO
+	string
+	default "distros/nodistro.yaml" if IS_DISTRO_NODISTRO
+	default "distros/poky.yaml" if IS_DISTRO_POKY
+	default "distros/poky-altcfg.yaml" if IS_DISTRO_POKY_ALTCFG
+	default "distros/poky-bleeding.yaml" if IS_DISTRO_POKY_BLEEDING
+	default "distros/poky-tiny.yaml" if IS_DISTRO_POKY_TINY
+	default ""

@@ -5,4 +5,3 @@ header:
   version: 4
 target:
   - core-image-minimal
-distro: poky
