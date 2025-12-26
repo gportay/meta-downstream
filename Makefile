@@ -9,6 +9,11 @@ $(foreach yaml,$(wildcard configs/*.yaml),$(notdir $(yaml))):
 %.yaml:
 	cp configs/$@ .config.yaml
 
+.PHONY: saveyaml
+saveyaml:
+	kas dump | yq -r .machine
+	cp .config.yaml config.yaml
+
 .PHONY: menu menuconfig
 menu menuconfig:
 	kas menu
