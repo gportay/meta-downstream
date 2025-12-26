@@ -1,12 +1,12 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 .PHONY: all
 all: | .config.yaml
 	kas build
 
-.PHONY: menu
-menu:
+.PHONY: menu menuconfig
+menu menuconfig:
 	kas menu
 
 .SILENT: .config.yaml
