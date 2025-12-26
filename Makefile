@@ -5,6 +5,10 @@
 all: | .config.yaml
 	kas build
 
+$(foreach yaml,$(wildcard configs/*.yaml),$(notdir $(yaml))):
+%.yaml:
+	cp configs/$@ .config.yaml
+
 .PHONY: menu menuconfig
 menu menuconfig:
 	kas menu
