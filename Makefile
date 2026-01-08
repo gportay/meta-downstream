@@ -36,10 +36,14 @@ runqemu: | .config.yaml
 lock: | .config.yaml
 	kas lock
 
+.PHONY: overrides-lockfile.yaml
+overrides-lockfile.yaml:
+	kas dump --lock kas-project.yaml >$@
+
 .PHONY: clean
 clean: mostlyclean
 	rm -Rf build/
 
 .PHONY: mostlyclean
-mostlyclean:
+mostlyclean: clean
 	rm -f .config.yaml .config.yaml.old

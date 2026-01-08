@@ -1,0 +1,52 @@
+# SPDX-License-Identifier: MIT
+# SPDX-FileCopyrightText: Copyright 2026 Rtone
+# SPDX-FileCopyrightText: Siemens and contributors
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the kas documentation and the Yocto Project
+# Reference Manual.
+#
+# https://kas.readthedocs.io/en/latest/userguide/plugins.html#module-kas.plugins.dump
+# https://docs.yoctoproject.org/dev/ref-manual/classes.html#rm-work
+
+config KAS_INCLUDE_MAIN
+	string
+	default "kas-project.yaml"
+
+config HAS_INHERIT_RM_WORK
+	bool "Inherit rm_work"
+	default n
+	help
+	  The rm_work class supports deletion of temporary workspace,
+	  which can ease your hard drive demands during builds.
+
+	  The OpenEmbedded build system can use a substantial amount of
+	  disk space during the build process. A portion of this space
+	  is the work files under the ${TMPDIR}/work directory for each
+	  recipe. Once the build system generates the packages for a
+	  recipe, the work files for that recipe are no longer needed.
+	  However, by default, the build system preserves these files
+	  for inspection and possible debugging purposes. If you would
+	  rather have these files deleted to save disk space as the
+	  build progresses, you can enable rm_work.
+
+	  https://docs.yoctoproject.org/ref-manual/classes.html#rm-work
+
+config KAS_INCLUDE_HAS_INHERIT_RM_WORK
+	string
+	depends on HAS_INHERIT_RM_WORK
+	default "rm_work.yaml"
+
+config HAS_USE_OVERRIDES_LOCKFILE
+	bool "Use lockfile"
+	default y
+	help
+	  Use lockfile with exact SHAs.
+
+	  The lockfile contains the exact commit of each repository. It
+	  is used to pin the commit of floating branches and tags.
+
+config KAS_INCLUDE_HAS_OVERRIDES_LOCKFILE
+	string
+	depends on HAS_USE_OVERRIDES_LOCKFILE
+	default "overrides-lockfile.yaml"
