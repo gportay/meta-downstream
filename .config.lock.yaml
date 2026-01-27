@@ -1,0 +1,18 @@
+header:
+    version: 14
+overrides:
+    repos:
+        bitbake:
+            commit: a2dd9be788274d9c7280be5b1be5eb5c3990cf54
+        meta-browser:
+            commit: 2c7d918829a3c77a6aaf241ae20e32b27fb56d4e
+        meta-openembedded:
+            commit: 420222862f5a6d95023b8f5f3b7e1808b2264ef9
+        meta-raspberrypi:
+            commit: b4603a63b13e052a0f08761697fb5116a394bf64
+        meta-rauc:
+            commit: 8c27266b20577e0e456951401d482e3044a5b870
+        meta-rauc-community:
+            commit: 2418b23a82c555f6b555ad28ac72b60f68c988d8
+        openembedded-core:
+            commit: 4f7d1a0885d7d6f2a533f7388ed5f5a35d6f99bc

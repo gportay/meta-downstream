@@ -32,6 +32,10 @@ checkout dump build shell: | .config.yaml
 runqemu: | .config.yaml
 	kas shell -c "runqemu nographic slirp"
 
+.PHONY: lock
+lock: | .config.yaml
+	kas lock
+
 .PHONY: clean
 clean: mostlyclean
 	rm -Rf build/
