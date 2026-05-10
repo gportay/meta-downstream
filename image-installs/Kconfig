@@ -35,6 +35,24 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_CHROMIUM_OZONE_WAYLAND
 	depends on HAS_IMAGE_INSTALL_CHROMIUM_OZONE_WAYLAND
 	default "image-installs/chromium-ozone-wayland.yaml"
 
+config HAS_IMAGE_INSTALL_CHROMIUM_X11
+	bool "Install chromium (X11)"
+	select HAS_LAYER_THIS_META_BROWSER_META_CHROMIUM
+	select HAS_DISTRO_FEATURE_X11
+	help
+	  Chromium is an open-source browser project that aims to build
+	  a safer, faster, and more stable way for all users to
+	  experience the web. This site contains design documents,
+	  architecture overviews, testing information, and more to help
+	  you learn to build and work with the Chromium source code.
+
+	  https://www.chromium.org/Home/
+
+config KAS_INCLUDE_HAS_IMAGE_INSTALL_CHROMIUM_X11
+	string
+	depends on HAS_IMAGE_INSTALL_CHROMIUM_X11
+	default "image-installs/chromium-x11.yaml"
+
 config HAS_IMAGE_INSTALL_GRUB_EFI
 	bool "Install GNU GRUB (EFI)"
 	help
