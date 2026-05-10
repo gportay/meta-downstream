@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+config HAS_LAYER_META_BROWSER
+	bool "meta-browser"
+	help
+	  OpenEmbedded/Yocto BSP layer for Web Browsers.
+
+	  https://github.com/OSSystems/meta-browser
+
+config KAS_INCLUDE_HAS_LAYER_META_BROWSER
+	string
+	depends on HAS_LAYER_META_BROWSER
+	default "layers/meta-browser/meta-browser.yaml"
+
+if HAS_LAYER_META_BROWSER
+
+config HAS_LAYER_META_BROWSER_META_CHROMIUM
+	bool "meta-chromium"
+#	depends on HAS_LAYER_META_RAUC
+#	default y if IS_MACHINE_RASPBERRYPI
+	help
+	  https://github.com/OSSystems/meta-browser/tree/master/meta-chromium
+
+config KAS_INCLUDE_HAS_LAYER_META_BROWSER_META_CHROMIUM
+	string
+	depends on HAS_LAYER_META_BROWSER_META_CHROMIUM
+	default "layers/meta-browser/meta-chromium.yaml"
+
+endif # HAS_LAYER_META_BROWSER
