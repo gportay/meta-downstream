@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
@@ -97,8 +97,7 @@ config KAS_INCLUDE_HAS_IMAGE_FEATURE_READ_ONLY_ROOTFS_DELAYED_POSTINSTS
 config HAS_IMAGE_FEATURE_DEBUG_TWEAKS
 	bool "Enable debug-tweaks"
 	depends on IS_BRANCH_KIRKSTONE || \
-		   IS_BRANCH_SCARTHGAP || \
-		   IS_BRANCH_STYHEAD
+		   IS_BRANCH_SCARTHGAP
 	select HAS_IMAGE_FEATURE_ALLOW_EMPTY_PASSWORD
 	select HAS_IMAGE_FEATURE_EMPTY_ROOT_PASSWORD
 	select HAS_IMAGE_FEATURE_ALLOW_ROOT_LOGIN
