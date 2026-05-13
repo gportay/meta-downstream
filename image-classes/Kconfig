@@ -1,9 +1,10 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
-# The help texts are stolen from the Yocto Sources.
+# The help texts are stolen from the meta-security and the Yocto Sources.
 #
+# https://git.yoctoproject.org/meta-security/tree/classes/dm-verity-img.bbclass
 # https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
 
 menu "Image Classes"
@@ -19,6 +20,42 @@ config KAS_INCLUDE_HAS_IMAGE_CLASSES_QEMUBOOT
 	string
 	depends on HAS_IMAGE_CLASSES_QEMUBOOT
 	default "image-classes/qemuboot.yaml"
+
+config HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	bool "Class dm-verity-img"
+	select HAS_LAYER_META_SECURITY
+	select HAS_DISTRO_FEATURE_SECURITY
+	select HAS_INITRAMFS_IMAGE
+	help
+	  This bbclass allows creating of dm-verity protected partition
+	  images. It generates a device image file with dm-verity hash
+	  data appended at the end plus the corresponding .env file
+	  containing additional information needed to mount the image
+	  such as the root hash in the form of ell variables. To assure
+	  data integrity, the root hash must be stored in a trusted
+	  location or cryptographically signed and verified.
+
+	  https://git.yoctoproject.org/meta-security/tree/classes/dm-verity-img.bbclass
+
+config KAS_INCLUDE_HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	string
+	depends on HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default "image-classes/dm-verity-img.yaml"
+
+if HAS_IMAGE_CLASSES_DM_VERITY_IMG
+
+config HAS_IMAGE_CLASSES_DM_VERITY_IMG_SEPARATE_HASH
+	bool "Store hash on separate device"
+	help
+	  Optionally, we can store the hash data on a separate device
+	  or partition for improved compartmentalization and ease of
+	  use/deployment.
+
+config KAS_INCLUDE_HAS_IMAGE_CLASSES_DM_VERITY_IMG_SEPARATE_HASH
+	string
+	depends on HAS_IMAGE_CLASSES_DM_VERITY_IMG_SEPARATE_HASH
+	default "image-classes/dm-verity-img-separate-hash.yaml"
+endif
 
 source "image-classes/qemuboot/Kconfig"
 
