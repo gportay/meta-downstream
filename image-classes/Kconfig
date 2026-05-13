@@ -20,6 +20,18 @@ config KAS_INCLUDE_HAS_IMAGE_CLASSES_QEMUBOOT
 	depends on HAS_IMAGE_CLASSES_QEMUBOOT
 	default "image-classes/qemuboot.yaml"
 
+config HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	bool "Class dm-verity-img"
+	help
+	  Help runqemu boot target board.
+
+	  https://git.yoctoproject.org/meta-security/tree/classes/dm-verity-img.bbclass
+
+config KAS_INCLUDE_HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	string
+	depends on HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default "image-classes/dm-verity-img.yaml"
+
 source "image-classes/qemuboot/Kconfig"
 
 endmenu
