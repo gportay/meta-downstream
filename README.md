@@ -11,6 +11,8 @@ using the [kas] setup tool.
  - QEMU Intel Core 2 and ARM Cortex-A57 microprocessors (64-bit)
  - Raspberry Pi single-board computers (64-bit)
  - AWS-EC2 Intel x86 or ARM (64-bit)
+ - Google Coral Dev Board
+ - StarFive VisionFive 2
 
 ## REQUIREMENTS
 
@@ -64,7 +66,7 @@ Written by Gaël PORTAY *gael.portay@rtone.fr*
 
 ## COPYRIGHT
 
-Copyright 2024-2025 Gaël PORTAY
+Copyright 2024-2026 Gaël PORTAY
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
