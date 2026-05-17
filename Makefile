@@ -35,7 +35,6 @@ runqemu: | .config.yaml
 .PHONY: clean
 clean: mostlyclean
 	rm -Rf build/
-	rm -f .config.yaml.old
 
 .PHONY: mostlyclean
 mostlyclean:
