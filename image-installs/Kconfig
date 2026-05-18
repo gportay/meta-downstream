@@ -39,7 +39,6 @@ config KAS_INCLUDE_HAS_IMAGE_INSTALL_GRUB_EFI
 
 config HAS_IMAGE_INSTALL_RAUC
 	bool "Install RAUC"
-	select HAS_LAYER_META_RAUC
 	help
 	  Safe and secure software updates for embedded Linux.
 

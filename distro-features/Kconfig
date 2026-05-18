@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
@@ -46,6 +46,7 @@ config KAS_INCLUDE_HAS_DISTRO_FEATURE_PAM
 
 config HAS_DISTRO_FEATURE_RAUC
 	bool "Enable RAUC"
+	select HAS_LAYER_META_RAUC
 	select HAS_IMAGE_INSTALL_RAUC
 	help
 	  Safe and secure software updates for embedded Linux.
