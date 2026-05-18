@@ -10,4 +10,5 @@ local_conf_header:
     DM_VERITY_IMAGE_TYPE ?= "ext4"
     DM_VERITY_SEPARATE_HASH ?= "0"
     WKS_FILES:append ?= " ${@bb.utils.contains('DM_VERITY_SEPARATE_HASH', '1', 'systemd-bootdisk-dmverity-hash.wks.in', 'systemd-bootdisk-dmverity.wks.in', d)}"
+    INITRAMFS_IMAGE_BUNDLE ?= "1"
     INITRAMFS_IMAGE ?= "dm-verity-image-initramfs"
