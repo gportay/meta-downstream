@@ -18,7 +18,7 @@ config IS_DISTRO_POKY
 	select HAS_LAYER_POKY if IS_OPENEMBEDDED_CORE_POKY
 	select HAS_LAYER_POKY_META_POKY if IS_OPENEMBEDDED_CORE_POKY
 	help
-	  https://git.yoctoproject.org/poky
+	  https://git.yoctoproject.org/meta-yocto/tree/meta-poky/conf/distro/poky.conf
 
 config IS_DISTRO_POKY_ALTCFG
 	bool "poky-altcfg"
@@ -27,7 +27,7 @@ config IS_DISTRO_POKY_ALTCFG
 	select HAS_LAYER_POKY if IS_OPENEMBEDDED_CORE_POKY
 	select HAS_LAYER_POKY_META_POKY if IS_OPENEMBEDDED_CORE_POKY
 	help
-	  https://git.yoctoproject.org/poky
+	  https://git.yoctoproject.org/meta-yocto/tree/meta-poky/conf/distro/poky-altcfg.conf
 
 config IS_DISTRO_POKY_BLEEDING
 	bool "poky-bleeding"
@@ -36,7 +36,7 @@ config IS_DISTRO_POKY_BLEEDING
 	select HAS_LAYER_POKY if IS_OPENEMBEDDED_CORE_POKY
 	select HAS_LAYER_POKY_META_POKY if IS_OPENEMBEDDED_CORE_POKY
 	help
-	  https://git.yoctoproject.org/poky
+	  https://git.yoctoproject.org/meta-yocto/tree/meta-poky/conf/distro/poky-bleeding.conf
 
 config IS_DISTRO_POKY_TINY
 	bool "poky-tiny"
@@ -45,7 +45,7 @@ config IS_DISTRO_POKY_TINY
 	select HAS_LAYER_POKY if IS_OPENEMBEDDED_CORE_POKY
 	select HAS_LAYER_POKY_META_POKY if IS_OPENEMBEDDED_CORE_POKY
 	help
-	  https://git.yoctoproject.org/poky
+	  https://git.yoctoproject.org/meta-yocto/tree/meta-poky/conf/distro/poky-tiny.conf
 
 endchoice
 

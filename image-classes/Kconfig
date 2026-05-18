@@ -2,10 +2,10 @@
 # SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
-# The help texts are stolen from the meta-security and the Yocto Sources.
+# The help texts are stolen from meta-security and openembedded-core layers.
 #
 # https://git.yoctoproject.org/meta-security/tree/classes/dm-verity-img.bbclass
-# https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
+# https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/qemuboot.bbclass
 
 menu "Image Classes"
 
@@ -14,7 +14,7 @@ config HAS_IMAGE_CLASSES_QEMUBOOT
 	help
 	  Help runqemu boot target board.
 
-	  https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
+	  https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/qemuboot.bbclass
 
 config KAS_INCLUDE_HAS_IMAGE_CLASSES_QEMUBOOT
 	string

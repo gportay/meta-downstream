@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
-# The help texts are stolen from the Yocto Sources.
+# The help texts are stolen from openembedded layer.
 #
-# https://git.yoctoproject.org/poky/plain/meta/classes-recipe/qemuboot.bbclass
+# https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/qemuboot.bbclass 
 
 menu "QEMU Boot"
 	depends on IS_QEMU || HAS_IMAGE_CLASSES_QEMUBOOT
