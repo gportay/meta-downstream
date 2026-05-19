@@ -121,4 +121,14 @@ config KAS_INCLUDE_HAS_RASPBERRYPI_USE_INITRAMFS_IMAGE_BUNDLE
 	depends on HAS_RASPBERRYPI_USE_INITRAMFS_IMAGE_BUNDLE
 	default "machines/raspberrypi/use-initramfs-image-bundle.yaml"
 
+config HAS_RASPBERRYPI_USE_DM_VERITY_IMG
+	bool
+	depends on HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default y
+
+config KAS_INCLUDE_HAS_RASPBERRYPI_USE_DM_VERITY_IMG
+	string
+	depends on HAS_RASPBERRYPI_USE_DM_VERITY_IMG
+	default "machines/raspberrypi/use-dm-verity-img.yaml"
+
 endmenu

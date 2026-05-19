@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+header:
+  version: 2
+local_conf_header:
+  machine-raspberrypi-use-dm-verity-img: |
+    WKS_FILE ?= "${@bb.utils.contains('DM_VERITY_SEPARATE_HASH', '1', 'sdimage-raspberrypi-dmverity-hash.wks.in', 'sdimage-raspberrypi-dmverity.wks.in', d)}"
+    PACKAGE_INSTALL:append:pn-dm-verity-image-initramfs = " kernel-module-dm-verity kmod"
+    CMDLINE_ROOT_PARTITION ?= "${@bb.utils.contains('DM_VERITY_SEPARATE_HASH', '1', '/dev/mapper/rootfs', '/dev/mmcblk0p2', d)} ro"
