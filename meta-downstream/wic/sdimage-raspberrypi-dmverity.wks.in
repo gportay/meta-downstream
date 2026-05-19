@@ -1,0 +1,14 @@
+# short-description: Create Raspberry Pi SD card image with dm-verity
+# long-description: Creates a partitioned SD card image for use with
+# Raspberry Pi. Boot files are located in the first vfat partition.
+# A dm-verity variant of the regular wks for Raspberry Pi machines. We need to
+# fetch the partition images from the IMGDEPLOYDIR as the rootfs source plugin
+# will not recreate the exact block device corresponding with the hash tree. We
+# must not alter the label or any other setting on the image.
+# Based on meta-raspberrypi's sdimage-raspberrypi and meta-security's
+# systemd-bootdisk-dmverity.wks.in files
+#
+# This .wks only works with the dm-verity-img class.
+
+part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --active --align 4096 --size 100
+part / --source rawcopy --ondisk mmcblk0 --sourceparams="file=${IMGDEPLOYDIR}/${DM_VERITY_IMAGE}-${MACHINE}${IMAGE_NAME_SUFFIX}.${DM_VERITY_IMAGE_TYPE}.verity" --use-uuid
