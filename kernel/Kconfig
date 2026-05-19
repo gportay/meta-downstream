@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from openembedded-core layer.
+#
+# https://github.com/openembedded/openembedded-core/blob/12b8b7aef5e709293a9ff5090841306d4e469c96/meta/conf/templates/default/local.conf.sample.extended#L313-L331
+
+menu "Kernel"
+
+config HAS_INITRAMFS_IMAGE
+	bool "Use initramfs image"
+	help
+	  The INITRAMFS_IMAGE image variable will cause an additional
+	  recipe to be built as a dependency to the what ever rootfs
+	  recipe you might be using such as core-image-sato. The
+	  initramfs might be needed for the initial boot of the target
+	  system such as to load kernel modules prior to mounting the
+	  root file system.
+
+	  https://github.com/openembedded/openembedded-core/blob/12b8b7aef5e709293a9ff5090841306d4e469c96/meta/conf/templates/default/local.conf.sample.extended#L316-L320
+
+config KAS_INCLUDE_HAS_INITRAMFS_IMAGE
+	string
+	depends on HAS_INITRAMFS_IMAGE
+	default "kernel/initramfs-image.yaml"
+
+config HAS_INITRAMFS_IMAGE_BUNDLE
+	depends on HAS_INITRAMFS_IMAGE
+	bool "Bundle initramfs to kernel image"
+	help
+	  INITRAMFS_IMAGE_BUNDLE variable controls if the image recipe
+	  specified by the INITRAMFS_IMAGE will be run through an extra
+	  pass through the kernel compilation in order to build a
+	  single binary which contains both the kernel image and the
+	  initramfs.
+
+	  https://github.com/openembedded/openembedded-core/blob/12b8b7aef5e709293a9ff5090841306d4e469c96/meta/conf/templates/default/local.conf.sample.extended#L322-L328
+
+config KAS_INCLUDE_HAS_INITRAMFS_IMAGE_BUNDLE
+	string
+	depends on HAS_INITRAMFS_IMAGE_BUNDLE
+	default "kernel/initramfs-image-bundle.yaml"
+
+endmenu

@@ -41,6 +41,7 @@ menu "System"
 source "distros/Kconfig"
 source "init-manager/Kconfig"
 source "distro-features/Kconfig"
+source "kernel/Kconfig"
 endmenu
 
 menu "Image"
