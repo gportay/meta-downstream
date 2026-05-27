@@ -30,23 +30,9 @@ config KAS_INCLUDE_HAS_LAYER_THIS_META_DOWNSTREAM
 	depends on HAS_LAYER_THIS_META_DOWNSTREAM
 	default "layers/this/meta-downstream.yaml"
 
-config HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE
-	bool "meta-backport-kirkstone"
-	depends on IS_BRANCH_KIRKSTONE
-	help
-	  OpenEmbedded meta layer with backported recipes and changes
-	  for upstream.
-
-	  https://github.com/gportay/meta-backport-kirkstone/tree/master/meta-backport-kirkstone
-
-config KAS_INCLUDE_HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE
-	string
-	depends on HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE
-	default "layers/this/meta-backport-kirkstone.yaml"
-
 config HAS_LAYER_THIS_META_BLKPG_PART
 	bool "meta-blkpg-part"
-	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_SCARTHGAP
 	help
 	  OpenEmbedded meta layer for partition table and disk geometry
 	  handling utility.
@@ -63,9 +49,8 @@ config HAS_LAYER_THIS_META_RAUC_RASPBERRYPI_FIRMWARE
 	depends on HAS_LAYER_META_RAUC
 	depends on HAS_LAYER_META_RAUC_COMMUNITY
 	depends on HAS_LAYER_META_RAUC_COMMUNITY_META_RAUC_RASPBERRYPI
-	select HAS_LAYER_THIS_META_BACKPORT_KIRKSTONE if IS_BRANCH_KIRKSTONE
-	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
-	select HAS_QUIRK_S_WORKDIR_SOMETHING if IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	select HAS_QUIRK_S_UNPACKDIR_GIT if IS_BRANCH_SCARTHGAP
+	select HAS_QUIRK_S_WORKDIR_SOMETHING if IS_BRANCH_SCARTHGAP
 	help
 	  OpenEmbedded meta layer with raspberrypi-firmware integration
 	  of RAUC, the embedded Linux A/B update framework.

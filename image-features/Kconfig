@@ -41,26 +41,6 @@ config KAS_INCLUDE_IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
 	depends on IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
 	default "image-features/ssh-server-dropbear.yaml"
 
-config HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
-	bool "Install openssh-sftp-server"
-	depends on IS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR
-	default y
-	help
-	  As of the 4.1 release, the ssh-server-dropbear feature also
-	  recommends the openssh-sftp-server package, which by default
-	  will be pulled into the image. This is because recent versions
-	  of the OpenSSH scp client now use the SFTP protocol, and thus
-	  require an SFTP server to be present to connect to.
-
-config KAS_INCLUDE_HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
-	string
-	depends on HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
-	default "image-features/ssh-server-dropbear+openssh-sftp-server.yaml" \
-		if IS_BRANCH_KIRKSTONE && HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
-	default "image-features/ssh-server-dropbear-openssh-sftp-server.yaml" \
-		if !IS_BRANCH_KIRKSTONE && !HAS_IMAGE_FEATURE_SSH_SERVER_DROPBEAR_OPENSSH_SFTP_SERVER
-	default ""
-
 config KAS_INCLUDE_IS_IMAGE_FEATURE_SSH_SERVER_OPENSSH
 	string
 	depends on IS_IMAGE_FEATURE_SSH_SERVER_OPENSSH
@@ -96,8 +76,7 @@ config KAS_INCLUDE_HAS_IMAGE_FEATURE_READ_ONLY_ROOTFS_DELAYED_POSTINSTS
 
 config HAS_IMAGE_FEATURE_DEBUG_TWEAKS
 	bool "Enable debug-tweaks"
-	depends on IS_BRANCH_KIRKSTONE || \
-		   IS_BRANCH_SCARTHGAP
+	depends on IS_BRANCH_SCARTHGAP
 	select HAS_IMAGE_FEATURE_ALLOW_EMPTY_PASSWORD
 	select HAS_IMAGE_FEATURE_EMPTY_ROOT_PASSWORD
 	select HAS_IMAGE_FEATURE_ALLOW_ROOT_LOGIN

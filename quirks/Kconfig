@@ -9,7 +9,7 @@
 
 config HAS_QUIRK_UNPACKDIR
 	bool "Set UNPACKDIR to ${WORKDIR}"
-	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	depends on IS_BRANCH_SCARTHGAP
 	help
 	  Since Skyhead (5.1), WORKDIR references in other recipes need
 	  auditing. If they reference files from SRC_URI, they likely
@@ -34,7 +34,7 @@ config KAS_INCLUDE_HAS_QUIRK_UNPACKDIR
 
 config HAS_QUIRK_S_WORKDIR_SOMETHING
 	bool "Set S to ${WORKING}/something"
-	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	depends on IS_BRANCH_SCARTHGAP
 	help
 	  S = ${WORKDIR}/something no longer supported
 
@@ -53,7 +53,7 @@ config KAS_INCLUDE_HAS_QUIRK_S_WORKDIR_SOMETHING
 
 config HAS_QUIRK_S_UNPACKDIR_GIT
 	bool "Set S to ${UNPACKDIR}/git"
-	depends on IS_BRANCH_KIRKSTONE || IS_BRANCH_SCARTHGAP
+	depends on IS_BRANCH_SCARTHGAP
 	select HAS_QUIRK_UNPACKDIR
 	help
 	  S = ${WORKDIR}/something no longer supported

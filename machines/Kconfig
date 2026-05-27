@@ -47,7 +47,7 @@ config IS_MACHINE_QEMUX86_64
 
 config IS_MACHINE_RASPBERRYPI2_64
 	bool "Raspberry Pi 2 (64-bit)"
-	depends on !IS_BRANCH_KIRKSTONE && !IS_BRANCH_SCARTHGAP
+	depends on !IS_BRANCH_SCARTHGAP
 	select HAS_LAYER_META_RASPBERRYPI
 	help
 	  Compared to the Raspberry Pi 1 it has:
