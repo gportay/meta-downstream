@@ -52,9 +52,6 @@ config IS_BITBAKE_2_10
 config IS_BITBAKE_2_12
 	bool "2.12"
 
-config IS_BITBAKE_2_14
-	bool "2.14"
-
 config IS_BITBAKE_2_16
 	bool "2.16"
 
