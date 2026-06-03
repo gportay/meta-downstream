@@ -4,6 +4,7 @@
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
 #
+# https://docs.yoctoproject.org/bitbake/dev/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-BB_HASHSERVE_DB_DIR
 # https://docs.yoctoproject.org/dev/ref-manual/variables.html#term-BB_NO_NETWORK
 
 config KAS_INCLUDE_MAIN
@@ -14,6 +15,36 @@ menu "General"
 source "branches/Kconfig"
 source "layers/Kconfig"
 source "inherits/Kconfig"
+
+config HAS_BB_HASHSERVE_DB_DIR
+	bool "Use sstate to share multiple build directories"
+	help
+	  When BB_HASHSERVE is set to auto, bitbake will use a private
+	  location inside a particular build directory for the sqlite
+	  database file that holds hash equivalency data.
+
+	  This variable allows using a different path, which can be
+	  shared between multiple build directories and bitbake
+	  instances that operate on them. This enables using a common
+	  ${SSTATE_DIR} together with common hash equivalency data for
+	  local builds, without having to separately manage a hash
+	  equivalency server.
+
+	  Note
+
+	  This variable cannot be set to a NFS mount and bitbake will
+	  error out then. The reason is that NFS implementations can
+	  have file locking issues, which can cause data loss and
+	  corruption when there are multiple writers operating on a file
+	  at the same time as explained in
+	  https://sqlite.org/faq.html#q5
+
+	  https://docs.yoctoproject.org/bitbake/dev/bitbake-user-manual/bitbake-user-manual-ref-variables.html#term-BB_HASHSERVE_DB_DIR
+
+config KAS_INCLUDE_HAS_BB_HASHSERVE_DB_DIR
+	string
+	depends on HAS_BB_HASHSERVE_DB_DIR
+	default "bb-hashserve-db-dir.yaml"
 
 config HAS_BB_NO_NETWORK
 	bool "No network"
