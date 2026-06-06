@@ -4,7 +4,7 @@
 header:
   version: 2
 local_conf_header:
-  machine-qemux86-64-use-dm-verity-img: |
+  machine-use-dm-verity-img-qemux86-64: |
     MACHINE_FEATURES += "efi"
     IMAGE_INSTALL:append = " intel-microcode"
     EFI_PROVIDER = "systemd-boot"
