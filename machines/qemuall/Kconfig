@@ -15,7 +15,7 @@ config IS_QEMU
 menu "QEMU"
 	depends on IS_QEMU
 
-config HAS_QEMUX86_64_USE_DM_VERITY_IMG
+config HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
 	bool
 	depends on IS_MACHINE_QEMUX86_64
 	depends on HAS_IMAGE_CLASSES_DM_VERITY_IMG
@@ -24,10 +24,10 @@ config HAS_QEMUX86_64_USE_DM_VERITY_IMG
 	select HAS_LAYER_META_INTEL
 	default y
 
-config KAS_INCLUDE_HAS_QEMUX86_64_USE_DM_VERITY_IMG
+config KAS_INCLUDE_HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
         string
-        depends on HAS_QEMUX86_64_USE_DM_VERITY_IMG
-        default "machines/qemuall/use-dm-verity-img.yaml"
+        depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
+        default "machines/qemuall/use-dm-verity-img-qemux86-64.yaml"
 
 config HAS_QEMUALL_USE_UEFI
 	bool "Use UEFI"
