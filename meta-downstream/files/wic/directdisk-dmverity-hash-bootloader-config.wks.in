@@ -8,10 +8,10 @@
 # This .wks only works with the dm-verity-img class and separate hash data. (DM_VERITY_SEPARATE_HASH)
 # The bootloader configuration source is a generated file.
 
-part /boot --source bootimg-efi --sourceparams="loader=systemd-boot,initrd=microcode.cpio" --ondisk sda --label msdos --active --align 1024 --use-uuid
+part /boot --source bootimg-pcbios --sourceparams="loader-bios=syslinux" --ondisk sda --label msdos --active --align 1024 --use-uuid
 
 part --source rawcopy --sourceparams="file=${DM_VERITY_DEPLOY_DIR}/${DM_VERITY_IMAGE}-${MACHINE}${IMAGE_NAME_SUFFIX}.${DM_VERITY_IMAGE_TYPE}.verity"
 part --source rawcopy --sourceparams="file=${DM_VERITY_DEPLOY_DIR}/${DM_VERITY_IMAGE}-${MACHINE}${IMAGE_NAME_SUFFIX}.${DM_VERITY_IMAGE_TYPE}.vhash"
 
 # add "console=ttyS0,115200" or whatever you need to the --append="..."
-bootloader --ptable gpt --timeout=5 --append="root=/dev/dm-0 ro" --configfile="${SYSLINUX_CFG}"
+bootloader --timeout=5 --append="root=/dev/dm-0 ro" --configfile="${SYSLINUX_CFG}"
