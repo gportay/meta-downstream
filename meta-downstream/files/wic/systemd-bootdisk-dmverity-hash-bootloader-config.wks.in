@@ -1,4 +1,4 @@
-# short-description:  Create an EFI disk image with systemd-boot and separate hash dm-verity
+# short-description:  Create an EFI disk image with systemd-boot, separate hash dm-verity and custom bootloader config
 # A dm-verity variant of the regular wks for IA machines. We need to fetch
 # the partition images from the IMGDEPLOYDIR as the rootfs source plugin will
 # not recreate the exact block device corresponding with the hash tree. We must
@@ -6,6 +6,7 @@
 # Based on OE-core's systemd-bootdisk.wks and meta-security's beaglebone-yocto-verity.wks.in file
 #
 # This .wks only works with the dm-verity-img class and separate hash data. (DM_VERITY_SEPARATE_HASH)
+# The bootloader configuration source is a generated file.
 
 part /boot --source bootimg-efi --sourceparams="loader=systemd-boot,initrd=microcode.cpio" --ondisk sda --label msdos --active --align 1024 --use-uuid
 
@@ -13,4 +14,4 @@ part --source rawcopy --sourceparams="file=${DM_VERITY_DEPLOY_DIR}/${DM_VERITY_I
 part --source rawcopy --sourceparams="file=${DM_VERITY_DEPLOY_DIR}/${DM_VERITY_IMAGE}-${MACHINE}${IMAGE_NAME_SUFFIX}.${DM_VERITY_IMAGE_TYPE}.vhash"
 
 # add "console=ttyS0,115200" or whatever you need to the --append="..."
-bootloader --ptable gpt --timeout=5 --append="root=/dev/mapper/rootfs"
+bootloader --ptable gpt --timeout=5 --append="root=/dev/dm-0 ro" --configfile="${SYSLINUX_CFG}"
