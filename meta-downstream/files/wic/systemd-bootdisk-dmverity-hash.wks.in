@@ -14,5 +14,3 @@ include ${STAGING_VERITY_DIR}/${IMAGE_BASENAME}.${DM_VERITY_IMAGE_TYPE}.wks.in
 
 # add "console=ttyS0,115200" or whatever you need to the --append="..."
 bootloader --ptable gpt --timeout=5 --append="root=/dev/mapper/rootfs"
-
-part swap --ondisk sda --size 44 --label swap1 --fstype=swap --use-uuid
