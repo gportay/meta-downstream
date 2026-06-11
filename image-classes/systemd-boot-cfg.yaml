@@ -8,3 +8,4 @@ local_conf_header:
     IMAGE_CLASSES:append = " systemd-boot-cfg"
     LABELS ?= "boot"
     APPEND:append = " ${ROOT}"
+    EFI_CFG ?= "${S}/entries/${@''.join(d.getVar('LABELS').split(' ')[0])}.conf"
