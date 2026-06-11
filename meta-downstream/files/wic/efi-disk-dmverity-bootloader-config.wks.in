@@ -1,0 +1,18 @@
+# short-description: Create an EFI disk image with custom bootloader config and dm-verity
+# long-description: Creates a partitioned EFI disk image that the user
+# can directly dd to boot media. The bootloader configuration source is a
+# generated user file. We need to fetch the partition images from the
+# IMGDEPLOYDIR as the rootfs source plugin will not recreate the exact block
+# device corresponding with the hash tree. We must not alter the label or any
+# other setting on the image.
+# Based on meta-security's systemd-bootdisk-dmverity.wks.in file
+#
+# This .wks only works with the dm-verity-img class.
+
+part /boot --source bootimg-efi --sourceparams="loader=${EFI_PROVIDER}" --ondisk sda --label msdos --active --align 1024 --use-uuid
+
+part / --source rawcopy --ondisk sda  --sourceparams="file=${IMGDEPLOYDIR}/${DM_VERITY_IMAGE}-${MACHINE}${IMAGE_NAME_SUFFIX}.${DM_VERITY_IMAGE_TYPE}.verity" --use-uuid
+
+part swap --ondisk sda --size 44 --label swap1 --fstype=swap --use-uuid
+
+bootloader --ptable gpt --timeout=5 --append=" " --configfile="${EFI_CFG}"

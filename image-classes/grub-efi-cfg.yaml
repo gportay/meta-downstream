@@ -8,3 +8,4 @@ local_conf_header:
     IMAGE_CLASSES:append = " grub-efi-cfg"
     LABELS ?= "boot"
     GRUB_CFG ?= "${S}/grub.cfg"
+    EFI_CFG ?= "${GRUB_CFG}"
