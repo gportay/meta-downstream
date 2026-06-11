@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+header:
+  version: 2
+local_conf_header:
+  image-classes-systemd-boot-cfg: |
+    IMAGE_CLASSES:append = " systemd-boot-cfg"
+    LABELS ?= "boot"
