@@ -55,6 +55,9 @@ if HAS_IMAGE_FSTYPES_USE_WKS_FILE
 
 choice
 	prompt "Wic Kickstart file"
+	default IS_WKS_FILE_EFI_DISK_DMVERITY_BOOTLOADER_CONFIG if HAS_IMAGE_CLASSES_DM_VERITY_IMG && \
+	                                                           (HAS_IMAGE_CLASSES_GRUB_EFI_CFG || \
+	                                                            HAS_IMAGE_CLASSES_SYSTEMD_BOOT_CFG)
 	default IS_WKS_FILE_EFI_DISK if IS_MACHINE_QEMUARM64
 	default IS_WKS_FILE_GENERICX86 if IS_MACHINE_QEMUX86_64 && \
 	                                  HAS_QEMUALL_USE_UEFI && \
@@ -67,6 +70,24 @@ choice
 	default IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY if IS_MACHINE_QEMUX86_64 && \
 	                                                 HAS_IMAGE_CLASSES_DM_VERITY_IMG
 	default IS_WKS_FILE_DEFAULT
+
+config IS_WKS_FILE_EFI_DISK_DMVERITY_BOOTLOADER_CONFIG
+	bool "efi-disk-dmverity-bootloader-config.wks.in"
+	help
+	  Create an EFI disk image with custom bootloader config and
+	  dm-verity
+
+	  Creates a partitioned EFI disk image that the user can
+	  directly dd to boot media. The bootloader configuration
+	  source is a generated user file. We need to fetch the
+	  partition images from the IMGDEPLOYDIR as the rootfs source
+	  plugin will not recreate the exact block device corresponding
+	  with the hash tree. We must not alter the label or any other
+	  setting on the image.
+
+	  Based on meta-security's systemd-bootdisk-dmverity.wks.in file
+
+	  This .wks only works with the dm-verity-img class.
 
 config IS_WKS_FILE_EFI_DISK
 	bool "efi-disk.wks.in"
@@ -135,6 +156,7 @@ endchoice
 
 config KAS_INCLUDE_HAS_IMAGE_FSTYPES_USE_WKS_FILE
 	string
+	default "image-fstypes/efi-disk-dmverity-bootloader-config.yaml" if IS_WKS_FILE_EFI_DISK_DMVERITY_BOOTLOADER_CONFIG
 	default "image-fstypes/efi-disk.yaml" if IS_WKS_FILE_EFI_DISK
 	default "image-fstypes/genericx86.yaml" if IS_WKS_FILE_GENERICX86
 	default "image-fstypes/qemux86-directdisk.yaml" if IS_WKS_FILE_QEMUX86_DIRECTDISK
