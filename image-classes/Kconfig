@@ -5,9 +5,25 @@
 # The help texts are stolen from meta-security and openembedded-core layers.
 #
 # https://git.yoctoproject.org/meta-security/tree/classes/dm-verity-img.bbclass
+# https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/grub-efi-cfg.bbclass
 # https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/qemuboot.bbclass
+# https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/systemd-boot-cfg.bbclass
 
 menu "Image Classes"
+
+config HAS_IMAGE_CLASSES_GRUB_EFI_CFG
+	bool "Class grub-efi-cfg"
+	depends on HAS_MACHINE_FEATURES_EFI
+	help
+	  Provide grub-efi specific functions for building bootable
+	  images.
+
+	  https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/grub-efi-cfg.bbclass
+
+config KAS_INCLUDE_HAS_IMAGE_CLASSES_GRUB_EFI_CFG
+	string
+	depends on HAS_IMAGE_CLASSES_GRUB_EFI_CFG
+	default "image-classes/grub-efi-cfg.yaml"
 
 config HAS_IMAGE_CLASSES_QEMUBOOT
 	bool "Class qemuboot"
@@ -20,6 +36,20 @@ config KAS_INCLUDE_HAS_IMAGE_CLASSES_QEMUBOOT
 	string
 	depends on HAS_IMAGE_CLASSES_QEMUBOOT
 	default "image-classes/qemuboot.yaml"
+
+config HAS_IMAGE_CLASSES_SYSTEMD_BOOT_CFG
+	bool "Class systemd-boot-cfg"
+	depends on HAS_MACHINE_FEATURES_EFI
+	help
+	  Provide systemd-boot specific functions for building bootable
+	  images.
+
+	  https://github.com/openembedded/openembedded-core/tree/master/meta/classes-recipe/systemd-boot-cfg.bbclass
+
+config KAS_INCLUDE_HAS_IMAGE_CLASSES_SYSTEMD_BOOT_CFG
+	string
+	depends on HAS_IMAGE_CLASSES_SYSTEMD_BOOT_CFG
+	default "image-classes/systemd-boot-cfg.yaml"
 
 config HAS_IMAGE_CLASSES_DM_VERITY_IMG
 	bool "Class dm-verity-img"
