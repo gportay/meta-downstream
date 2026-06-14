@@ -1,0 +1,53 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Reference Manual.
+#
+# https://docs.yoctoproject.org/ref-manual/variables.html#term-EFI_PROVIDER
+
+menu "EFI Provider"
+	depends on HAS_IMAGE_FSTYPES_WIC
+
+choice
+	prompt "Default EFI Provider"
+	default IS_EFI_PROVIDER_SYSTEMD_BOOT if IS_MACHINE_QEMUX86_64 || HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default IS_EFI_PROVIDER_GRUB_EFI if IS_MACHINE_QEMUARM64
+	help
+	  When building bootable images (i.e. where hddimg, iso, or
+	  wic.vmdk is in IMAGE_FSTYPES), the EFI_PROVIDER variable
+	  specifies the EFI bootloader to use. The default is
+	  “grub-efi”, but “systemd-boot” can be used instead.
+
+	  https://docs.yoctoproject.org/ref-manual/variables.html#term-EFI_PROVIDER
+
+config IS_EFI_PROVIDER_GRUB_EFI
+	bool "grub-efi"
+	help
+	  The grub-efi class provides grub-efi-specific functions for
+	  building bootable images.
+
+	  https://docs.yoctoproject.org/ref-manual/classes.html#grub-efi
+
+config IS_EFI_PROVIDER_SYSTEMD_BOOT
+	bool "systemd-boot"
+	help
+	  The systemd-boot class provides functions specific to the
+	  systemd-boot bootloader for building bootable images. This is
+	  an internal class and is not intended to be used directly.
+
+	  https://docs.yoctoproject.org/ref-manual/classes.html#systemd-boot
+
+endchoice
+
+config KAS_INCLUDE_IS_EFI_PROVIDER_GRUB_EFI
+	string
+	depends on IS_EFI_PROVIDER_GRUB_EFI
+	default "efi-provider/grub-efi.yaml"
+
+config KAS_INCLUDE_IS_EFI_PROVIDER_SYSTEMD_BOOT
+	string
+	depends on IS_EFI_PROVIDER_SYSTEMD_BOOT
+	default "efi-provider/systemd-boot.yaml"
+
+endmenu

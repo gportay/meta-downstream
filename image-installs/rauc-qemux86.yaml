@@ -5,5 +5,5 @@ header:
   version: 2
 local_conf_header:
   image-installs-rauc-qemux86: |
-    MACHINE_FEATURES:append = " pcbios efi"
+    MACHINE_FEATURES:append = " pcbios"
     PREFERRED_RPROVIDER_virtual-grub-bootconf = "rauc-qemu-grubconf"
