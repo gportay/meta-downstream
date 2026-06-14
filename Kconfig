@@ -75,6 +75,7 @@ source "distros/Kconfig"
 source "init-manager/Kconfig"
 source "distro-features/Kconfig"
 source "kernel/Kconfig"
+source "efi-provider/Kconfig"
 endmenu
 
 menu "Image"
