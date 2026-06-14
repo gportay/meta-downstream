@@ -33,9 +33,9 @@ runqemu: | .config.yaml
 	kas shell -c "runqemu nographic slirp"
 
 .PHONY: clean
-clean: mostlyclean
+clean:
 	rm -Rf build/
 
 .PHONY: mostlyclean
-mostlyclean:
+distclean: clean
 	rm -f .config.yaml .config.yaml.old
