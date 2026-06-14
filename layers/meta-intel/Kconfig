@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+config HAS_LAYER_META_INTEL
+	bool "meta-intel"
+	help
+	  Layer containing Intel hardware support metadata
+
+	  https://git.yoctoproject.org/meta-intel/
+
+config KAS_INCLUDE_HAS_LAYER_META_INTEL
+	string
+	depends on HAS_LAYER_META_INTEL
+	default "layers/meta-intel/meta-intel.yaml"
