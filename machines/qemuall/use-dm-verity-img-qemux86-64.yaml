@@ -7,5 +7,4 @@ local_conf_header:
   machine-use-dm-verity-img-qemux86-64: |
     MACHINE_FEATURES += "efi"
     IMAGE_INSTALL:append = " intel-microcode"
-    EFI_PROVIDER = "systemd-boot"
     APPEND:append = " console=ttyS0,115200"
