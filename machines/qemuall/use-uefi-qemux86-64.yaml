@@ -1,10 +1,9 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 header:
   version: 2
 local_conf_header:
   machines-qemuall-use-uefi-qemux86-64: |
     MACHINE_FEATURES += "efi"
-    EFI_PROVIDER = "grub-efi"
     WKS_FILE = "genericx86.wks.in"
