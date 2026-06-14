@@ -11,6 +11,7 @@ menu "QEMU Boot"
 
 choice
 	prompt "Default FileSystem Type"
+	default IS_IMAGE_CLASSES_QEMUBOOT_QB_DEFAULT_FSTYPE_WIC if HAS_IMAGE_CLASSES_DM_VERITY_IMG
 	default IS_IMAGE_CLASSES_QEMUBOOT_QB_DEFAULT_FSTYPE_EXT4
 	help
 	  QB_DEFAULT_FSTYPE: default FSTYPE to boot, e.g., "ext4"
