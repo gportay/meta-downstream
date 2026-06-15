@@ -4,6 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  machine-use-dm-verity-img-qemux86-64: |
-    IMAGE_INSTALL:append = " intel-microcode"
-    APPEND:append = " console=ttyS0,115200"
+  machine-features-efi: |
+    MACHINE_FEATURES:append = " efi"

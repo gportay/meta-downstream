@@ -68,6 +68,7 @@ endmenu
 
 menu "Hardware"
 source "machines/Kconfig"
+source "machine-features/Kconfig"
 endmenu
 
 menu "System"
