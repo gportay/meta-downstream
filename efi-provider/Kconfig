@@ -8,6 +8,7 @@
 
 menu "EFI Provider"
 	depends on HAS_IMAGE_FSTYPES_WIC
+	depends on HAS_MACHINE_FEATURES_EFI
 
 choice
 	prompt "Default EFI Provider"

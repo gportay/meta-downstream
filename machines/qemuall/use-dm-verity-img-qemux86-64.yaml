@@ -5,7 +5,6 @@ header:
   version: 2
 local_conf_header:
   machine-use-dm-verity-img-qemux86-64: |
-    MACHINE_FEATURES += "efi"
     IMAGE_INSTALL:append = " intel-microcode"
     DM_VERITY_ROOT_GUID ?= "4f68bce3-e8cd-4db1-96e7-fbcaf984b709"
     DM_VERITY_RHASH_GUID ?= "2c7357ed-ebd2-46d9-aec1-23d437ec2bf5"
