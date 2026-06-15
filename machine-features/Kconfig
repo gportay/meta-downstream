@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Yocto Project Reference Manual.
+#
+# https://docs.yoctoproject.org/dev/ref-manual/features.html#machine-features
+
+menu "Machine Features"
+
+config HAS_MACHINE_FEATURES_EFI
+	bool "Enable EFI"
+	default y
+	help
+	  Support for booting through EFI.
+
+config KAS_INCLUDE_HAS_MACHINES_FEATURE_EFI
+	string
+	depends on HAS_MACHINES_FEATURE_EFI
+	default "machine-features/efi.yaml"
+
+endmenu
