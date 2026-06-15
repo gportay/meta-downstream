@@ -25,6 +25,7 @@ config HAS_IMAGE_CLASSES_DM_VERITY_IMG
 	bool "Class dm-verity-img"
 	select HAS_LAYER_META_SECURITY
 	select HAS_DISTRO_FEATURE_SECURITY
+	select HAS_IMAGE_FEATURE_READ_ONLY_ROOTFS
 	select HAS_INITRAMFS_IMAGE
 	help
 	  This bbclass allows creating of dm-verity protected partition
