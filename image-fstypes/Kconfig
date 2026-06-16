@@ -1,11 +1,14 @@
-# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-License-Identifier: LGPL-2.1-only AND MIT AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
-# The help texts are stolen from the Yocto Project Development Tasks Manual.
+# The help texts are stolen from the Yocto Project Reference Manual, the Yocto
+# Project Development Tasks Manual and from meta-raspberrypi and meta-security
+# layers.
 #
 # https://docs.yoctoproject.org/dev/dev-manual/index.html
 # https://docs.yoctoproject.org/dev/dev-manual/wic.html
+# https://docs.yoctoproject.org/ref-manual/variables.html#term-WKS_FILE
 
 menu "Image FileSystem Types"
 
@@ -39,5 +42,69 @@ config KAS_INCLUDE_HAS_IMAGE_FSTYPES_WIC
 	string
 	depends on HAS_IMAGE_FSTYPES_WIC
 	default "image-fstypes/wic.yaml"
+
+config HAS_IMAGE_FSTYPES_USE_WKS_FILE
+	bool "Use WKS file"
+	depends on HAS_IMAGE_FSTYPES_WIC
+	help
+	  Specifies the location of the Wic kickstart file that is used
+	  by the OpenEmbedded build system to create a partitioned
+	  image (image.wic).
+
+if HAS_IMAGE_FSTYPES_USE_WKS_FILE
+
+choice
+	prompt "Wic Kickstart file"
+	default IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI if HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
+	default IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY if HAS_IMAGE_CLASSES_DM_VERITY_IMG && IS_RASPBERRYPI
+	default IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY if HAS_IMAGE_CLASSES_DM_VERITY_IMG && IS_MACHINE_QEMUX86_64
+
+config IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI
+	bool "sdimage-autoboot+tryboot-raspberrypi.wks"
+
+config IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY
+	bool "sdimage-raspberrypi-dmverity.wks.in"
+	help
+	  Create Raspberry Pi SD card image with dm-verity
+
+	  Creates a partitioned SD card image for use with Raspberry
+	  Pi. Boot files are located in the first vfat partition. A
+	  dm-verity variant of the regular wks for Raspberry Pi
+	  machines. We need to fetch the partition images from the
+	  IMGDEPLOYDIR as the rootfs source plugin will not recreate
+	  the exact block device corresponding with the hash tree. We
+	  must not alter the label or any other setting on the image.
+
+	  Based on meta-raspberrypi's sdimage-raspberrypi and
+	  meta-security's systemd-bootdisk-dmverity.wks.in files
+
+	  This .wks only works with the dm-verity-img class.
+
+config IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY
+	bool "systemd-bootdisk-dmverity.wks.in"
+	help
+	  Create an EFI disk image with systemd-boot and dm-verity
+
+	  A dm-verity variant of the regular wks for IA machines. We
+	  need to fetch the partition images from the IMGDEPLOYDIR as
+	  the rootfs source plugin will not recreate the exact block
+	  device corresponding with the hash tree. We must not alter
+	  the label or any other setting on the image.
+
+	  Based on OE-core's systemd-bootdisk.wks and meta-security's
+	  beaglebone-yocto-verity.wks.in file
+
+	  This .wks only works with the dm-verity-img class.
+
+endchoice
+
+config KAS_INCLUDE_HAS_IMAGE_FSTYPES_USE_WKS_FILE
+	string
+	default "image-fstypes/sdimage-autoboot+tryboot-raspberrypi.yaml" if IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI
+	default "image-fstypes/sdimage-raspberrypi-dmverity.yaml" if IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY
+	default "image-fstypes/systemd-bootdisk-dmverity.yaml" if IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY
+	default ""
+
+endif
 
 endmenu
