@@ -5,4 +5,4 @@ header:
   version: 2
 local_conf_header:
   machines-qemuall-use-wic-qemuarm64: |
-    WKS_FILE = "efi-disk.wks.in"
+    WKS_FILE ?= "efi-disk.wks.in"

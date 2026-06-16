@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 header:
   version: 2
@@ -7,4 +7,3 @@ local_conf_header:
   machine-raspberrypi-use-autoboot-txt: |
     DEPENDS:pn-rpi-bootfiles:append = " rpi-autoboot"
     CMDLINE_ROOT_PARTITION = "/dev/mmcblk0p5"
-    WKS_FILE = "sdimage-autoboot+tryboot-raspberrypi.wks.in"

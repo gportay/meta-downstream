@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+header:
+  version: 2
+local_conf_header:
+  image-fstypes-sdimage-autoboot+tryboot-raspberrypi: |
+    WKS_FILES ?= "sdimage-autoboot+tryboot-raspberrypi.wks.in"
