@@ -7,7 +7,3 @@ local_conf_header:
   machine-use-dm-verity-img-qemuarm64: |
     DM_VERITY_ROOT_GUID ?= "b921b045-1df0-41c3-af44-4c6f280d3fae"
     DM_VERITY_RHASH_GUID ?= "df3300ce-d69f-4c92-978c-9bfb0f38d820"
-    ROOT ?= "root=${@bb.utils.contains('DM_VERITY_SEPARATE_HASH', '1', '/dev/mapper/rootfs', '/dev/sda2', d)}"
-    INITRD ?= "${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}${IMAGE_MACHINE_SUFFIX}.${@d.getVar('INITRAMFS_FSTYPES').split()[0]}"
-    IMAGE_EFI_BOOT_FILES ?= "${INITRD};initrd"
-    APPEND:append = " console=ttyAMA0,115200"
