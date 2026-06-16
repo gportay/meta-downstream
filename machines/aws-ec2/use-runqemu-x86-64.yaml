@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 
 header:
   version: 2
@@ -13,5 +13,4 @@ local_conf_header:
     QB_AUDIO_OPT = "-device AC97"
     QB_KERNEL_CMDLINE_APPEND = "oprofile.timer=1 tsc=reliable no_timer_check rcupdate.rcu_expedited=1"
     QB_OPT_APPEND = "-usb -device usb-tablet -usb -device usb-kbd"
-    WKS_FILE = "qemux86-directdisk.wks"
     SERIAL_CONSOLES = "115200;ttyS0 115200;ttyS1"

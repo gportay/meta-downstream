@@ -1,11 +1,14 @@
-# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
-# SPDX-FileCopyrightText: Copyright 2024 Gaël PORTAY
+# SPDX-License-Identifier: LGPL-2.1-only AND MIT AND CC-BY-SA-2.0-UK
+# SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
-# The help texts are stolen from the Yocto Project Development Tasks Manual.
+# The help texts are stolen from the Yocto Project Reference Manual, the Yocto
+# Project Development Tasks Manual and from meta-arm, meta-raspberrypi,
+# meta-security, meta-yocto and openembedded-core layers.
 #
 # https://docs.yoctoproject.org/dev/dev-manual/index.html
 # https://docs.yoctoproject.org/dev/dev-manual/wic.html
+# https://docs.yoctoproject.org/ref-manual/variables.html#term-WKS_FILE
 
 menu "Image FileSystem Types"
 
@@ -39,5 +42,107 @@ config KAS_INCLUDE_HAS_IMAGE_FSTYPES_WIC
 	string
 	depends on HAS_IMAGE_FSTYPES_WIC
 	default "image-fstypes/wic.yaml"
+
+config HAS_IMAGE_FSTYPES_USE_WKS_FILE
+	bool "Use WKS file"
+	depends on HAS_IMAGE_FSTYPES_WIC
+	help
+	  Specifies the location of the Wic kickstart file that is used
+	  by the OpenEmbedded build system to create a partitioned
+	  image (image.wic).
+
+if HAS_IMAGE_FSTYPES_USE_WKS_FILE
+
+choice
+	prompt "Wic Kickstart file"
+	default IS_WKS_FILE_EFI_DISK if IS_MACHINE_QEMUARM64
+	default IS_WKS_FILE_GENERICX86 if IS_MACHINE_QEMUX86_64 && \
+	                                  HAS_QEMUALL_USE_UEFI && \
+	                                  !HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default IS_WKS_FILE_QEMUX86_DIRECTDISK if IS_MACHINE_AWS_EC2_X86_64 && \
+	                                          HAS_AWS_EC2_USE_RUNQEMU
+	default IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI if HAS_RASPBERRYPI_FIRMWARE_USE_AUTOBOOT_TXT
+	default IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY if IS_RASPBERRYPI && \
+	                                                    HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY if IS_MACHINE_QEMUX86_64 && \
+	                                                 HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default IS_WKS_FILE_DEFAULT
+
+config IS_WKS_FILE_EFI_DISK
+	bool "efi-disk.wks.in"
+	help
+	  Create an EFI disk image
+
+	  Creates a partitioned EFI disk image that the user can
+	  directly dd to boot media.
+
+config IS_WKS_FILE_GENERICX86
+	bool "genericx86.wks.in"
+	help
+	  Create an EFI disk image for genericx86*
+
+	  Creates a partitioned EFI disk image for genericx86* machines
+
+config IS_WKS_FILE_QEMUX86_DIRECTDISK
+	bool "qemux86-directdisk.wks"
+	help
+	  Create a qemu machine 'pcbios' direct disk image
+
+	  Creates a partitioned legacy BIOS disk image that the user
+	  can directly use to boot a qemu machine.
+
+config IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI
+	bool "sdimage-autoboot+tryboot-raspberrypi.wks"
+
+config IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY
+	bool "sdimage-raspberrypi-dmverity.wks.in"
+	help
+	  Create Raspberry Pi SD card image with dm-verity
+
+	  Creates a partitioned SD card image for use with Raspberry
+	  Pi. Boot files are located in the first vfat partition. A
+	  dm-verity variant of the regular wks for Raspberry Pi
+	  machines. We need to fetch the partition images from the
+	  IMGDEPLOYDIR as the rootfs source plugin will not recreate
+	  the exact block device corresponding with the hash tree. We
+	  must not alter the label or any other setting on the image.
+
+	  Based on meta-raspberrypi's sdimage-raspberrypi and
+	  meta-security's systemd-bootdisk-dmverity.wks.in files
+
+	  This .wks only works with the dm-verity-img class.
+
+config IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY
+	bool "systemd-bootdisk-dmverity.wks.in"
+	help
+	  Create an EFI disk image with systemd-boot and dm-verity
+
+	  A dm-verity variant of the regular wks for IA machines. We
+	  need to fetch the partition images from the IMGDEPLOYDIR as
+	  the rootfs source plugin will not recreate the exact block
+	  device corresponding with the hash tree. We must not alter
+	  the label or any other setting on the image.
+
+	  Based on OE-core's systemd-bootdisk.wks and meta-security's
+	  beaglebone-yocto-verity.wks.in file
+
+	  This .wks only works with the dm-verity-img class.
+
+config IS_WKS_FILE_DEFAULT
+	bool "default"
+
+endchoice
+
+config KAS_INCLUDE_HAS_IMAGE_FSTYPES_USE_WKS_FILE
+	string
+	default "image-fstypes/efi-disk.yaml" if IS_WKS_FILE_EFI_DISK
+	default "image-fstypes/genericx86.yaml" if IS_WKS_FILE_GENERICX86
+	default "image-fstypes/qemux86-directdisk.yaml" if IS_WKS_FILE_QEMUX86_DIRECTDISK
+	default "image-fstypes/sdimage-autoboot+tryboot-raspberrypi.yaml" if IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI
+	default "image-fstypes/sdimage-raspberrypi-dmverity.yaml" if IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY
+	default "image-fstypes/systemd-bootdisk-dmverity.yaml" if IS_WKS_FILE_SYSTEMD_BOOTDISK_DMVERITY
+	default "" if IS_WKS_FILE_DEFAULT
+
+endif
 
 endmenu

@@ -4,5 +4,5 @@
 header:
   version: 2
 local_conf_header:
-  machines-qemuall-use-uefi-qemux86-64: |
-    WKS_FILE = "genericx86.wks.in"
+  image-fstypes-efi-disk: |
+    WKS_FILE ?= "efi-disk.wks.in"
