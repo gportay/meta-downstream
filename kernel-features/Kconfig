@@ -21,4 +21,15 @@ config KAS_INCLUDE_HAS_KERNEL_FEATURES_DM_VERITY
 	depends on HAS_KERNEL_FEATURES_DM_VERITY
 	default "kernel-features/dm-verity.yaml"
 
+config HAS_KERNEL_FEATURES_EFI
+	bool "Enable EFI"
+	default y if HAS_MACHINE_FEATURES_EFI
+	help
+	  Core EFI support.
+
+config KAS_INCLUDE_HAS_KERNEL_FEATURES_EFI
+	string
+	depends on HAS_KERNEL_FEATURES_EFI
+	default "kernel-features/efi.yaml"
+
 endmenu
