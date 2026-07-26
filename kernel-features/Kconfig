@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: LGPL-2.1-only AND GPL-2.0-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: The OpenEmbedded Contributors
+#
+# The help texts are stolen from the Patches and configuration for the
+# linux-yocto kernel tree Source Repository.
+#
+# https://git.yoctoproject.org/yocto-kernel-cache/
+
+menu "Kernel Features"
+
+config HAS_KERNEL_FEATURES_EFI
+	bool "Enable EFI"
+	default y if HAS_MACHINE_FEATURES_EFI
+	help
+	  Core EFI support.
+
+config KAS_INCLUDE_HAS_KERNEL_FEATURES_EFI
+	string
+	depends on HAS_KERNEL_FEATURES_EFI
+	default "kernel-features/efi.yaml"
+
+endmenu
