@@ -7,4 +7,7 @@ local_conf_header:
   image-classes-syslinux: |
     IMAGE_CLASSES:append = " syslinux"
     LABELS ?= "boot"
+    ROOT ?= "root=/dev/sda2"
+    INITRD ?= "${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}${IMAGE_MACHINE_SUFFIX}.${@d.getVar('INITRAMFS_FSTYPES').split()[0]}"
+    IMAGE_BOOT_FILES ?= "${INITRD};initrd"
     SYSLINUX_CFG ?= "${S}/syslinux.cfg"

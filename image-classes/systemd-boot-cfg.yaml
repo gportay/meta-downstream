@@ -7,4 +7,7 @@ local_conf_header:
   image-classes-systemd-boot-cfg: |
     IMAGE_CLASSES:append = " systemd-boot-cfg"
     LABELS ?= "boot"
+    ROOT ?= "root=/dev/sda2"
+    INITRD ?= "${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}${IMAGE_MACHINE_SUFFIX}.${@d.getVar('INITRAMFS_FSTYPES').split()[0]}"
+    IMAGE_EFI_BOOT_FILES ?= "${INITRD};initrd"
     EFI_CFG ?= "${S}/entries/${@''.join(d.getVar('LABELS').split(' ')[0])}.conf"

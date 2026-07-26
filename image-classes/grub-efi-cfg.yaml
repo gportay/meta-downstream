@@ -7,5 +7,8 @@ local_conf_header:
   image-classes-efi-grub-cfg: |
     IMAGE_CLASSES:append = " grub-efi-cfg"
     LABELS ?= "boot"
+    ROOT ?= "root=/dev/sda2"
+    INITRD ?= "${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}${IMAGE_MACHINE_SUFFIX}.${@d.getVar('INITRAMFS_FSTYPES').split()[0]}"
+    IMAGE_EFI_BOOT_FILES ?= "${INITRD};initrd"
     GRUB_CFG ?= "${S}/grub.cfg"
     EFI_CFG ?= "${GRUB_CFG}"
