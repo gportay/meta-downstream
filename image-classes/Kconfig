@@ -27,6 +27,7 @@ config HAS_IMAGE_CLASSES_DM_VERITY_IMG
 	select HAS_DISTRO_FEATURE_SECURITY
 	select HAS_IMAGE_FEATURE_READ_ONLY_ROOTFS
 	select HAS_INITRAMFS_IMAGE
+	select HAS_KERNEL_FEATURES_DM_VERITY
 	help
 	  This bbclass allows creating of dm-verity protected partition
 	  images. It generates a device image file with dm-verity hash

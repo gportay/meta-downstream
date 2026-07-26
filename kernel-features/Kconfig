@@ -9,6 +9,18 @@
 
 menu "Kernel Features"
 
+config HAS_KERNEL_FEATURES_DM_VERITY
+	bool "Enable dm-verity"
+	default y if HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	help
+	  Enable dm-verity (device-mapper block integrity checking
+	  target).
+
+config KAS_INCLUDE_HAS_KERNEL_FEATURES_DM_VERITY
+	string
+	depends on HAS_KERNEL_FEATURES_DM_VERITY
+	default "kernel-features/dm-verity.yaml"
+
 config HAS_KERNEL_FEATURES_EFI
 	bool "Enable EFI"
 	default y if HAS_MACHINE_FEATURES_EFI
