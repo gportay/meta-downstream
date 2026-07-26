@@ -29,6 +29,21 @@ config KAS_INCLUDE_HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
         depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
         default "machines/qemuall/use-dm-verity-img-qemux86-64.yaml"
 
+config HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
+	bool
+	depends on HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	depends on IS_MACHINE_QEMUARM64
+	select HAS_IMAGE_CLASSES_GRUB_EFI_CFG if IS_EFI_PROVIDER_GRUB_EFI
+	select HAS_IMAGE_CLASSES_SYSTEMD_BOOT_CFG if IS_EFI_PROVIDER_SYSTEMD_BOOT
+	select HAS_QEMUALL_USE_UEFI
+	select HAS_QEMUALL_USE_WIC
+	default y
+
+config KAS_INCLUDE_HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
+        string
+        depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
+        default "machines/qemuall/use-dm-verity-img-qemuarm64.yaml"
+
 config HAS_QEMUALL_USE_UEFI
 	bool "Use UEFI"
 	select HAS_MACHINE_FEATURES_EFI
