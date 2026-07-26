@@ -12,3 +12,4 @@ local_conf_header:
     INITRAMFS_IMAGE ?= "dm-verity-image-initramfs"
     INITRAMFS_FSTYPES ?= "cpio.gz"
     IMAGE_FSTYPES:remove:pn-dm-verity-image-initramfs = " ext4 wic"
+    KERNEL_FEATURES:append = " features/device-mapper/dm-verity.scc"
