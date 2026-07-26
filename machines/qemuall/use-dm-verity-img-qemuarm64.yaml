@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+header:
+  version: 2
+local_conf_header:
+  machine-use-dm-verity-img-qemuarm64: |
+    DM_VERITY_ROOT_GUID ?= "b921b045-1df0-41c3-af44-4c6f280d3fae"
+    DM_VERITY_RHASH_GUID ?= "df3300ce-d69f-4c92-978c-9bfb0f38d820"

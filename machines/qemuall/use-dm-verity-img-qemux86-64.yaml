@@ -8,4 +8,3 @@ local_conf_header:
     IMAGE_INSTALL:append = " intel-microcode"
     DM_VERITY_ROOT_GUID ?= "4f68bce3-e8cd-4db1-96e7-fbcaf984b709"
     DM_VERITY_RHASH_GUID ?= "2c7357ed-ebd2-46d9-aec1-23d437ec2bf5"
-    APPEND:append = " console=ttyS0,115200"
