@@ -14,6 +14,9 @@ using the [kas] setup tool.
  - Google Coral Dev Board
  - StarFive VisionFive 2
 
+__Important__: This repository is a pretty much unusual layer providing a
+single branch that is compatible with master and latest LTS thanks to quirks.
+
 ## REQUIREMENTS
 
 Look at the Yocto Project Reference Manual [System Requirements] and the kas
