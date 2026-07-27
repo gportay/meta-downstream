@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-only
-# SPDX-FileCopyrightText: Copyright 2024-2025 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2024-2026 Gaël PORTAY
 #
 # See the Yocto Project Reference Manual.
 #
@@ -10,7 +10,7 @@ menu "Release"
 
 choice
 	prompt "Branch"
-	default IS_BRANCH_MASTER
+	default IS_BRANCH_WRYNOSE
 	help
 	  https://wiki.yoctoproject.org/wiki/Releases
 
