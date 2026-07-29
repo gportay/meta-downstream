@@ -18,6 +18,7 @@ source "inherits/Kconfig"
 
 config HAS_BB_HASHSERVE_DB_DIR
 	bool "Use sstate to share multiple build directories"
+	default y if IS_BRANCH_WRYNOSE || IS_BRANCH_MASTER
 	help
 	  When BB_HASHSERVE is set to auto, bitbake will use a private
 	  location inside a particular build directory for the sqlite
