@@ -55,6 +55,28 @@ Run the firmware:
 Login as **root**, run commands and poweroff the system or **Ctrl-a x** to exit
 the emulator, have fun!
 
+## CVE
+
+Enable option **Inherit cve-check**, from **General** > **Global Classes**,
+save and exit:
+
+	kas menu
+
+Rebuild the targets:
+
+	kas build
+
+Grab `build/tmp/log/cve/cve-summary` and `build/tmp/log/cve/cve-summary.json`
+files, or list the Unpatched's CVE:
+
+	jq -r '.package[] | .issue[] | select( .status == "Unpatched" ).id' build/tmp/log/cve/cve-summary.json
+
+And count them:
+
+	jq -r '[.package[] | .issue[] | select( .status == "Unpatched" ).id] | length' build/tmp/log/cve/cve-summary.json
+
+__Note__: Supported by **scartgap** branch only.
+
 ## PATCHES
 
 Submit patches at *https://github.com/gportay/meta-downstream/pulls*
@@ -75,6 +97,11 @@ This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License as published by the Free
 Software Foundation, either version 2.1 of the License, or (at your option) any
 later version.
+
+Copyright 2026 Rtone
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the MIT License.
 
 [Dependencies and installation]: https://kas.readthedocs.io/en/next/userguide/getting-started.html#dependencies-installation
 [System Requirements]: https://docs.yoctoproject.org/dev/ref-manual/system-requirements.html
