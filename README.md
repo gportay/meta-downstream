@@ -117,6 +117,25 @@ Grab the SPDX SBOM JSON file:
 
 	build/tmp/deploy/images/*/core-image-minimal-*.rootfs.spdx.json
 
+### CYCLONEDX
+
+Enable option **Inherit cyclonedx-export**, from **General** > **Global
+Classes**, save and exit:
+
+	kas menu
+
+Rebuild the targets:
+
+	kas build
+
+Grab the CycloneDX SBOM JSON file:
+
+	build/tmp/deploy/images/*/core-image-minimal-bom.json
+
+And its VEX JSON file:
+
+	build/tmp/deploy/images/*/core-image-minimal-vex.json
+
 ## PATCHES
 
 Submit patches at *https://github.com/gportay/meta-downstream/pulls*

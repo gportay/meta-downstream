@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: (MIT OR LGPL-2.1-only) AND CC-BY-SA-2.0-UK
 # SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
 # SPDX-FileCopyrightText: Copyright 2026 Rtone
+# SPDX-FileCopyrightText: Copyright 2024 iris-GmbH infrared & intelligent sensors
+# SPDX-FileCopyrightText: Copyright 2024 Savoir-faire Linux Inc.
+# SPDX-FileCopyrightText: Copyright 2022 BG Networks, Inc.
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
@@ -9,6 +12,7 @@
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#create-spdx
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#rm-work
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#vex
+# https://github.com/iris-GmbH/meta-cyclonedx/blob/main/README.md
 
 menu "Global Classes"
 
@@ -27,6 +31,87 @@ config KAS_INCLUDE_HAS_INHERIT_CREATE_SPDX_3_0
 	string
 	depends on HAS_INHERIT_CREATE_SPDX_3_0
 	default "inherits/create-spdx-3.0.yaml"
+
+config HAS_INHERIT_CYCLONEDX_EXPORT
+	bool "Inherit cyclonedx-export"
+	select HAS_LAYER_META_CYCLONEDX
+	help
+	  Produces CycloneDX Software Bill of Materials (aka SBOMs)
+	  from your target root filesystem.
+
+	  https://github.com/iris-GmbH/meta-cyclonedx/blob/main/README.md
+
+config KAS_INCLUDE_HAS_INHERIT_CYCLONEDX_EXPORT
+	string
+	depends on HAS_INHERIT_CYCLONEDX_EXPORT
+	default "inherits/cyclonedx-export.yaml"
+
+choice
+	prompt "CycloneDX Specification Version selection"
+	depends on HAS_INHERIT_CYCLONEDX_EXPORT
+	default IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_4 if IS_BRANCH_SCARTHGAP
+	default IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_6
+	help
+	  By default, meta-cyclonedx generates CycloneDX 1.4 format
+	  SBOMs.
+
+	  https://github.com/iris-GmbH/meta-cyclonedx/blob/main/README.md#cyclonedx-specification-version
+
+config IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_4
+	bool "1.4"
+	help
+	  Legacy format for compatibility with older tools.
+
+config IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_6
+	bool "1.6"
+	help
+	  Modern format with enhanced metadata and timestamps.
+
+config IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_7
+	bool "1.7"
+	help
+	  Latest version with advanced cryptography transparency
+	  (CBOM), intellectual property visibility, citations, and
+	  improved custom license handling
+
+endchoice
+
+if HAS_INHERIT_CYCLONEDX_EXPORT
+
+config KAS_INCLUDE_IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_4
+	string
+	depends on IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_4
+	default "inherits/cyclonedx-export-cyclonedx-image-version-1.4.yaml"
+
+config KAS_INCLUDE_IS_INHERIT_CYCLONEDX_EXPORT_HAS_CYCLONEDX_IMAGE_VERSION_1_6
+	string
+	depends on IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_6
+	default "inherits/cyclonedx-export-cyclonedx-image-version-1.6.yaml"
+
+config KAS_INCLUDE_IS_INHERIT_CYCLONEDX_EXPORT_HAS_CYCLONEDX_IMAGE_VERSION_1_7
+	string
+	depends on IS_INHERIT_CYCLONEDX_EXPORT_CYCLONEDX_IMAGE_VERSION_1_7
+	default "inherits/cyclonedx-export-cyclonedx-image-version-1.7.yaml"
+
+config HAS_INHERIT_CYCLONEDX_EXPORT_NO_CYCLONEDX_RUNTIME_PACKAGES_ONLY
+	bool "Disable runtime packages only"
+	help
+	  Runtime vs Build-time Packages
+
+	  By default, meta-cyclonedx will only include run-time
+	  packages in the SBOM, which drastically reduces the number of
+	  potentially irrelevant packages. However, this can lead to
+	  valid packages being omitted from the SBOM, see
+	  https://github.com/iris-GmbH/meta-cyclonedx/blob/scarthgap/README.md#potentially-missing-packages-after-run-time-filtering
+
+	  https://github.com/iris-GmbH/meta-cyclonedx/blob/scarthgap/README.md#runtime-vs-build-time-packages
+
+config KAS_INCLUDE_HAS_INHERIT_CYCLONEDX_EXPORT_DISABLE_CYCLONEDX_RUNTIME_PACKAGES_ONLY
+	string
+	depends on HAS_INHERIT_CYCLONEDX_EXPORT_DISABLE_CYCLONEDX_RUNTIME_PACKAGES_ONLY
+	default "inherits/cyclonedx-export-no-cyclonedx-runtime-package-only.yaml"
+
+endif
 
 config HAS_INHERIT_CVE_CHECK
 	bool "Inherit cve-check"

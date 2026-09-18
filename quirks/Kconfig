@@ -120,3 +120,25 @@ config KAS_INCLUDE_HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
 	string
 	depends on HAS_QUIRK_REMOVE_LINUX_CORAL_QA_ERRORS
 	default "quirks/remove-linux-coral-qa-errors.yaml"
+
+config HAS_QUIRK_CYCLONEDX_EXPORT_MULTIPLE_TARGETS
+	bool "Align default filenames with image output files"
+	depends on IS_BRANCH_SCARTHGAP
+	default y if HAS_LAYER_META_CYCLONEDX
+	help
+	  By using filenames for both sbom and vex files names similar
+	  to the image output files, and written to the same directory
+	  as those, brings several advantages:
+	    - Unique filenames for each image/recipe.
+	    - Unique output path for each machine.
+	    - Easy to see which image file the bom/vex file corresponds
+	      to.
+
+	  The first two of the 2 advantages mentioned above is
+	  extending on the changes done in commit 5c8b10d ("breaking:
+	  add support for multiple targets (#10)") but for both
+	  multiple machines and multiple recipes.
+
+	  https://github.com/iris-GmbH/meta-cyclonedx/commit/c4742de48dbae9951dc492a07a70a8b836860a84
+	  https://github.com/iris-GmbH/meta-cyclonedx/commit/5c8b10d49f7cf0a372daf3ee814327163aa7659a
+	  https://github.com/iris-GmbH/meta-cyclonedx/pull/10

@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: MIT OR LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2026 Rtone
+
+header:
+  version: 2
+local_conf_header:
+  inherits-cyclonedx-export-cyclonedx-image-version-1.6: |
+    CYCLONEDX_SPEC_VERSION = "1.6"

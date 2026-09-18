@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: MIT OR LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2026 Rtone
+
+header:
+  version: 2
+repos:
+  meta-cyclonedx:
+    url: "https://github.com/iris-GmbH/meta-cyclonedx.git"
+local_conf_header:
+  inherits-cyclonedx-export: |
+    INHERIT += "cyclonedx-export"
