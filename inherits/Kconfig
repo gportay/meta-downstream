@@ -1,13 +1,31 @@
-# SPDX-License-Identifier: LGPL-2.1-only AND CC-BY-SA-2.0-UK
+# SPDX-License-Identifier: (MIT OR LGPL-2.1-only) AND CC-BY-SA-2.0-UK
 # SPDX-FileCopyrightText: Copyright 2024,2026 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2026 Rtone
 # SPDX-FileCopyrightText: The OpenEmbedded Contributors
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
 #
 # https://docs.yoctoproject.org/dev/ref-manual/index.html
+# https://docs.yoctoproject.org/dev/ref-manual/classes.html#create-spdx
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#rm-work
 
 menu "Global Classes"
+
+config HAS_INHERIT_CREATE_SPDX_3_0
+	bool "Inherit create-spdx-3.0"
+	depends on IS_BRANCH_SCARTHGAP
+	default y
+	help
+	  The create-spdx class provides support for automatically
+	  creating SPDX SBOM documents based upon image and SDK
+	  contents.
+
+	  https://docs.yoctoproject.org/ref-manual/classes.html#create-spdx
+
+config KAS_INCLUDE_HAS_INHERIT_CREATE_SPDX_3_0
+	string
+	depends on HAS_INHERIT_CREATE_SPDX_3_0
+	default "inherits/create-spdx-3.0.yaml"
 
 config HAS_INHERIT_CVE_CHECK
 	bool "Inherit cve-check"

@@ -79,6 +79,25 @@ __Note__: Supported by **scartgap** branch only.
 
 ## SBOM
 
+### SPDX 2.2
+
+Disable option **Inherit create-spdx-3.0**, from **General** > **Global
+Classes**, save and exit:
+
+	kas menu
+
+Rebuild the targets:
+
+	kas build
+
+Grab the SPDX SBOM tarball file:
+
+	build/tmp/deploy/images/*/core-image-minimal-*.rootfs.spdx.tar.*
+
+__Note__: Supported by **scartgap** branch only.
+
+### SPDX 3.0
+
 Grab the SPDX SBOM JSON file:
 
 	build/tmp/deploy/images/*/core-image-minimal-*.rootfs.spdx.json
