@@ -8,6 +8,7 @@
 # https://docs.yoctoproject.org/dev/ref-manual/index.html
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#create-spdx
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#rm-work
+# https://docs.yoctoproject.org/dev/ref-manual/classes.html#vex
 
 menu "Global Classes"
 
@@ -63,5 +64,19 @@ config KAS_INCLUDE_HAS_INHERIT_RM_WORK
 	string
 	depends on HAS_INHERIT_RM_WORK
 	default "inherits/rm_work.yaml"
+
+config HAS_INHERIT_VEX
+	bool "Inherit vex"
+	help
+	  The vex class is used to generate metadata needed by external
+	  tools to check for vulnerabilities, for example CVEs. It can
+	  be used as a replacement for cve-check.
+
+	  https://docs.yoctoproject.org/ref-manual/classes.html#vex
+
+config KAS_INCLUDE_HAS_INHERIT_VEX
+	string
+	depends on HAS_INHERIT_VEX
+	default "inherits/vex.yaml"
 
 endmenu

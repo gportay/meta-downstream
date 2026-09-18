@@ -66,16 +66,31 @@ Rebuild the targets:
 
 	kas build
 
-Grab `build/tmp/log/cve/cve-summary` and `build/tmp/log/cve/cve-summary.json`
-files, or list the Unpatched's CVE:
+Grab the `build/tmp/log/cve/cve-summary.json` JSON file, or list the
+Unpatched's CVE:
 
-	jq -r '.package[] | .issue[] | select( .status == "Unpatched" ).id' build/tmp/log/cve/cve-summary.json
+	jq -r '.package[] | .issue[] | select( .status == "Unpatched" or .status == "Ignored" ).id' build/tmp/log/cve/cve-summary.json
 
 And count them:
 
-	jq -r '[.package[] | .issue[] | select( .status == "Unpatched" ).id] | length' build/tmp/log/cve/cve-summary.json
+	jq -r '[.package[] | .issue[] | select( .status == "Unpatched" or .status == "Ignored" ).id] | length' build/tmp/log/cve/cve-summary.json
 
 __Note__: Supported by **scartgap** branch only.
+
+## VEX
+
+Enable option **Inherit vex**, from **General** > **Global Classes**, save and
+exit:
+
+	kas menu
+
+Rebuild the targets:
+
+	kas build
+
+Grab the JSON file:
+
+	build/tmp/deploy/images/*/core-image-minimal-*.json
 
 ## SBOM
 
