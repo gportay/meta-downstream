@@ -77,6 +77,12 @@ And count them:
 
 __Note__: Supported by **scartgap** branch only.
 
+## SBOM
+
+Grab the SPDX SBOM JSON file:
+
+	build/tmp/deploy/images/*/core-image-minimal-*.rootfs.spdx.json
+
 ## PATCHES
 
 Submit patches at *https://github.com/gportay/meta-downstream/pulls*
