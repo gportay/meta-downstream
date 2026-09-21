@@ -8,10 +8,10 @@
 #
 # The help texts are stolen from the Yocto Project Reference Manual.
 #
-# https://docs.yoctoproject.org/dev/ref-manual/index.html
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#create-spdx
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#rm-work
 # https://docs.yoctoproject.org/dev/ref-manual/classes.html#vex
+# https://docs.yoctoproject.org/dev/ref-manual/index.html
 # https://github.com/iris-GmbH/meta-cyclonedx/blob/main/README.md
 
 menu "Global Classes"
