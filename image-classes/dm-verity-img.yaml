@@ -12,3 +12,4 @@ local_conf_header:
     INITRAMFS_IMAGE ?= "dm-verity-image-initramfs"
     INITRAMFS_FSTYPES ?= "cpio.gz"
     IMAGE_FSTYPES:remove:pn-dm-verity-image-initramfs = "ext4 wic"
+    APPEND += "systemd.mask=systemd-networkd-persistent-storage.service systemd.mask=systemd-timesyncd.service"
