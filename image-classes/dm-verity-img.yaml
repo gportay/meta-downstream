@@ -11,4 +11,4 @@ local_conf_header:
     DM_VERITY_SEPARATE_HASH ?= "0"
     INITRAMFS_IMAGE ?= "dm-verity-image-initramfs"
     INITRAMFS_FSTYPES ?= "cpio.gz"
-    IMAGE_FSTYPES:remove:pn-dm-verity-image-initramfs = " ext4 wic"
+    IMAGE_FSTYPES:remove:pn-dm-verity-image-initramfs = "ext4 wic"
