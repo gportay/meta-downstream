@@ -9,7 +9,7 @@
 #
 # This .wks only works with the dm-verity-img class.
 
-part /boot --source bootimg-efi --sourceparams="loader=${EFI_PROVIDER}" --ondisk sda --label msdos --active --align 1024 --use-uuid
+part /boot --source bootimg_efi --sourceparams="loader=${EFI_PROVIDER}" --ondisk sda --label msdos --active --align 1024 --use-uuid
 
 part / --source rawcopy --ondisk sda  --sourceparams="file=${IMGDEPLOYDIR}/${DM_VERITY_IMAGE}-${MACHINE}${IMAGE_NAME_SUFFIX}.${DM_VERITY_IMAGE_TYPE}.verity" --use-uuid
 
