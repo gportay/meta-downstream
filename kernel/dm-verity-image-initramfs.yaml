@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+
+header:
+  version: 2
+local_conf_header:
+  kernel-initramfs-image-dm-verity-image-initramfs: |
+    INITRAMFS_IMAGE ?= "dm-verity-image-initramfs"
+    IMAGE_FSTYPES:remove:pn-dm-verity-image-initramfs = "ext4 wic"

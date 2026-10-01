@@ -4,5 +4,6 @@
 header:
   version: 2
 local_conf_header:
-  kernel-initramfs-image: |
+  kernel-initramfs-image-core-image-minimal-initramfs: |
     INITRAMFS_IMAGE ?= "core-image-minimal-initramfs"
+    IMAGE_FSTYPES:remove:pn-core-image-minimal-initramfs = "ext4 wic"

@@ -20,10 +20,31 @@ config HAS_INITRAMFS_IMAGE
 
 	  https://github.com/openembedded/openembedded-core/blob/12b8b7aef5e709293a9ff5090841306d4e469c96/meta/conf/templates/default/local.conf.sample.extended#L316-L320
 
+choice
+	prompt "Initramfs image"
+	depends on HAS_INITRAMFS_IMAGE
+	default IS_DM_VERITY_IMAGE_INITRAMFS if HAS_IMAGE_CLASSES_DM_VERITY_IMG
+	default IS_CORE_IMAGE_MINIMAL_INITRAMFS
+
+config IS_DM_VERITY_IMAGE_INITRAMFS
+	bool "dm-verity-image-initramfs"
+	help
+	  Simple initramfs image for mounting the rootfs over the
+	  verity device mapper.
+
+config IS_CORE_IMAGE_MINIMAL_INITRAMFS
+	bool "core-image-minimal-initramfs"
+	help
+	  Small image capable of booting a device. The kernel includes
+	  the Minimal RAM-based Initial Root Filesystem (initramfs),
+	  which finds the first 'init' program more efficiently.
+
+endchoice
+
 config KAS_INCLUDE_HAS_INITRAMFS_IMAGE
 	string
-	depends on HAS_INITRAMFS_IMAGE
-	default "kernel/initramfs-image.yaml"
+	default "kernel/dm-verity-image-initramfs.yaml" if IS_DM_VERITY_IMAGE_INITRAMFS
+	default "kernel/core-image-minimal-initramfs.yaml"
 
 config HAS_INITRAMFS_IMAGE_BUNDLE
 	depends on HAS_INITRAMFS_IMAGE
