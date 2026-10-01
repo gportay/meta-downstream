@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: MIT OR LGPL-2.1-only
+# SPDX-FileCopyrightText: Copyright 2026 Gaël PORTAY
+# SPDX-FileCopyrightText: Copyright 2026 Rtone
+
+header:
+  version: 2
+local_conf_header:
+  inherits-create-spdx-3.0: |
+    INHERIT_DISTRO:remove = "create-spdx"
+    INHERIT_DISTRO:append = " create-spdx-3.0"
