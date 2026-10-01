@@ -20,9 +20,59 @@ config HAS_INITRAMFS_IMAGE
 
 	  https://github.com/openembedded/openembedded-core/blob/12b8b7aef5e709293a9ff5090841306d4e469c96/meta/conf/templates/default/local.conf.sample.extended#L316-L320
 
+if HAS_INITRAMFS_IMAGE
+
+choice
+	prompt "Initramfs FS type"
+	default IS_INITRAMFS_FSTYPES_CPIO_GZ
+	help
+	  Defines the format for the output image of an initial RAM
+	  filesystem (Initramfs), which is used during boot. Supported
+	  formats are the same as those supported by the IMAGE_FSTYPES variable.
+
+	  The default value of this variable, which is set in the
+	  meta/conf/bitbake.conf configuration file in
+	  OpenEmbedded-Core (OE-Core), is “cpio.gz”. The Linux kernel’s
+	  Initramfs mechanism, as opposed to the initial RAM filesystem
+	  initrd mechanism, expects an optionally compressed cpio
+	  archive.
+
+
+config IS_INITRAMFS_FSTYPE_CPIO_LZ4
+	bool "cpio.lz4"
+
+config IS_INITRAMFS_FSTYPE_CPIO_LZO
+	bool "cpio.lzo"
+
+config IS_INITRAMFS_FSTYPE_CPIO_LZMA
+	bool "cpio.lzma"
+
+config IS_INITRAMFS_FSTYPE_CPIO_XZ
+	bool "cpio.xz"
+
+config IS_INITRAMFS_FSTYPE_CPIO_ZST
+	bool "cpio.zst"
+
+config IS_INITRAMFS_FSTYPES_CPIO_GZ
+	bool "cpio.gz"
+
+config IS_INITRAMFS_FSTYPES_CPIO
+	bool "cpio"
+
+endchoice
+
+config KAS_INCLUDE_HAS_INITRAMFS_FSTYPES
+	string
+	default "kernel/initramfs-fstypes-cpio-lz4.yaml" if IS_INITRAMFS_FSTYPE_CPIO_LZ4
+	default "kernel/initramfs-fstypes-cpio-lzo.yaml" if IS_INITRAMFS_FSTYPE_CPIO_LZO
+	default "kernel/initramfs-fstypes-cpio-lzma.yaml" if IS_INITRAMFS_FSTYPE_CPIO_LZMA
+	default "kernel/initramfs-fstypes-cpio-xz.yaml" if IS_INITRAMFS_FSTYPE_CPIO_XZ
+	default "kernel/initramfs-fstypes-cpio-zst.yaml" if IS_INITRAMFS_FSTYPE_CPIO_ZST
+	default "kernel/initramfs-fstypes-cpio-gz.yaml" if IS_INITRAMFS_FSTYPE_CPIO_GZ
+	default "kernel/initramfs-fstypes-cpio.yaml" if IS_INITRAMFS_FSTYPE_CPIO
+
 choice
 	prompt "Initramfs image"
-	depends on HAS_INITRAMFS_IMAGE
 	default IS_DM_VERITY_IMAGE_INITRAMFS if HAS_IMAGE_CLASSES_DM_VERITY_IMG
 	default IS_CORE_IMAGE_MINIMAL_INITRAMFS
 
@@ -47,7 +97,6 @@ config KAS_INCLUDE_HAS_INITRAMFS_IMAGE
 	default "kernel/core-image-minimal-initramfs.yaml"
 
 config HAS_INITRAMFS_IMAGE_BUNDLE
-	depends on HAS_INITRAMFS_IMAGE
 	bool "Bundle initramfs to kernel image"
 	help
 	  INITRAMFS_IMAGE_BUNDLE variable controls if the image recipe
@@ -62,5 +111,7 @@ config KAS_INCLUDE_HAS_INITRAMFS_IMAGE_BUNDLE
 	string
 	depends on HAS_INITRAMFS_IMAGE_BUNDLE
 	default "kernel/initramfs-image-bundle.yaml"
+
+endif
 
 endmenu
