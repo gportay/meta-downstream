@@ -30,6 +30,14 @@ config KAS_INCLUDE_HAS_IMAGE_FSTYPES_EXT4
 	depends on HAS_IMAGE_FSTYPES_EXT4
 	default "image-fstypes/ext4.yaml"
 
+config HAS_IMAGE_FSTYPES_TAR_BZ2
+	bool "tar.bz2"
+
+config KAS_INCLUDE_HAS_IMAGE_FSTYPES_TAR_BZ2
+	string
+	depends on HAS_IMAGE_FSTYPES_TAR_BZ2
+	default "image-fstypes/tar-bz2.yaml"
+
 config HAS_IMAGE_FSTYPES_WIC
 	bool "Wic"
 	help
