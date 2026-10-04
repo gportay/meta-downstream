@@ -81,6 +81,8 @@ choice
 
 config IS_WKS_FILE_EFI_DISK_DMVERITY_BOOTLOADER_CONFIG
 	bool "efi-disk-dmverity-bootloader-config.wks.in"
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_DOWNSTREAM
 	help
 	  Create an EFI disk image with custom bootloader config and
 	  dm-verity
@@ -122,9 +124,13 @@ config IS_WKS_FILE_QEMUX86_DIRECTDISK
 
 config IS_WKS_FILE_SDIMAGE_AUTOBOOT_TRYBOOT_RASPBERRYPI
 	bool "sdimage-autoboot+tryboot-raspberrypi.wks"
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_DOWNSTREAM
 
 config IS_WKS_FILE_SDIMAGE_RASPBERRYPI_DMVERITY
 	bool "sdimage-raspberrypi-dmverity.wks.in"
+	select HAS_LAYER_THIS
+	select HAS_LAYER_THIS_META_DOWNSTREAM
 	help
 	  Create Raspberry Pi SD card image with dm-verity
 
