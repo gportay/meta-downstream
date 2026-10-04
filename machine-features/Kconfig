@@ -19,4 +19,15 @@ config KAS_INCLUDE_HAS_MACHINE_FEATURES_EFI
 	depends on HAS_MACHINE_FEATURES_EFI
 	default "machine-features/efi.yaml"
 
+config HAS_MACHINE_FEATURES_PCBIOS
+	bool "Enable PCBIOS"
+	default y
+	help
+	  Support for booting through BIOS.
+
+config KAS_INCLUDE_HAS_MACHINE_FEATURES_PCBIOS
+	string
+	depends on HAS_MACHINE_FEATURES_PCBIOS
+	default "machine-features/pcbios.yaml"
+
 endmenu
