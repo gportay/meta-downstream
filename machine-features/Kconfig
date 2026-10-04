@@ -14,9 +14,9 @@ config HAS_MACHINE_FEATURES_EFI
 	help
 	  Support for booting through EFI.
 
-config KAS_INCLUDE_HAS_MACHINES_FEATURE_EFI
+config KAS_INCLUDE_HAS_MACHINE_FEATURES_EFI
 	string
-	depends on HAS_MACHINES_FEATURE_EFI
+	depends on HAS_MACHINE_FEATURES_EFI
 	default "machine-features/efi.yaml"
 
 endmenu
