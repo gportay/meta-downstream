@@ -24,9 +24,9 @@ config HAS_QEMUALL_USE_DM_VERITY_IMG
 	default y
 
 config KAS_INCLUDE_HAS_QEMUALL_USE_DM_VERITY_IMG
-        string
-        depends on HAS_QEMUALL_USE_DM_VERITY_IMG
-        default "machines/qemuall/use-dm-verity-img.yaml"
+	string
+	depends on HAS_QEMUALL_USE_DM_VERITY_IMG
+	default "machines/qemuall/use-dm-verity-img.yaml"
 
 config HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
 	bool
@@ -37,9 +37,9 @@ config HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
 	default y
 
 config KAS_INCLUDE_HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
-        string
-        depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
-        default "machines/qemuall/use-dm-verity-img-qemux86-64.yaml"
+	string
+	depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUX86_64
+	default "machines/qemuall/use-dm-verity-img-qemux86-64.yaml"
 
 config HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
 	bool
@@ -52,9 +52,9 @@ config HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
 	default y
 
 config KAS_INCLUDE_HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
-        string
-        depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
-        default "machines/qemuall/use-dm-verity-img-qemuarm64.yaml"
+	string
+	depends on HAS_QEMUALL_USE_DM_VERITY_IMG_AND_QEMUARM64
+	default "machines/qemuall/use-dm-verity-img-qemuarm64.yaml"
 
 config HAS_QEMUALL_USE_UEFI
 	bool "Use UEFI"
