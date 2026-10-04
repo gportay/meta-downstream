@@ -6,6 +6,6 @@ header:
 local_conf_header:
   machine-use-dm-verity-img: |
     ROOT ?= "root=${@bb.utils.contains('DM_VERITY_SEPARATE_HASH', '1', '/dev/mapper/rootfs', '/dev/sda2', d)}"
-    INITRD ?= "${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}${IMAGE_MACHINE_SUFFIX}.${@d.getVar('INITRAMFS_FSTYPES').split()[0]}"
-    IMAGE_EFI_BOOT_FILES ?= "${INITRD};initrd"
+    INITRD += "${DEPLOY_DIR_IMAGE}/${INITRAMFS_IMAGE}${IMAGE_MACHINE_SUFFIX}.${@d.getVar('INITRAMFS_FSTYPES').split()[0]}"
+    IMAGE_EFI_BOOT_FILES += "${S}/initrd/initrd;initrd"
     APPEND:append = " console=${KERNEL_CONSOLE}"
