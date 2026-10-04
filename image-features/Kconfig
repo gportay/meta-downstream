@@ -144,4 +144,18 @@ config KAS_INCLUDE_HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
 	depends on HAS_IMAGE_FEATURE_POST_INSTALL_LOGGING
 	default "image-features/post-install-logging.yaml"
 
+config HAS_IMAGE_FEATURE_STATELESS_ROOTFS
+	bool "Enable stateless-rootfs"
+	default y
+	help
+	  Specifies that the image should be created as stateless -
+	  when using systemd, systemctl-native will not be run on the
+	  image, leaving the image for population at runtime by
+	  systemd.
+
+config KAS_INCLUDE_HAS_IMAGE_FEATURE_STATELESS_ROOTFS
+	string
+	depends on HAS_IMAGE_FEATURE_STATELESS_ROOTFS
+	default "image-features/stateless-rootfs.yaml"
+
 endmenu

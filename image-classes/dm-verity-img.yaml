@@ -9,4 +9,4 @@ local_conf_header:
     DM_VERITY_IMAGE ?= "core-image-minimal"
     DM_VERITY_IMAGE_TYPE ?= "ext4"
     DM_VERITY_SEPARATE_HASH ?= "0"
-    APPEND += "systemd.mask=systemd-networkd-persistent-storage.service systemd.mask=systemd-timesyncd.service"
+    APPEND += "systemd.mask=systemd-networkd-persistent-storage.service"
